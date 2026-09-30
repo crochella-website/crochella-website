@@ -1,0 +1,56 @@
+backend:
+  name: github
+  repo: crochella-website/crochella-website
+  branch: main
+
+media_folder: "public/uploads"
+public_folder: "/uploads"
+
+publish_mode: editorial_workflow
+
+collections:
+  - name: site
+    label: Site Content
+    files:
+      - name: home
+        label: Homepage
+        file: src/content/site.json
+        fields:
+          - label: Brand
+            name: brand
+            widget: object
+            fields:
+              - { label: Name, name: name, widget: string }
+              - { label: Tagline, name: tagline, widget: string }
+              - { label: Origin, name: origin, widget: string }
+          - label: Story
+            name: story
+            widget: object
+            fields:
+              - { label: Title, name: title, widget: string }
+              - { label: Lead, name: lead, widget: text }
+              - { label: Body, name: body, widget: text }
+
+  - name: products
+    label: Products
+    folder: src/content/products
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: Name, name: name, widget: string }
+      - { label: Category, name: category, widget: string }
+      - { label: Description, name: description, widget: text }
+      - { label: Price, name: price, widget: string, required: false }
+      - { label: Image, name: image, widget: image }
+      - { label: Featured, name: featured, widget: boolean, default: false }
+
+  - name: pages
+    label: Story Pages
+    folder: src/content/pages
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Eyebrow, name: eyebrow, widget: string, required: false }
+      - { label: Body, name: body, widget: markdown }
+      - { label: Artwork, name: artwork, widget: image, required: false }
