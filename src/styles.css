@@ -199,3 +199,20 @@ body{margin:0;color:var(--ink);background:var(--paper);font-family:'DM Sans',san
  .courtyard-caption{opacity:1;transform:translate(-50%,0)}
  .hero-scroll-hint{display:none}
 }
+
+
+/* Cinematic click-to-enter sequence. Overlay is fully removed from hit testing after entry. */
+.entrance-screen{position:fixed;inset:0;z-index:1000;background:#050505;color:#f4dfbd;display:flex;align-items:center;justify-content:center;flex-direction:column;overflow:hidden;transition:opacity 1.15s ease,visibility 1.15s ease}
+.entrance-screen--open{opacity:0;visibility:hidden;pointer-events:none}
+.entrance-aura{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 48%,#45251a55 0,#0b0808 28%,#030303 65%);animation:entrance-breathe 5s ease-in-out infinite alternate}
+.entrance-logo{position:relative;text-align:center;display:flex;flex-direction:column;align-items:center;gap:12px;filter:drop-shadow(0 8px 28px #b77b3a4a);animation:entrance-appear 1.5s ease-out both}
+.entrance-logo-fallback{font-family:'Yatra One',serif;font-size:clamp(52px,9vw,116px);color:#f0d7a6;text-shadow:0 2px 0 #7a3829,0 0 50px #a85b3255}
+.entrance-logo small{font-size:11px;letter-spacing:.45em;color:#c4a783}
+.entrance-action{position:relative;margin-top:52px;padding:17px 35px;border:1px solid #d6ad6d99;border-radius:2px;background:#6c2d2488;color:#fff0d3;font:600 12px 'DM Sans',sans-serif;letter-spacing:.22em;text-transform:uppercase;cursor:pointer;transition:background .3s,transform .3s;animation:entrance-appear 1.5s .4s ease-out both}
+.entrance-action:hover,.entrance-action:focus-visible{background:#9d4533;transform:translateY(-3px);outline:2px solid #eac17e;outline-offset:3px}
+.entrance-action span{margin-left:16px;font-size:18px}
+.entrance-sound{position:absolute;right:28px;bottom:26px;border:0;background:transparent;color:#d5bca0;font:11px 'DM Sans',sans-serif;letter-spacing:.12em;cursor:pointer;padding:12px}
+.entrance-screen--open .entrance-logo{transform:scale(1.22);opacity:0;transition:transform 1s ease,opacity .7s ease}
+@keyframes entrance-breathe{from{opacity:.5;transform:scale(1)}to{opacity:1;transform:scale(1.1)}}
+@keyframes entrance-appear{from{opacity:0;transform:translateY(18px) scale(.95)}to{opacity:1;transform:translateY(0) scale(1)}}
+@media(prefers-reduced-motion:reduce){.entrance-aura,.entrance-logo,.entrance-action{animation:none}.entrance-screen{transition:opacity .2s,visibility .2s}}
