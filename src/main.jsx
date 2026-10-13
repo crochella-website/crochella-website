@@ -128,6 +128,8 @@ function App() {
   const story = useRef(null);
 
   useLayoutEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return undefined;
+
     const ctx = gsap.context(() => {
       const select = gsap.utils.selector(hero);
       const fibers = gsap.utils.toArray('.yarn-fiber');
