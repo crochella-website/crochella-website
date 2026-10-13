@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useRef } from 'react';
+import React, { useLayoutEffect, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -126,6 +126,32 @@ function Doorway() {
 function App() {
   const hero = useRef(null);
   const story = useRef(null);
+  const [entered, setEntered] = useState(false);
+  const [muted, setMuted] = useState(false);
+  const audioContext = useRef(null);
+
+  const playEntrance = () => {
+    if (entered) return;
+    setEntered(true);
+    if (!muted) {
+      try {
+        const Ctx = window.AudioContext || window.webkitAudioContext;
+        if (Ctx) {
+          const ctx = new Ctx();
+          audioContext.current = ctx;
+          const now = ctx.currentTime;
+          const noise = ctx.createBuffer(1, Math.floor(ctx.sampleRate * 1.3), ctx.sampleRate);
+          const data = noise.getChannelData(0);
+          for (let i = 0; i < data.length; i++) data[i] = (Math.random() * 2 - 1) * (1 - i / data.length);
+          const source = ctx.createBufferSource(); source.buffer = noise;
+          const filter = ctx.createBiquadFilter(); filter.type = 'bandpass'; filter.frequency.setValueAtTime(280, now); filter.frequency.exponentialRampToValueAtTime(1800, now + 0.55); filter.frequency.exponentialRampToValueAtTime(180, now + 1.25);
+          const gain = ctx.createGain(); gain.gain.setValueAtTime(0.0001, now); gain.gain.exponentialRampToValueAtTime(0.17, now + 0.2); gain.gain.exponentialRampToValueAtTime(0.0001, now + 1.25);
+          source.connect(filter); filter.connect(gain); gain.connect(ctx.destination); source.start(now + 0.35); source.stop(now + 1.3);
+        }
+      } catch (error) { console.warn('Entrance audio unavailable', error); }
+    }
+    window.setTimeout(() => window.scrollTo({ top: Math.max(window.innerHeight * 0.8, 650), behavior: 'smooth' }), 1500);
+  };
 
   useLayoutEffect(() => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return undefined;
