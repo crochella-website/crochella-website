@@ -216,3 +216,23 @@ body{margin:0;color:var(--ink);background:var(--paper);font-family:'DM Sans',san
 @keyframes entrance-breathe{from{opacity:.5;transform:scale(1)}to{opacity:1;transform:scale(1.1)}}
 @keyframes entrance-appear{from{opacity:0;transform:translateY(18px) scale(.95)}to{opacity:1;transform:translateY(0) scale(1)}}
 @media(prefers-reduced-motion:reduce){.entrance-aura,.entrance-logo,.entrance-action{animation:none}.entrance-screen{transition:opacity .2s,visibility .2s}}
+
+
+/* Textile cinematography pass: irregular twisted yarn, directional light and gate depth. */
+.immersive-hero{background:#080706}
+.hero-darkness{background:radial-gradient(ellipse at 50% 47%,#40251b 0,#1b1110 25%,#070707 70%)}
+.yarn-field{inset:-8%;perspective:550px;filter:drop-shadow(3px 12px 14px #0009)}
+.yarn-vignette{background:radial-gradient(ellipse at center,#0000 9%,#03030344 50%,#010101e8 100%)}
+.yarn-fiber{height:145%;top:-21%;border-radius:44% 56% 47% 53% / 8% 12% 9% 13%;background:repeating-linear-gradient(164deg,#ffffff00 0 5px,#f4e4be55 6px 7px,#25100f55 8px 10px,#ffffff00 12px 17px),repeating-linear-gradient(23deg,#0000 0 7px,#ffffff30 8px 9px,#0000 11px 18px),linear-gradient(90deg,#160d0ba8 0%,#ffffff33 15%,#ffffff66 28%,#00000030 47%,#ffffff22 63%,#0000008c 91%),var(--fiber-color);box-shadow:inset 3px 0 4px #fff5,inset -5px 0 7px #0008,0 7px 16px #000b,2px 0 8px #0009;filter:saturate(.84) contrast(1.14);will-change:transform}
+.yarn-fiber:before{inset:-2% -18%;width:auto;background:repeating-linear-gradient(162deg,transparent 0 9px,#f2d9ac77 10px 11px,transparent 12px 19px);opacity:.45;filter:blur(1.1px);box-shadow:none;clip-path:polygon(26% 0,75% 0,100% 100%,0 100%)}
+.yarn-fiber:after{left:8%;top:0;width:78%;height:100%;background:repeating-linear-gradient(18deg,transparent 0 13px,#fff6 14px 15px,transparent 16px 23px);opacity:.5;box-shadow:none;border-radius:45%}
+.yarn-fiber i{inset:0 43%;filter:blur(2px);opacity:.4}
+.yarn-fiber b{left:-22%;right:-22%;height:100%;top:0;border:0;background:repeating-linear-gradient(176deg,transparent 0 17px,#f5e5c13b 18px 19px,transparent 20px 32px);opacity:.65;filter:blur(1px)}
+.doorway-stage{filter:drop-shadow(0 15px 30px #0009)}
+.door-leaf{background:repeating-linear-gradient(91deg,#4a271c 0 5px,#75432b 6px 16px,#a36a42 17px 19px,#4d291c 20px 27px);box-shadow:inset 0 0 0 5px #4a291d,inset 0 0 0 10px #d5ad6b,0 20px 50px #000c}
+.courtyard-sunlight{background:radial-gradient(ellipse at 52% 48%,#fff0b5c0 0,#f6c66a50 24%,transparent 66%)}
+.entrance-screen{background:#030303}
+.entrance-aura{background:radial-gradient(ellipse at 50% 49%,#7a3b202c 0,#110b0a 29%,#020202 70%)}
+.entrance-logo:before{content:'';position:absolute;inset:-50px -80px;border:1px solid #b9894b2a;border-radius:50%;filter:blur(1px);animation:entrance-breathe 3.5s ease-in-out infinite alternate}
+@media(max-width:720px){.yarn-fiber{filter:saturate(.9)}.entrance-logo:before{inset:-28px -20px}}
+@media(prefers-reduced-motion:reduce){.entrance-logo:before{animation:none}}
