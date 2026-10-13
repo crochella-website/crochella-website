@@ -13,11 +13,11 @@ function YarnField() {
   return (
     <div className="yarn-field" aria-hidden="true">
       <div className="yarn-vignette" />
-      {Array.from({ length: 92 }, (_, i) => {
-        const x = ((i * 37) % 101);
+      {Array.from({ length: 28 }, (_, i) => {
+        const x = 3 + ((i * 37) % 94);
         const color = yarnColors[(i * 7 + Math.floor(i / 4)) % yarnColors.length];
-        const width = 5 + ((i * 3) % 9);
-        const tilt = ((i * 19) % 46) - 23;
+        const width = 12 + ((i * 7) % 19);
+        const tilt = ((i * 19) % 20) - 10;
         const offset = ((i * 13) % 61) - 30;
         return (
           <span
@@ -150,7 +150,7 @@ function App() {
         }
       } catch (error) { console.warn('Entrance audio unavailable', error); }
     }
-    window.setTimeout(() => window.scrollTo({ top: Math.max(window.innerHeight * 0.8, 650), behavior: 'smooth' }), 1500);
+    window.setTimeout(() => window.scrollTo({ top: Math.max(window.innerHeight * 0.8, 650), behavior: 'smooth' }), 1250);
   };
 
   useLayoutEffect(() => {
