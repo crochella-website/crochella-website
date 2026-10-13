@@ -207,6 +207,12 @@ function App() {
 
   return (
     <main>
+      <div className={`entrance-screen ${entered ? 'entrance-screen--open' : ''}`} aria-hidden={entered}>
+        <div className="entrance-aura" />
+        <div className="entrance-logo"><span className="entrance-logo-fallback">Crochella</span><small>WOVEN STORIES</small></div>
+        <button type="button" className="entrance-action" onClick={playEntrance} disabled={entered}>{entered ? 'Opening the story…' : 'Enter Crochella'} <span aria-hidden="true">↗</span></button>
+        <button type="button" className="entrance-sound" onClick={() => setMuted(value => !value)} aria-label={muted ? 'Enable entrance sound' : 'Mute entrance sound'}>{muted ? 'Sound off' : 'Sound on'}</button>
+      </div>
       <section className="hero immersive-hero" ref={hero}>
         <div className="hero-darkness" />
         <YarnField />
