@@ -147,7 +147,7 @@ function App() {
         .to(select('.hero-intro'), { opacity: 0, scale: 0.86, y: -30, duration: 0.24 }, 0)
         .to(select('.doorway-stage'), { opacity: 1, scale: 1.08, duration: 0.42 }, 0.06)
         .to(fibers, {
-          x: (index) => index % 2 ? `calc(100vw + ${index * 3}px)` : `calc(-100vw - ${index * 3}px)`,
+          x: (index) => index % 2 ? '120vw' : '-120vw',
           rotation: (index) => index % 2 ? 24 : -24,
           opacity: 0.08,
           duration: 0.82,
