@@ -190,3 +190,12 @@ body{margin:0;color:var(--ink);background:var(--paper);font-family:'DM Sans',san
  .courtyard-caption{bottom:7%}.courtyard-caption p{max-width:300px;margin:8px auto}.hero-scroll-hint{left:16px;bottom:17px;font-size:8px}.follow-thread{right:16px;bottom:17px;font-size:8px}
 }
 @media(prefers-reduced-motion:reduce){.hero-scroll-hint span{animation:none}}
+
+
+@media(prefers-reduced-motion:reduce){
+ .doorway-stage{opacity:1!important;transform:none!important}
+ .yarn-field{opacity:.2}
+ .door-leaf{transform:rotateY(-104deg)!important}
+ .courtyard-caption{opacity:1;transform:translate(-50%,0)}
+ .hero-scroll-hint{display:none}
+}
