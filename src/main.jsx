@@ -9,7 +9,7 @@ function App() {
   const [typed, setTyped] = useState('');
   const [menuOpen, setMenuOpen] = useState(false);
   const [copied, setCopied] = useState(false);
-  const dadi = useRef(null);
+
 
   useEffect(() => {
     let i = 0;
@@ -19,17 +19,6 @@ function App() {
       if (i >= INTRO.length) window.clearInterval(timer);
     }, 38);
     return () => window.clearInterval(timer);
-  }, []);
-
-  useEffect(() => {
-    const move = e => {
-      if (!dadi.current) return;
-      const x = (e.clientX / window.innerWidth - .5) * 10;
-      const y = (e.clientY / window.innerHeight - .5) * 7;
-      dadi.current.style.transform = `translate3d(${x}px,${y}px,0)`;
-    };
-    window.addEventListener('mousemove', move, { passive: true });
-    return () => window.removeEventListener('mousemove', move);
   }, []);
 
   const copyEmail = async () => {
@@ -65,11 +54,10 @@ function App() {
         </div>
         <div className="hero-origin"><i/> HANDMADE WITH LOVE · FATEHPUR, BAHUA, U.P.</div>
       </div>
-      <div className="dadi-stage" ref={dadi}>
-        <div className="dadi-aura"/>
-        <img className="dadi-hero-image" src="/uploads/crochella-dadi.svg" alt="A warm illustrated grandmother crocheting, the heart of Crochella"/>
-        <div className="dadi-caption"><span>THE HEART OF CROCHELLA</span><b>Dadi ♡</b></div>
-        <span className="floating-stitch stitch-a">✳</span><span className="floating-stitch stitch-b">♡</span>
+      <div className="hero-video-layer" aria-hidden="true">
+        <video className="hero-video" autoPlay muted loop playsInline preload="metadata">
+          <source src="/uploads/crochella-hero-optimized.mp4" type="video/mp4"/>
+        </video>
       </div>
       <div className="hero-bottom-note"><span>01</span><i/> A STORY IN EVERY STITCH</div>
       <a className="hero-scroll-cue" href="#kahani">SCROLL TO UNFOLD <span>↓</span></a>
