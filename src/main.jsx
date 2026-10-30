@@ -1,261 +1,88 @@
-import React, { useLayoutEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './styles.css';
 import site from './content/site.json';
 
-gsap.registerPlugin(ScrollTrigger);
-
-const yarnColors = ['#8d3028', '#b44a35', '#d68d43', '#e6bd70', '#526f50', '#2f5947', '#a94337', '#c17a42', '#d5a24e', '#774139', '#45674f', '#e1c89b', '#a95842', '#67805a'];
-
-function YarnField() {
-  return (
-    <div className="yarn-field" aria-hidden="true">
-      <div className="yarn-vignette" />
-      {Array.from({ length: 28 }, (_, i) => {
-        const x = 3 + ((i * 37) % 94);
-        const color = yarnColors[(i * 7 + Math.floor(i / 4)) % yarnColors.length];
-        const width = 12 + ((i * 7) % 19);
-        const tilt = ((i * 19) % 20) - 10;
-        const offset = ((i * 13) % 61) - 30;
-        return (
-          <span
-            className="yarn-fiber"
-            key={i}
-            style={{
-              '--x': `${x}%`,
-              '--fiber-color': color,
-              '--fiber-width': `${width}px`,
-              '--tilt': `${tilt}deg`,
-              '--offset': `${offset}px`,
-              '--fiber-index': i,
-            }}
-          >
-            <i />
-            <b />
-          </span>
-        );
-      })}
-      <div className="yarn-center-glow" />
-    </div>
-  );
-}
-
-function Courtyard() {
-  return (
-    <div className="courtyard-reveal" aria-hidden="true">
-      <div className="courtyard-sunlight" />
-      <div className="courtyard-arch">
-        <div className="arch-inner">
-          <div className="courtyard-sky">
-            <span className="courtyard-sun" />
-            <span className="courtyard-cloud cloud-one" />
-            <span className="courtyard-cloud cloud-two" />
-            <span className="courtyard-bird bird-one">⌁</span>
-            <span className="courtyard-bird bird-two">⌁</span>
-          </div>
-          <div className="courtyard-home">
-            <div className="home-roof"><span /></div>
-            <div className="home-wall">
-              <div className="home-window window-left"><i /><b /></div>
-              <div className="home-door"><span /></div>
-              <div className="home-window window-right"><i /><b /></div>
-              <div className="home-garland">✿　✿　✿　✿　✿</div>
-            </div>
-            <div className="home-veranda"><i /><i /><i /><i /></div>
-          </div>
-          <div className="courtyard-tree tree-left"><i /><b /><em /></div>
-          <div className="courtyard-tree tree-right"><i /><b /><em /></div>
-          <div className="courtyard-ground" />
-          <div className="courtyard-rangoli"><i /><b /><em /><span /></div>
-          <div className="dadi-figure">
-            <div className="dadi-hair" />
-            <div className="dadi-face"><i /></div>
-            <div className="dadi-sari">✿　✿</div>
-            <div className="dadi-arm" />
-            <div className="dadi-yarn" />
-            <div className="dadi-needle" />
-          </div>
-          <div className="child-figure child-girl">
-            <div className="child-hair" />
-            <div className="child-face" />
-            <div className="child-clothes" />
-          </div>
-          <div className="child-figure child-boy">
-            <div className="child-hair" />
-            <div className="child-face" />
-            <div className="child-clothes" />
-          </div>
-          <div className="yarn-basket"><i /><i /><i /><i /></div>
-          <div className="courtyard-night" />
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function Doorway() {
-  return (
-    <div className="doorway-stage" aria-hidden="true">
-      <Courtyard />
-      <div className="doorway-frame">
-        <div className="frame-carving carving-top">✿　❧　✿　❧　✿</div>
-        <div className="frame-side frame-side-left" />
-        <div className="frame-side frame-side-right" />
-        <div className="door-leaf">
-          <div className="door-panels">
-            <span /><span /><span /><span />
-          </div>
-          <div className="door-carving">❧<br />✿<br />❧</div>
-          <div className="door-knocker"><i /></div>
-          <div className="door-handle" />
-        </div>
-        <div className="crochella-nameplate">
-          <span>घर</span>
-          <strong>Crochella</strong>
-          <i>Woven with love</i>
-        </div>
-        <div className="frame-threshold" />
-      </div>
-      <div className="doorway-shade" />
-    </div>
-  );
-}
+const INTRO = 'Arre, aa gaye? Welcome to Crochella. Yahan har dhaage mein ek kahani hai. Batao, aaj kya bunna hai?';
 
 function App() {
-  const hero = useRef(null);
-  const story = useRef(null);
-  const [entered, setEntered] = useState(false);
-  const [muted, setMuted] = useState(false);
-  const audioContext = useRef(null);
+  const [typed, setTyped] = useState('');
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [copied, setCopied] = useState(false);
+  const dadi = useRef(null);
 
-  const playEntrance = () => {
-    if (entered) return;
-    setEntered(true);
-    if (!muted) {
-      try {
-        const Ctx = window.AudioContext || window.webkitAudioContext;
-        if (Ctx) {
-          const ctx = new Ctx();
-          audioContext.current = ctx;
-          const now = ctx.currentTime;
-          const noise = ctx.createBuffer(1, Math.floor(ctx.sampleRate * 1.3), ctx.sampleRate);
-          const data = noise.getChannelData(0);
-          for (let i = 0; i < data.length; i++) data[i] = (Math.random() * 2 - 1) * (1 - i / data.length);
-          const source = ctx.createBufferSource(); source.buffer = noise;
-          const filter = ctx.createBiquadFilter(); filter.type = 'bandpass'; filter.frequency.setValueAtTime(280, now); filter.frequency.exponentialRampToValueAtTime(1800, now + 0.55); filter.frequency.exponentialRampToValueAtTime(180, now + 1.25);
-          const gain = ctx.createGain(); gain.gain.setValueAtTime(0.0001, now); gain.gain.exponentialRampToValueAtTime(0.17, now + 0.2); gain.gain.exponentialRampToValueAtTime(0.0001, now + 1.25);
-          source.connect(filter); filter.connect(gain); gain.connect(ctx.destination); source.start(now + 0.35); source.stop(now + 1.3);
-        }
-      } catch (error) { console.warn('Entrance audio unavailable', error); }
-    }
-    window.setTimeout(() => window.scrollTo({ top: Math.max(window.innerHeight * 0.8, 650), behavior: 'smooth' }), 1250);
-  };
-
-  useLayoutEffect(() => {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return undefined;
-
-    const ctx = gsap.context(() => {
-      const select = gsap.utils.selector(hero);
-      const fibers = gsap.utils.toArray('.yarn-fiber');
-      const timeline = gsap.timeline({
-        defaults: { ease: 'power2.inOut' },
-        scrollTrigger: {
-          trigger: hero.current,
-          start: 'top top',
-          end: '+=340%',
-          scrub: 1,
-          pin: true,
-          anticipatePin: 1,
-        },
-      });
-
-      timeline
-        .to(select('.hero-intro'), { opacity: 0, scale: 0.86, y: -30, duration: 0.24 }, 0)
-        .to(select('.doorway-stage'), { opacity: 1, scale: 1.08, duration: 0.42 }, 0.06)
-        .to(fibers, {
-          x: (index) => index % 2 ? '120vw' : '-120vw',
-          rotation: (index) => index % 2 ? 24 : -24,
-          opacity: 0.08,
-          duration: 0.82,
-          stagger: { each: 0.003, from: 'random' },
-          ease: 'power3.inOut',
-        }, 0.08)
-        .to(select('.yarn-center-glow'), { opacity: 0.12, scale: 1.8, duration: 0.4 }, 0.1)
-        .to(select('.door-leaf'), { rotationY: -104, duration: 0.46, ease: 'power3.inOut' }, 0.47)
-        .to(select('.courtyard-sunlight'), { opacity: 1, scale: 1.4, duration: 0.4 }, 0.48)
-        .to(select('.courtyard-caption'), { opacity: 1, y: 0, duration: 0.24 }, 0.61)
-        .to(select('.courtyard-night'), { opacity: 0.62, duration: 0.5 }, 0.72)
-        .to(select('.doorway-stage'), { scale: 1.16, y: -12, duration: 0.28 }, 0.74)
-        .to(select('.follow-thread'), { opacity: 1, y: 0, duration: 0.2 }, 0.82);
-
-      gsap.from(select('.story-inner'), {
-        y: 56,
-        opacity: 0,
-        duration: 0.9,
-        scrollTrigger: {
-          trigger: story.current,
-          start: 'top 78%',
-          toggleActions: 'play none none reverse',
-        },
-      });
-    }, hero);
-
-    return () => ctx.revert();
+  useEffect(() => {
+    let i = 0;
+    const timer = window.setInterval(() => {
+      i += 1;
+      setTyped(INTRO.slice(0, i));
+      if (i >= INTRO.length) window.clearInterval(timer);
+    }, 38);
+    return () => window.clearInterval(timer);
   }, []);
 
-  return (
-    <main>
-      <div className={`entrance-screen ${entered ? 'entrance-screen--open' : ''}`} aria-hidden={entered}>
-        <div className="entrance-aura" />
-        <div className="entrance-logo"><span className="entrance-logo-fallback">Crochella</span><small>WOVEN STORIES</small></div>
-        <button type="button" className="entrance-action" onClick={playEntrance} disabled={entered}>{entered ? 'Opening the story…' : 'Enter Crochella'} <span aria-hidden="true">↗</span></button>
-        <button type="button" className="entrance-sound" onClick={() => setMuted(value => !value)} aria-label={muted ? 'Enable entrance sound' : 'Mute entrance sound'}>{muted ? 'Sound off' : 'Sound on'}</button>
+  useEffect(() => {
+    const move = e => {
+      if (!dadi.current) return;
+      const x = (e.clientX / window.innerWidth - .5) * 10;
+      const y = (e.clientY / window.innerHeight - .5) * 7;
+      dadi.current.style.transform = `translate3d(${x}px,${y}px,0)`;
+    };
+    window.addEventListener('mousemove', move, { passive: true });
+    return () => window.removeEventListener('mousemove', move);
+  }, []);
+
+  const copyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText('hello@crochella.in');
+      setCopied(true);
+      window.setTimeout(() => setCopied(false), 1800);
+    } catch { window.location.href = 'mailto:hello@crochella.in'; }
+  };
+
+  const links = [['Kahani','#kahani'],['Karigari','#karigari'],['Collections','#collections'],['Shop','#collections']];
+
+  return <main className="crochella-site">
+    <header className="hero-nav">
+      <a className="brand-lockup" href="#home"><span className="brand-word">Crochella<sup>®</sup></span><span className="brand-flower">✳︎</span></a>
+      <nav className="desktop-nav" aria-label="Main navigation">{links.map(([label,href],i)=><React.Fragment key={label}>{i>0&&<span className="nav-comma">, </span>}<a href={href}>{label}</a></React.Fragment>)}</nav>
+      <a className="nav-contact" href="mailto:hello@crochella.in">Baat karein</a>
+      <button className={'menu-toggle '+(menuOpen?'is-open':'')} onClick={()=>setMenuOpen(!menuOpen)} aria-label="Toggle navigation" aria-expanded={menuOpen}><span/><span/><span/></button>
+    </header>
+    <div className={'mobile-menu '+(menuOpen?'is-open':'')} aria-hidden={!menuOpen}><nav>{links.map(([label,href])=><a key={label} href={href} onClick={()=>setMenuOpen(false)}>{label}</a>)}<a href="mailto:hello@crochella.in">Baat karein ↗</a></nav></div>
+
+    <section className="hero-main" id="home">
+      <div className="hero-red-glow"/>
+      <div className="hero-copy">
+        <div className="dadi-intro"><span>Namaste, milo</span><strong>D.A.D.I. se</strong><small>Dhaagon Aur Dil Ki Inventor</small></div>
+        <p className="hero-typewriter" aria-live="polite">{typed}<i className="typing-cursor"/></p>
+        <div className="hero-actions">
+          <a className="action-pill" href="#collections">Explore our little things</a>
+          <a className="action-pill" href="#kahani">Dadi ki kahani</a>
+          <a className="action-pill" href="#karigari">Dekho kaise banta hai</a>
+          <a className="action-pill" href="#collections">Apna crochet chuno</a>
+          <button className="action-pill action-pill-outline" onClick={copyEmail}>{copied?'Copied!':'Reach us: hello@crochella.in'} <span>▢</span></button>
+        </div>
+        <div className="hero-origin"><i/> HANDMADE WITH LOVE · FATEHPUR, BAHUA, U.P.</div>
       </div>
-      <section className="hero immersive-hero" ref={hero}>
-        <div className="hero-darkness" />
-        <YarnField />
-        <div className="hero-topline">
-          <span>FATEHPUR · BAHUA</span>
-          <span>HANDMADE, FROM THE HEART</span>
-        </div>
-        <div className="hero-intro">
-          <span className="intro-eyebrow">A little thread. A whole lot of love.</span>
-          <h1>Crochella</h1>
-          <p>Woven Stories for Brighter Days</p>
-          <span className="intro-stitch">✳</span>
-        </div>
-        <Doorway />
-        <div className="courtyard-caption">
-          <span>AND BEHIND EVERY THREAD…</span>
-          <h2>there is a home.</h2>
-          <p>Dadi’s hands. A familiar angan. Stories stitched with love.</p>
-        </div>
-        <div className="follow-thread"><span>↓</span> FOLLOW THE THREAD</div>
-        <div className="hero-scroll-hint"><span /> SCROLL TO ENTER</div>
-        <div className="hero-grain" />
-      </section>
+      <div className="dadi-stage" ref={dadi}>
+        <div className="dadi-aura"/>
+        <img className="dadi-hero-image" src="/uploads/crochella-dadi.svg" alt="A warm illustrated grandmother crocheting, the heart of Crochella"/>
+        <div className="dadi-caption"><span>THE HEART OF CROCHELLA</span><b>Dadi ♡</b></div>
+        <span className="floating-stitch stitch-a">✳</span><span className="floating-stitch stitch-b">♡</span>
+      </div>
+      <div className="hero-bottom-note"><span>01</span><i/> A STORY IN EVERY STITCH</div>
+      <a className="hero-scroll-cue" href="#kahani">SCROLL TO UNFOLD <span>↓</span></a>
+    </section>
 
-      <section className="story" ref={story}>
-        <div className="story-thread" />
-        <div className="story-inner">
-          <small>01 · HAMAARI KAHANI</small>
-          <h2>{site.story.title}</h2>
-          <p className="lead">{site.story.lead}</p>
-          <hr />
-          <p>{site.story.body}</p>
-          <a href="#products">Follow the thread <b>↘</b></a>
-        </div>
-      </section>
-
-      <section id="products" className="next">
-        <small>02 · THE LITTLE THINGS</small>
-        <h2>Small stitches.<br /><em>Big smiles.</em></h2>
-        <p>Products, collections and the handmade world will unfold here next.</p>
-      </section>
-    </main>
-  );
+    <section className="story-preview" id="kahani">
+      <div className="story-preview-label">01 / HAMAARI KAHANI</div>
+      <div className="story-preview-copy"><p className="story-kicker">FATEHPUR · BAHUA · UTTAR PRADESH</p><h2>{site.story.title}</h2><p className="story-lead">{site.story.lead}</p><a href="#karigari" className="story-link">Suno poori kahani <span>↗</span></a></div>
+      <div className="story-stamp">WOVEN<br/>WITH<br/><em>LOVE</em></div>
+    </section>
+    <section className="coming-section" id="karigari"><span>02 / HAATHON KA JAADU</span><h2>Har loop mein<br/><em>thoda sa pyaar.</em></h2><p>From Dadi's hands to yours. Our making story is coming together.</p></section>
+    <section className="coming-section collections-section" id="collections"><span>03 / THE LITTLE THINGS</span><h2>Chhoti cheezein.<br/><em>Badi khushiyaan.</em></h2><p>Handmade charms, crochet companions, bags, rugs and more.</p></section>
+  </main>;
 }
 
 createRoot(document.getElementById('root')).render(<App />);
