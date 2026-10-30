@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import BlossomTree from './BlossomTree.jsx';
-import DiwaliLantern from './DiwaliLantern.jsx';
 import { createRoot } from 'react-dom/client';
 import './styles.css';
 import site from './content/site.json';
@@ -78,7 +77,6 @@ function App() {
         </div>
         <div className="hero-origin"><i/> HANDMADE WITH LOVE · FATEHPUR, BAHUA, U.P.</div>
       </div>
-      <DiwaliLantern />
       <div className="hero-video-layer" aria-hidden="true">
         <video className="hero-video" autoPlay muted loop playsInline preload="auto">
           <source src="/uploads/Crochella_Hero_Video_1080p%20(15).mp4" type="video/mp4"/>
