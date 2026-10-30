@@ -369,7 +369,6 @@
 
 
 .diwali-floating-lanterns{position:absolute;z-index:1;right:4%;top:8%;width:clamp(150px,24vw,310px);height:auto;object-fit:contain;pointer-events:none;opacity:.95;filter:drop-shadow(0 12px 20px rgba(20,8,20,.25));animation:diwali-float 7s ease-in-out infinite}
-}
 @keyframes diwali-float{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-13px) rotate(2deg)}}
 .craft-section,.diwali-collections{position:relative;isolation:isolate;overflow:hidden}
 .craft-section>span,.craft-section>h2,.craft-section>p,.diwali-collections>span,.diwali-collections>h2,.diwali-collections>p{position:relative;z-index:2}
