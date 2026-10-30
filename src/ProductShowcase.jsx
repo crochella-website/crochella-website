@@ -41,7 +41,7 @@ export default function ProductShowcase() {
   // Reveal each section as it enters the viewport, respecting reduced-motion settings.
   useEffect(() => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    const targets = document.querySelectorAll('.story-preview-label, .story-preview-copy, .story-stamp, .product-world-top, .product-tray, .product-world-bottom, .coming-section > *, .tree-garden-heading, .tree-scene-wrap, .tree-controls, .tree-mode-switch, .tree-colour-dots, .site-footer > *');
+    const targets = document.querySelectorAll('.story-preview-label, .story-preview-copy, .story-stamp, .product-world-top, .product-tray, .product-world-bottom, .product-storyboard, .storyboard-step, .coming-section > *, .tree-garden-heading, .tree-scene-wrap, .tree-controls, .tree-mode-switch, .tree-colour-dots, .site-footer > *');
     targets.forEach((node, index) => { node.classList.add('scroll-reveal'); node.style.setProperty('--reveal-delay', `${Math.min(index % 4, 3) * 90}ms`); });
     const observer = new IntersectionObserver(entries => entries.forEach(entry => {
       if (entry.isIntersecting) { entry.target.classList.add('is-revealed'); observer.unobserve(entry.target); }
