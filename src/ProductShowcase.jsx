@@ -148,7 +148,7 @@ export default function ProductShowcase() {
         <div className="storyboard-visual storyboard-burst">
           <div className="storyboard-mini-dadi"><img src="/uploads/crochella-dadi-3d.png.png" alt=""/></div>
           <div className="storyboard-mini-web mini-web-break"/>
-          <div className="storyboard-mini-products"><i>🐼</i><i className="mini-selected">🐢</i><i>🍌</i><i>🎀</i><i>🍔</i></div>
+          <div className="storyboard-mini-products"><img src="/uploads/panda-keychain.png" alt=""/><img className="mini-selected" src="/uploads/turtle-keychain.png" alt=""/><img src="/uploads/banana-keychain.png" alt=""/><img src="/uploads/pink-bow-keychain.png" alt=""/><img src="/uploads/burger-keychain.png" alt=""/></div>
           <span className="storyboard-sparkles">✦　✧　✦</span>
         </div>
         <div className="storyboard-caption"><b>3</b><span>Web Dissolves / Burst Effect</span></div>
