@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import BlossomTree from './BlossomTree.jsx';
+import DiwaliLantern from './DiwaliLantern.jsx';
 import { createRoot } from 'react-dom/client';
 import './styles.css';
 import site from './content/site.json';
@@ -77,6 +78,7 @@ function App() {
         </div>
         <div className="hero-origin"><i/> HANDMADE WITH LOVE · FATEHPUR, BAHUA, U.P.</div>
       </div>
+      <DiwaliLantern />
       <div className="hero-video-layer" aria-hidden="true">
         <video className="hero-video" autoPlay muted loop playsInline preload="auto">
           <source src="/uploads/Crochella_Hero_Video_1080p%20(15).mp4" type="video/mp4"/>
@@ -92,7 +94,7 @@ function App() {
       <div className="story-stamp">WOVEN<br/>WITH<br/><em>LOVE</em></div>
     </section>
     <section className="coming-section" id="karigari"><span>02 / HAATHON KA JAADU</span><h2>Har loop mein<br/><em>thoda sa pyaar.</em></h2><p>From Dadi's hands to yours. Our making story is coming together.</p></section>
-    <section className="coming-section collections-section" id="collections"><span>03 / THE LITTLE THINGS</span><h2>Chhoti cheezein.<br/><em>Badi khushiyaan.</em></h2><p>Handmade charms, crochet companions, bags, rugs and more.</p></section>
+    <section className="coming-section collections-section diwali-collections" id="collections"><span>03 / THE LITTLE THINGS</span><h2>Chhoti cheezein.<br/><em>Badi khushiyaan.</em></h2><p>Handmade charms, crochet companions, bags, rugs and more.</p><video className="diwali-shopping-bag" autoPlay muted loop playsInline preload="metadata" aria-hidden="true"><source src="/uploads/crochella-diwali-shopping-bag.webm" type="video/webm"/></video></section>
 
     <BlossomTree />
     <footer className="site-footer">
