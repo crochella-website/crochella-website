@@ -34,6 +34,7 @@ export default function ProductShowcase() {
   const products = crochetSlots;
   const visibleProducts = Array.from({length:visibleCount},(_,i)=>products[(page+i)%products.length]);
   const step = (direction) => { setPage(current=>(current+direction+products.length)%products.length); setActive(current=>(current+direction+products.length)%products.length); };
+  useEffect(() => { if (paused || selected || category !== 'crochet') return; const timer = window.setInterval(() => setPage(current => { const next = (current + 1) % products.length; setActive(next); return next; }), 500); return () => window.clearInterval(timer); }, [paused, selected, category, products.length]);
 
   return <section className="product-world" id="karigari" aria-label="Crochella handmade collections">
     <div className="product-world-glow" aria-hidden="true"/>
