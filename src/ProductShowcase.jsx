@@ -75,28 +75,15 @@ export default function ProductShowcase() {
       <div className="dadi-character-wrap web-swing-dadi"><DadiIllustration/><div className="dadi-caption">D.A.D.I. <span>·</span> THE HANDS BEHIND THE MAGIC</div></div>
 
       <svg className={"product-web-net" + (webBurst ? " is-bursting" : "")} viewBox="0 0 1200 470" preserveAspectRatio="none" aria-hidden="true">
-        <defs><radialGradient id="webGlow"><stop offset="0" stopColor="#fff8ee"/><stop offset="1" stopColor="#fff8ee" stopOpacity="0"/></radialGradient></defs>
         <g className="web-strands">
-          <path d="M955 18 Q720 70 430 118 T15 210"/>
-          <path d="M955 18 Q730 150 470 205 T25 360"/>
-          <path d="M955 18 Q770 250 600 340 T260 465"/>
-          <path d="M955 18 Q930 210 950 470"/>
-          <path d="M955 18 Q1110 155 1190 300"/>
-          <path d="M955 18 Q1040 80 1195 90"/>
-          <path d="M955 18 Q820 15 650 8"/>
-          <path d="M955 18 Q600 15 270 8"/>
-          <path d="M955 18 Q470 55 115 92"/>
-          <path d="M955 18 Q850 100 610 112 Q340 120 120 92"/>
-          <path d="M955 18 Q850 175 610 205 Q330 230 25 210"/>
-          <path d="M955 18 Q850 260 610 300 Q340 350 25 360"/>
-          <path d="M955 18 Q900 350 600 410 Q430 445 260 465"/>
-          <path d="M115 92 Q500 165 955 18 Q1100 190 1195 300"/>
-          <path d="M25 210 Q420 285 955 18 Q1060 290 950 470"/>
-          <path d="M25 360 Q430 420 955 18"/>
-          <path d="M270 8 Q520 190 955 18 Q810 290 600 410"/>
-          <path d="M650 8 Q730 180 955 18 Q970 250 950 470"/>
+          <path d="M1035 54 C900 78 805 118 690 160 C520 222 330 242 135 214"/>
+          <path d="M1035 54 C895 120 760 185 605 220 C420 260 250 285 72 270"/>
+          <path d="M1035 54 C930 165 825 232 690 280 C515 342 340 352 190 342"/>
+          <path d="M1035 54 C970 190 930 275 875 350 C790 408 680 424 570 425"/>
+          <path d="M1035 54 C1000 150 1010 250 1080 340"/>
+          <path d="M1035 54 C845 38 650 54 470 95 C300 132 180 150 55 145"/>
         </g>
-        <g className="web-sparks"><circle cx="610" cy="205" r="5"/><circle cx="430" cy="118" r="3"/><circle cx="820" cy="280" r="4"/><circle cx="1040" cy="170" r="3"/><circle cx="260" cy="360" r="4"/><circle cx="955" cy="18" r="7"/></g>
+        <g className="web-sparks"><circle cx="690" cy="160" r="3"/><circle cx="605" cy="220" r="3"/><circle cx="690" cy="280" r="3"/><circle cx="875" cy="350" r="3"/></g>
       </svg>
 
       {category==='crochet'?<>
