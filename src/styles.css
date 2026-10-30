@@ -699,3 +699,12 @@
 .storyboard-tap .storyboard-mini-products img:not(.mini-selected){opacity:.28;filter:grayscale(.65)}
 .storyboard-burst .storyboard-mini-products img:not(.mini-selected){opacity:.12;filter:grayscale(.8)}
 .storyboard-burst .storyboard-mini-products img.mini-selected{transform:translateY(-9px) scale(1.55);filter:drop-shadow(0 0 12px #fff1b9)}
+
+/* Match the reference's compact hero-to-storyboard vertical rhythm. */
+@media(min-width:761px){
+  .product-stage{min-height:360px}
+  .dadi-character-wrap.web-swing-dadi{top:-190px}
+  .product-tray{bottom:18px}
+  .product-stage-controls{bottom:110px}
+  .storyboard-visual{aspect-ratio:2.25/1}
+}
