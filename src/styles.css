@@ -789,3 +789,24 @@
 @media(prefers-reduced-motion:reduce){
  .dadi-character-wrap.web-swing-dadi{animation:none}
 }
+
+
+/* Subtle 3D depth: floating product plinths, lifted crochet photography, layered stage */
+.product-stage{perspective:1400px;transform-style:preserve-3d}
+.product-tray{transform:translateX(-50%) rotateX(2deg);transform-origin:50% 100%;transform-style:preserve-3d}
+.product-card-row{transform-style:preserve-3d}
+.product-card-wrap{transform-style:preserve-3d}
+.product-slot{transform:translateZ(8px)!important;transform-style:preserve-3d}
+.product-slot-art{transform:translateZ(10px);transform-style:preserve-3d}
+.product-slot-image{transform:translateZ(24px)!important;filter:drop-shadow(0 16px 12px #17071170)}
+.product-slot:hover,.product-slot.is-active{transform:translateY(-7px) translateZ(18px) rotateX(-2deg)!important}
+.dadi-character-wrap.web-swing-dadi{transform:translateZ(70px);filter:drop-shadow(0 20px 28px #16071144)}
+.product-web-net{transform:translateZ(32px)}
+.product-tray-front{transform:translateZ(4px)}
+@media(max-width:760px){
+ .product-tray{transform:none;perspective:none}
+ .product-slot{transform:none!important}
+ .product-slot-image{transform:translateZ(12px)!important}
+ .dadi-character-wrap.web-swing-dadi{transform:none}
+ .product-web-net{transform:none}
+}
