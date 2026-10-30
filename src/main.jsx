@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import BlossomTree from './BlossomTree.jsx';
 import DiwaliLantern from './DiwaliLantern.jsx';
+import DiwaliCanvas from './DiwaliCanvas.jsx';
 import { createRoot } from 'react-dom/client';
 import './styles.css';
 import site from './content/site.json';
@@ -66,7 +67,7 @@ function App() {
 
     <section className="hero-main" id="home" aria-label="Crochella introduction">
       <div className="hero-red-glow"/>
-      <svg className="hero-mandala" viewBox="0 0 500 500" aria-hidden="true"><g fill="none" stroke="currentColor" strokeWidth="2"><circle cx="250" cy="250" r="224"/><circle cx="250" cy="250" r="190"/><circle cx="250" cy="250" r="148"/><circle cx="250" cy="250" r="92"/><circle cx="250" cy="250" r="42"/><path d="M250 26V474M26 250H474M91 91L409 409M409 91L91 409"/></g><g fill="none" stroke="currentColor" strokeWidth="2">{Array.from({length:16},(_,i)=><ellipse key={i} cx="250" cy="115" rx="25" ry="72" transform={`rotate(${i*22.5} 250 250)`}/>)}</g><g fill="currentColor">{Array.from({length:32},(_,i)=><circle key={i} cx={250+Math.cos(i*Math.PI/16)*205} cy={250+Math.sin(i*Math.PI/16)*205} r="4"/>)}</g></svg>
+
       <div className="festive-particles" aria-hidden="true">{Array.from({length:16},(_,i)=><i key={i}/>)}</div>
       <div className="hero-copy">
         <div className="dadi-intro"><span>Namaste, milo</span><strong>D.A.D.I. se</strong><small>Dhaagon Aur Dil Ki Inventor</small></div>
@@ -95,8 +96,9 @@ function App() {
       <div className="story-preview-copy"><p className="story-kicker">FATEHPUR · BAHUA · UTTAR PRADESH</p><h2>{site.story.title}</h2><p className="story-lead">{site.story.lead}</p><a href="#karigari" className="story-link">Suno poori kahani <span>↗</span></a></div>
       <div className="story-stamp">WOVEN<br/>WITH<br/><em>LOVE</em></div>
     </section>
-    <section className="coming-section" id="karigari"><span>02 / HAATHON KA JAADU</span><h2>Har loop mein<br/><em>thoda sa pyaar.</em></h2><p>From Dadi's hands to yours. Our making story is coming together.</p></section>
-    <section className="coming-section collections-section diwali-collections" id="collections"><span>03 / THE LITTLE THINGS</span><h2>Chhoti cheezein.<br/><em>Badi khushiyaan.</em></h2><p>Handmade charms, crochet companions, bags, rugs and more.</p><video className="diwali-shopping-bag" autoPlay muted loop playsInline preload="metadata" aria-hidden="true"><source src="/uploads/crochella-diwali-shopping-bag.webm" type="video/webm"/></video></section>
+    <DiwaliCanvas />
+    <section className="coming-section craft-section" id="karigari"><video className="diwali-floating-lanterns" autoPlay muted loop playsInline preload="metadata" aria-hidden="true"><source src="/uploads/diwali-floating-lanterns.webm" type="video/webm"/></video><span>02 / HAATHON KA JAADU</span><h2>Har loop mein<br/><em>thoda sa pyaar.</em></h2><p>From Dadi's hands to yours. Our making story is coming together.</p></section>
+    <section className="coming-section collections-section diwali-collections" id="collections"><video className="diwali-diya-wishes" autoPlay muted loop playsInline preload="metadata" aria-hidden="true"><source src="/uploads/diwali-diya-wishes.webm" type="video/webm"/></video><span>03 / THE LITTLE THINGS</span><h2>Chhoti cheezein.<br/><em>Badi khushiyaan.</em></h2><p>Handmade charms, crochet companions, bags, rugs and more.</p><video className="diwali-shopping-bag" autoPlay muted loop playsInline preload="metadata" aria-hidden="true"><source src="/uploads/crochella-diwali-shopping-bag.webm" type="video/webm"/></video></section>
 
     <BlossomTree />
     <footer className="site-footer">
