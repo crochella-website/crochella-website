@@ -21,7 +21,7 @@ const crochetSlots = [
 ];
 
 function DadiIllustration() {
-  return <img className="product-dadi-art" src="/uploads/crochella-dadi-3d.png" alt="Dadi, a 3D wool-textured crochet grandmother"/>;
+  return <img className="product-dadi-art" src="/uploads/crochella-dadi-3d.png.png" alt="Dadi, a 3D wool-textured crochet grandmother"/>;
 }
 
 export default function ProductShowcase() {
