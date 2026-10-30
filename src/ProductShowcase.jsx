@@ -39,6 +39,7 @@ function KarigariKeyedVideo() {
     canvas.height = height;
     let raf = 0;
     let stopped = false;
+    let lastVideoTime = -1;
 
     const smooth = (a, b, value) => {
       const t = Math.max(0, Math.min(1, (value - a) / (b - a)));
@@ -47,7 +48,8 @@ function KarigariKeyedVideo() {
 
     const draw = () => {
       if (stopped) return;
-      if (video.readyState >= 2 && !video.paused) {
+      if (video.readyState >= 2 && !video.paused && video.currentTime !== lastVideoTime) {
+        lastVideoTime = video.currentTime;
         ctx.drawImage(video, 0, 0, width, height);
         const frame = ctx.getImageData(0, 0, width, height);
         const pixels = frame.data;
@@ -59,7 +61,7 @@ function KarigariKeyedVideo() {
           // avoids wiping out the brighter/darker greens in the crochet props.
           const dr = r - 57;
           const dg = g - 113;
-          const db = b - 59;
+          const db = b - 67;
           const distance = Math.sqrt(dr * dr + dg * dg + db * db);
           const keyed = 1 - smooth(17, 43, distance);
           if (keyed > 0) {
