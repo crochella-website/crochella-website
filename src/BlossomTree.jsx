@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import DiwaliLantern from './DiwaliLantern.jsx';
 
 const INSTAGRAM = 'https://www.instagram.com/crochellaart/';
 const QR = 'https://api.qrserver.com/v1/create-qr-code/?size=360x360&margin=12&data=https%3A%2F%2Fwww.instagram.com%2Fcrochellaart%2F';
@@ -7,6 +6,7 @@ const QR = 'https://api.qrserver.com/v1/create-qr-code/?size=360x360&margin=12&d
 export default function BlossomTree() {
   const [qrOpen, setQrOpen] = useState(false);
   const [mode, setMode] = useState('spring');
+  const [videoReady, setVideoReady] = useState(false);
 
   const setAtmosphere = value => {
     setMode(value);
@@ -16,14 +16,13 @@ export default function BlossomTree() {
 
   return <section className="instagram-section tree-garden-section" id="instagram" aria-labelledby="instagram-title">
     <div className="tree-garden-inner">
-      <DiwaliLantern />
       <div className="tree-garden-heading">
         <span className="instagram-eyebrow"><i/> A LITTLE CORNER OF CROCHELLA</span>
         <h2 id="instagram-title">Where little joys<br/><em>come into bloom.</em></h2>
         <p>A tiny garden, grown with love. Tap the blossom tree to find your way to our Instagram world.</p>
       </div>
       <div className="tree-scene-wrap" onClick={() => setQrOpen(true)} role="button" tabIndex={0} onKeyDown={e => (e.key === 'Enter' || e.key === ' ') && setQrOpen(true)} aria-label="Open Crochella Instagram QR code">
-        <video className="tree-video" src="/uploads/crochella-blossom-tree.webm" type="video/webm" autoPlay muted loop playsInline preload="auto" onLoadedData={e=>e.currentTarget.play().catch(()=>{})} aria-label="Animated pink blossom tree" />
+        <video className="tree-video" src="/uploads/crochella-blossom-tree.webm" autoPlay muted loop playsInline preload="auto" onLoadedData={e=>{setVideoReady(true);e.currentTarget.play().catch(()=>{});}} onError={()=>setVideoReady(false)} aria-label="Animated pink blossom tree" />
         <span className="tree-tap-hint"><span>♧</span> Tap the tree to see QR code</span>
       </div>
       <div className="tree-controls">
