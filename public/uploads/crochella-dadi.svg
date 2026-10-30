@@ -8,7 +8,7 @@
 <ellipse cx="490" cy="350" rx="190" ry="220" fill="url(#skin)" stroke="#925b46" stroke-width="7"/>
 <path d="M310 285 Q330 80 520 125 Q660 120 680 285 Q610 205 560 210 Q430 150 310 285" fill="#efeadc" stroke="#a8a49a" stroke-width="12"/>
 <path d="M315 325 Q385 260 455 320 M525 320 Q600 260 670 325" fill="none" stroke="#8a5b49" stroke-width="12" stroke-linecap="round"/>
-<g fill="none" stroke="#5c443d" stroke-width="13"><circle cx="405" cy="355" r="57"/><circle cx="575" cy="355" r="57/><path d="M462 355h56"/></g>
+<g fill="none" stroke="#5c443d" stroke-width="13"><circle cx="405" cy="355" r="57"/><circle cx="575" cy="355" r="57"/><path d="M462 355h56"/></g>
 <ellipse cx="405" cy="355" rx="12" ry="17" fill="#30221e"/><ellipse cx="575" cy="355" rx="12" ry="17" fill="#30221e"/>
 <path d="M470 390 Q450 430 485 435" fill="none" stroke="#965d48" stroke-width="9" stroke-linecap="round"/>
 <path d="M420 480 Q490 530 560 480" fill="none" stroke="#8e403d" stroke-width="13" stroke-linecap="round"/>
