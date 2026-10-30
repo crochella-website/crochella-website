@@ -337,7 +337,6 @@
 
 
 /* Dedicated Diwali canvas — intentionally content-free for the next creative brief. */
-}
 .diwali-lantern-cluster{
   position:absolute;z-index:6;top:14%;right:7%;width:clamp(110px,17vw,220px);
   height:auto;max-height:40%;object-fit:contain;pointer-events:none;
