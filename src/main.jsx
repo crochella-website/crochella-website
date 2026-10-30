@@ -56,7 +56,7 @@ function App() {
       </div>
       <div className="hero-video-layer" aria-hidden="true">
         <video className="hero-video" autoPlay muted loop playsInline preload="metadata">
-          <source src="/uploads/crochella-hero-optimized.mp4" type="video/mp4"/>
+          <source src="/uploads/Crochella_Hero_Video_1080p%20(15).mp4" type="video/mp4"/>
         </video>
       </div>
       <div className="hero-bottom-note"><span>01</span><i/> A STORY IN EVERY STITCH</div>
