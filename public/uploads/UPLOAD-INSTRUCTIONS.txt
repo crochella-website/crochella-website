@@ -1,0 +1,12 @@
+Crochella Diwali website assets
+
+Upload every file in this folder into the repository folder: public/uploads/
+Keep the filenames exactly as shown. The committed website code already references these names.
+
+- diwali-section-backdrop.mp4
+- diwali-mandala.webp
+- diwali-floating-lanterns.webm
+- diwali-happy-wishes.webm
+- diwali-diya-wishes.webm
+- crochella-blossom-tree-alpha.webm
+- crochella-blossom-tree-poster.png
