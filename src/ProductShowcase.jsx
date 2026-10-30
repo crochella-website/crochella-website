@@ -71,76 +71,23 @@ export default function ProductShowcase() {
     </div>
 
     <div className="product-stage">
-      <div className="product-yarn-trail" aria-hidden="true"><svg viewBox="0 0 1200 170" preserveAspectRatio="none"><path d="M-30 112 C150 18 230 180 390 85 S650 20 790 93 1020 150 1230 43"/></svg></div>
-      <div className="dadi-character-wrap web-swing-dadi"><DadiIllustration/><div className="dadi-caption">D.A.D.I. <span>·</span> THE HANDS BEHIND THE MAGIC</div></div>
-
-      <svg className={"product-web-net" + (webBurst ? " is-bursting" : "")} viewBox="0 0 1200 470" preserveAspectRatio="none" aria-hidden="true">
-        <g className="web-strands">
-          <path d="M1035 54 C900 78 805 118 690 160 C520 222 330 242 135 214"/>
-          <path d="M1035 54 C895 120 760 185 605 220 C420 260 250 285 72 270"/>
-          <path d="M1035 54 C930 165 825 232 690 280 C515 342 340 352 190 342"/>
-          <path d="M1035 54 C970 190 930 275 875 350 C790 408 680 424 570 425"/>
-          <path d="M1035 54 C1000 150 1010 250 1080 340"/>
-          <path d="M1035 54 C845 38 650 54 470 95 C300 132 180 150 55 145"/>
-        </g>
-        <g className="web-sparks"><circle cx="690" cy="160" r="3"/><circle cx="605" cy="220" r="3"/><circle cx="690" cy="280" r="3"/><circle cx="875" cy="350" r="3"/></g>
-      </svg>
-
       {category==='crochet'?<>
-        <div className="product-shuttle" aria-hidden="true"><span/><i/></div>
-        <div className={"product-tray" + (webBurst ? " is-bursting" : "")} onMouseEnter={()=>setPaused(true)} onMouseLeave={()=>setPaused(false)} onFocus={()=>setPaused(true)} onBlur={e=>{if(!e.currentTarget.contains(e.relatedTarget))setPaused(false);}}>
-          <div className="product-tray-edge"/>
-          <div className="product-card-row">
-            {visibleProducts.map((product,index)=>{
-              const productIndex=(page+index)%products.length;
-              const isBurstTarget=burstTarget===product.id;
-              return <div key={product.id} className={"product-card-wrap" + (isBurstTarget?" is-burst-target":"") + (webBurst&&!isBurstTarget?" is-web-dimmed":"")}>
-                <button className={'product-slot '+product.tone+(active===productIndex?' is-active':'')} onClick={()=>{setActive(productIndex);releaseProduct(product);}} aria-label={'View '+product.name}>
-                  <span className="product-slot-ribbon"/>
-                  <span className="product-slot-art"><img className="product-slot-image" src={product.image} alt={product.note} loading="lazy"/><span className="product-slot-yarn"/></span>
-                </button>
-                <div className="product-slot-caption"><span className="product-slot-title">{product.note}</span><span className="product-slot-sub">HAND-CROCHETED</span></div>
-              </div>;
-            })}
+        <div className="karigari-cgi-scene">
+          <video className="karigari-cgi-video" autoPlay muted loop playsInline preload="auto" aria-label="Dadi catches Crochella crochet keychains in her yarn web">
+            <source src="/uploads/crochella-dadi-web-catch-alpha.webm" type="video/webm; codecs=vp9"/>
+          </video>
+          <div className="karigari-video-hotspots" aria-label="Explore the crochet products">
+            <button style={{left:'1%',top:'20%',width:'15%',height:'48%'}} onClick={()=>releaseProduct(crochetSlots.find(p=>p.id==='panda'))} aria-label="Explore Panda Pal"/>
+            <button style={{left:'12%',top:'31%',width:'19%',height:'40%'}} onClick={()=>releaseProduct(crochetSlots.find(p=>p.id==='turtle'))} aria-label="Explore Turtle Buddy"/>
+            <button style={{left:'22%',top:'43%',width:'19%',height:'32%'}} onClick={()=>releaseProduct(crochetSlots.find(p=>p.id==='burger'))} aria-label="Explore Burger Buddy"/>
+            <button style={{left:'34%',top:'48%',width:'17%',height:'30%'}} onClick={()=>releaseProduct(crochetSlots.find(p=>p.id==='bow'))} aria-label="Explore Pink Bow"/>
           </div>
-          <div className="product-tray-front"><span>HANDMADE WITH LOVE</span><i>✦</i><span>FATEHPUR · INDIA</span></div>
+          <div className="karigari-scene-caption"><span>MADE BY HAND</span><i>✦</i><span>CAUGHT WITH LOVE</span></div>
         </div>
-        <div className="product-stage-controls"><button onClick={()=>step(-1)} aria-label="Previous crochet product">‹</button><span>{String(page+1).padStart(2,'0')} <i>/</i> {String(products.length).padStart(2,'0')}</span><button onClick={()=>step(1)} aria-label="Next crochet product">›</button></div>
       </>:<div className="rugs-coming-panel"><span className="rugs-coming-icon">▦</span><h3>Room for something<br/><em>beautiful.</em></h3><p>The rug collection will have its own little world here. We’ll bring it to life next.</p><span className="rugs-coming-note">RUG COLLECTION · COMING NEXT</span></div>}
     </div>
 
     <div className="product-world-bottom"><span>01 — CROCHET COLLECTION</span><p>{category==='crochet'?'17 little creations, each made with love.':'A new collection, woven for your spaces.'}</p><a href="#collections">Explore our world <span>↗</span></a></div>
-
-    <div className="product-storyboard" aria-label="How Dadi's web interaction works">
-      <article className="storyboard-step">
-        <div className="storyboard-visual storyboard-initial">
-          <div className="storyboard-mini-dadi"><img src="/uploads/crochella-dadi-3d.png.png" alt=""/></div>
-          <div className="storyboard-mini-web"/>
-          <div className="storyboard-mini-products"><img src="/uploads/panda-keychain.png" alt=""/><img src="/uploads/turtle-keychain.png" alt=""/><img src="/uploads/banana-keychain.png" alt=""/><img src="/uploads/pink-bow-keychain.png" alt=""/><img src="/uploads/burger-keychain.png" alt=""/></div>
-        </div>
-        <div className="storyboard-caption"><b>1</b><span>Initial State</span></div>
-      </article>
-      <span className="storyboard-arrow" aria-hidden="true">›</span>
-      <article className="storyboard-step">
-        <div className="storyboard-visual storyboard-tap">
-          <div className="storyboard-mini-dadi"><img src="/uploads/crochella-dadi-3d.png.png" alt=""/></div>
-          <div className="storyboard-mini-web"/>
-          <div className="storyboard-mini-products"><img src="/uploads/panda-keychain.png" alt=""/><img className="mini-selected" src="/uploads/turtle-keychain.png" alt=""/><img src="/uploads/banana-keychain.png" alt=""/><img src="/uploads/pink-bow-keychain.png" alt=""/><img src="/uploads/burger-keychain.png" alt=""/></div>
-          <span className="storyboard-cursor">☝</span>
-        </div>
-        <div className="storyboard-caption"><b>2</b><span>User Taps on a Product</span></div>
-      </article>
-      <span className="storyboard-arrow" aria-hidden="true">›</span>
-      <article className="storyboard-step">
-        <div className="storyboard-visual storyboard-burst">
-          <div className="storyboard-mini-dadi"><img src="/uploads/crochella-dadi-3d.png.png" alt=""/></div>
-          <div className="storyboard-mini-web mini-web-break"/>
-          <div className="storyboard-mini-products"><img src="/uploads/panda-keychain.png" alt=""/><img className="mini-selected" src="/uploads/turtle-keychain.png" alt=""/><img src="/uploads/banana-keychain.png" alt=""/><img src="/uploads/pink-bow-keychain.png" alt=""/><img src="/uploads/burger-keychain.png" alt=""/></div>
-          <span className="storyboard-sparkles">✦　✧　✦</span>
-        </div>
-        <div className="storyboard-caption"><b>3</b><span>Web Dissolves / Burst Effect</span></div>
-      </article>
-    </div>
 
     {selected&&category==='crochet'&&<div className="product-detail-backdrop" role="presentation" onClick={()=>setSelected(null)}><div className="product-detail-glass" role="dialog" aria-modal="true" aria-label={selected.name} onClick={e=>e.stopPropagation()}><button className="product-detail-close" onClick={()=>setSelected(null)} aria-label="Close product details">×</button><div className="product-detail-art"><img src={selected.image} alt={selected.name}/><small>MADE WITH LOVE · CROCHELLA</small></div><div className="product-detail-copy"><span className="product-eyebrow"><i/> HANDMADE CROCHET</span><h3>{selected.name}</h3><p>{selected.story}</p><div className="product-detail-meta"><span>Craft <b>Hand-crocheted</b></span><span>Finish <b>Gold-tone clasp</b></span><span>Origin <b>Fatehpur, India</b></span></div><div className="product-marketplace-note">Price and purchase links will be added once the product listings are ready.</div></div></div></div>}
   </section>;
