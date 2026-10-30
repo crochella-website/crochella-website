@@ -100,7 +100,7 @@ function App() {
 
     <BlossomTree />
     <footer className="site-footer">
-      <a className="footer-brand" href="#home">Crochella<sup>®</sup><span>✳︎</span></a>
+      <a className="footer-brand" href="#home">Crochella<sup>®</sup></a>
       <p>Woven with love, from our hands to yours.</p>
       <a href="https://www.instagram.com/crochellaart/" target="_blank" rel="noreferrer">@crochellaart ↗</a>
       <small>© {new Date().getFullYear()} Crochella. Made with love.</small>
