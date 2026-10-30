@@ -292,3 +292,47 @@
 .tree-scene-wrap{isolation:auto;overflow:visible}
 .tree-video{position:absolute;inset:0;z-index:2;display:block;width:100%;height:100%;object-fit:contain;object-position:center;mix-blend-mode:screen;opacity:1;filter:drop-shadow(0 18px 22px rgba(24,8,20,.18));pointer-events:none;background:transparent}
 @media(max-width:640px){.tree-garden-inner>.diwali-lantern{top:-24px;right:0;width:66px;height:120px}.tree-garden-heading{padding-right:54px}}
+
+
+/* Diwali refresh: use the supplied Crochella mark and a rotating rangoli mandala. */
+.brand-logo{display:block;width:clamp(118px,13vw,166px);height:auto;max-height:96px;object-fit:contain;filter:drop-shadow(0 3px 12px rgba(25,0,14,.25))}
+.brand-flower{display:none}
+.hero-main:before{content:none;background:none;opacity:0}
+.hero-mandala{position:absolute;z-index:4;top:-190px;right:-150px;width:clamp(390px,48vw,660px);height:auto;color:#f2c46d;opacity:.23;pointer-events:none;filter:drop-shadow(0 0 22px rgba(242,196,109,.14));animation:mandala-turn 72s linear infinite;transform-origin:50% 50%}
+@keyframes mandala-turn{to{transform:rotate(360deg)}}
+.festive-particles{position:absolute;z-index:5;inset:0;overflow:hidden;pointer-events:none}
+.festive-particles i{position:absolute;left:var(--x);top:var(--y);width:4px;height:4px;border-radius:50%;background:#ffe2a1;box-shadow:0 0 9px 2px rgba(255,205,115,.65);opacity:0;animation:cracker-glint var(--duration,4.8s) ease-in-out var(--delay,0s) infinite}
+.festive-particles i:nth-child(1){--x:8%;--y:18%;--delay:-1s}
+.festive-particles i:nth-child(2){--x:18%;--y:72%;--delay:-3s;--duration:5.5s}
+.festive-particles i:nth-child(3){--x:31%;--y:24%;--delay:-2s}
+.festive-particles i:nth-child(4){--x:44%;--y:83%;--delay:-.5s;--duration:5.8s}
+.festive-particles i:nth-child(5){--x:57%;--y:15%;--delay:-4s}
+.festive-particles i:nth-child(6){--x:68%;--y:68%;--delay:-2.5s;--duration:5.2s}
+.festive-particles i:nth-child(7){--x:78%;--y:30%;--delay:-1.8s}
+.festive-particles i:nth-child(8){--x:91%;--y:78%;--delay:-3.4s;--duration:5.7s}
+.festive-particles i:nth-child(9){--x:13%;--y:43%;--delay:-2.2s}
+.festive-particles i:nth-child(10){--x:25%;--y:57%;--delay:-4.2s}
+.festive-particles i:nth-child(11){--x:39%;--y:11%;--delay:-1.4s}
+.festive-particles i:nth-child(12){--x:52%;--y:54%;--delay:-3.7s}
+.festive-particles i:nth-child(13){--x:64%;--y:37%;--delay:-.8s}
+.festive-particles i:nth-child(14){--x:74%;--y:88%;--delay:-2.9s}
+.festive-particles i:nth-child(15){--x:85%;--y:51%;--delay:-4.6s}
+.festive-particles i:nth-child(16){--x:96%;--y:19%;--delay:-1.7s}
+@keyframes cracker-glint{0%,100%{opacity:0;transform:scale(.35) translateY(8px)}35%{opacity:.9;transform:scale(1.35) translateY(-3px)}55%{opacity:.2;transform:scale(.7) translateY(-8px)}}
+.story-preview>.diwali-lantern{top:24px;right:clamp(24px,7vw,112px);width:clamp(150px,17vw,210px);height:clamp(250px,29vw,340px);z-index:5}
+.story-preview>.diwali-lantern .lantern-thread{height:30px}
+.story-preview>.diwali-lantern .lantern-video{height:calc(100% - 30px)}
+.story-preview>.diwali-lantern .lantern-sound{right:0;bottom:4px}
+.tree-garden-inner>.diwali-lantern{display:none}
+.tree-scene-wrap{isolation:isolate;overflow:hidden;min-height:clamp(420px,52vw,560px)}
+.tree-video{position:absolute;inset:0;z-index:2;display:block;width:100%;height:100%;object-fit:contain;object-position:center center;mix-blend-mode:screen;opacity:1;filter:brightness(1.12) saturate(1.08) drop-shadow(0 18px 22px rgba(24,8,20,.18));background:transparent;pointer-events:none}
+@media(max-width:760px){
+ .brand-logo{width:112px;max-height:72px}
+ .hero-mandala{top:-100px;right:-190px;width:440px;opacity:.17}
+ .story-preview>.diwali-lantern{top:35px;right:10px;width:105px;height:172px}
+ .story-preview>.diwali-lantern .lantern-thread{height:18px}
+ .story-preview>.diwali-lantern .lantern-video{height:calc(100% - 18px)}
+ .story-preview-copy{max-width:100%;padding-right:92px}
+ .tree-scene-wrap{min-height:410px}
+}
+@media(prefers-reduced-motion:reduce){.hero-mandala,.festive-particles i{animation:none;opacity:.2}}
