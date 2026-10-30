@@ -258,3 +258,15 @@
 }
 @keyframes bag-float-mobile{0%,100%{translate:50% 0;rotate:2deg}50%{translate:50% -9px;rotate:-2deg}}
 @media(prefers-reduced-motion:reduce){.diwali-lantern,.diwali-shopping-bag{animation:none}.lantern-sound{opacity:1;transform:none}}
+
+
+/* User-supplied transparent blossom animation */
+.tree-scene-wrap{cursor:pointer;isolation:isolate}
+.tree-video{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:contain;object-position:center center;filter:drop-shadow(0 18px 22px rgba(24,8,20,.18));transform:translateY(-8px) scale(1.03);pointer-events:none}
+.tree-tap-hint{z-index:2}
+.tree-garden-section .tree-mode-switch button:focus-visible,.tree-share-button:focus-visible,.lantern-sound:focus-visible{outline:2px solid var(--diwali-gold);outline-offset:3px}
+/* A fine festive light string and a restrained web motif tie the Diwali and hero themes together */
+.hero-main:after{content:"";position:absolute;z-index:4;top:0;left:0;right:0;height:30px;pointer-events:none;opacity:.78;background:radial-gradient(circle at 5% 12px,#ffd98b 0 2px,transparent 4px),radial-gradient(circle at 17% 17px,#ff6e77 0 2px,transparent 4px),radial-gradient(circle at 29% 12px,#f5c86f 0 2px,transparent 4px),radial-gradient(circle at 41% 17px,#f9e6c3 0 2px,transparent 4px),radial-gradient(circle at 53% 12px,#ff6e77 0 2px,transparent 4px),radial-gradient(circle at 65% 17px,#f5c86f 0 2px,transparent 4px),radial-gradient(circle at 77% 12px,#f9e6c3 0 2px,transparent 4px),radial-gradient(circle at 89% 17px,#ff6e77 0 2px,transparent 4px),linear-gradient(180deg,transparent 0 7px,#f2c46d55 8px,transparent 9px)}
+.diwali-lantern{filter:drop-shadow(0 10px 25px rgba(18,8,25,.22))}
+.diwali-lantern:after{content:"";position:absolute;z-index:-1;top:28px;left:50%;width:120%;height:68%;transform:translateX(-50%);background:radial-gradient(ellipse,#ffcb6c25,transparent 68%);pointer-events:none}
+@media(max-width:760px){.hero-main:after{height:22px;opacity:.55}.tree-video{transform:translateY(-4px) scale(1.02)}}
