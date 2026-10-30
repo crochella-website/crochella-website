@@ -220,3 +220,41 @@
  .tree-colour-dots i{width:22px;height:22px}
 }
 @media(prefers-reduced-motion:reduce){.tree-tap-hint,.tree-share-button{transition:none}}
+
+
+/* CROCHELLA FESTIVE SEASON — web-inspired reds, midnight blue and Diwali gold */
+:root{--diwali-red:#9d1730;--diwali-blue:#132b50;--diwali-gold:#f2c46d;--diwali-cream:#fff0d8}
+.hero-main{background:radial-gradient(ellipse at 78% 48%,#c42b48 0%,#8e0929 40%,transparent 68%),linear-gradient(112deg,#39051e,#780b2b 48%,#a91635)}
+.hero-main:before{content:"";position:absolute;z-index:3;pointer-events:none;inset:0;opacity:.19;background:repeating-conic-gradient(from 0deg at 0% 0%,transparent 0deg 9deg,#d8e9ff 9.2deg 9.45deg,transparent 9.7deg 18deg);mask-image:radial-gradient(circle at 0% 0%,#000 0,transparent 34%)}
+.hero-red-glow{background:radial-gradient(ellipse at 75% 48%,rgba(255,190,99,.12),transparent 42%),linear-gradient(90deg,rgba(35,8,35,.88) 0%,rgba(60,5,34,.62) 30%,rgba(60,5,34,.16) 60%,transparent 100%),linear-gradient(0deg,rgba(27,10,34,.36),transparent 28%)}
+.hero-copy{border-color:#f2c46d30;background:linear-gradient(135deg,rgba(35,13,39,.63),rgba(22,31,57,.26));box-shadow:0 22px 70px rgba(19,12,35,.22)}
+.action-pill{border-color:#f2c46d50}.action-pill-outline{border-color:#f2c46d;color:#fff0d8}
+.hero-origin i{background:#f2c46d;box-shadow:0 0 14px #f2c46d}
+.diwali-lantern{position:absolute;z-index:14;top:0;right:clamp(20px,6vw,90px);width:clamp(118px,15vw,190px);height:clamp(200px,26vw,300px);display:flex;flex-direction:column;align-items:center;pointer-events:none;transform-origin:50% 0;animation:lantern-sway 5.5s ease-in-out infinite}
+.lantern-thread{height:25px;width:2px;background:linear-gradient(#f4d28b,#c68c42);box-shadow:0 0 5px #f2c46d70}
+.lantern-video{display:block;width:100%;height:calc(100% - 25px);object-fit:contain;filter:drop-shadow(0 8px 16px #18081355)}
+.lantern-sound{pointer-events:auto;position:absolute;right:-18px;bottom:0;display:flex;align-items:center;gap:5px;padding:7px 10px;border:1px solid #f2c46d55;border-radius:999px;background:#2b1839c9;color:#ffe5b0;font:10px 'DM Sans',sans-serif;white-space:nowrap;cursor:pointer;opacity:.0;transform:translateY(5px);transition:.25s}
+.diwali-lantern:hover .lantern-sound,.lantern-sound:focus-visible,.lantern-sound.is-on{opacity:1;transform:none}
+.lantern-sound span{font-size:14px;color:#f2c46d}
+@keyframes lantern-sway{0%,100%{transform:rotate(-2.2deg)}50%{transform:rotate(2.2deg)}}
+.hero-scroll-cue span{color:#f2c46d}
+.story-preview{background-color:#f2e4c9}
+.coming-section{background:linear-gradient(135deg,#152b3d,#344e3b 65%,#26394a);position:relative;isolation:isolate;overflow:hidden}
+.coming-section:after{content:"";position:absolute;z-index:-1;inset:0;opacity:.12;pointer-events:none;background:repeating-conic-gradient(from 0deg at 100% 0%,transparent 0deg 9deg,#fff 9.2deg 9.45deg,transparent 9.7deg 18deg);mask-image:radial-gradient(circle at 100% 0%,#000,transparent 40%)}
+.collections-section{background:linear-gradient(115deg,#64132c,#9a2038 65%,#142c4c)}
+.diwali-collections{padding-right:min(38vw,440px)}
+.diwali-shopping-bag{position:absolute;z-index:1;right:8%;top:50%;transform:translateY(-50%);width:clamp(180px,24vw,300px);height:auto;object-fit:contain;filter:drop-shadow(0 18px 25px #220c1d55);animation:bag-float 4.2s ease-in-out infinite}
+@keyframes bag-float{0%,100%{translate:0 0;rotate:2deg}50%{translate:0 -12px;rotate:-2deg}}
+.instagram-section{background:linear-gradient(125deg,#54232b 0%,#612039 52%,#182d4b 100%)}
+.instagram-section:before{opacity:.16;background:radial-gradient(ellipse at 82% 45%,#e9b76a55,transparent 36%),repeating-conic-gradient(from 0deg at 100% 0%,transparent 0deg 9deg,#e7d7ff 9.2deg 9.45deg,transparent 9.7deg 18deg);mask-image:radial-gradient(circle at 100% 0%,#000,transparent 44%)}
+.site-footer{background:#151d32;border-top:1px solid #f2c46d33}
+.tree-garden-section{background:linear-gradient(125deg,#54232b 0%,#612039 52%,#182d4b 100%)}
+.tree-garden-section:before{opacity:.13}
+@media(max-width:760px){
+ .diwali-lantern{right:12px;width:112px;height:174px;top:0}
+ .lantern-sound{opacity:.92;right:0;bottom:-2px;padding:6px 8px;font-size:9px}
+ .diwali-collections{padding-right:8vw;padding-bottom:220px}
+ .diwali-shopping-bag{width:190px;right:50%;top:auto;bottom:12px;transform:translateX(50%);animation:bag-float-mobile 4.2s ease-in-out infinite}
+}
+@keyframes bag-float-mobile{0%,100%{translate:50% 0;rotate:2deg}50%{translate:50% -9px;rotate:-2deg}}
+@media(prefers-reduced-motion:reduce){.diwali-lantern,.diwali-shopping-bag{animation:none}.lantern-sound{opacity:1;transform:none}}
