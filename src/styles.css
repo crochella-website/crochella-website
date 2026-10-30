@@ -810,3 +810,26 @@
  .dadi-character-wrap.web-swing-dadi{transform:none}
  .product-web-net{transform:none}
 }
+
+
+/* Final Karigari hero: use the supplied CGI action as one transparent video scene */
+.product-stage{width:min(100%,1200px);height:auto;min-height:0;aspect-ratio:16/9;margin:clamp(12px,2vw,26px) auto 0;overflow:visible;perspective:none;transform-style:flat}
+.karigari-cgi-scene{position:absolute;inset:0;overflow:visible;isolation:isolate}
+.karigari-cgi-video{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:contain;object-position:center;background:transparent;filter:drop-shadow(0 20px 28px #14071140)}
+.karigari-video-hotspots{position:absolute;inset:0;z-index:5}
+.karigari-video-hotspots button{position:absolute;display:block;padding:0;border:0;border-radius:50%;background:transparent;cursor:pointer;outline-offset:4px}
+.karigari-video-hotspots button:focus-visible{outline:2px solid #f7d7a7;background:#fff2}
+.karigari-scene-caption{position:absolute;left:50%;bottom:1.5%;transform:translateX(-50%);display:flex;align-items:center;gap:12px;color:#f0cba9a8;font-size:8px;font-weight:700;letter-spacing:.22em;white-space:nowrap;pointer-events:none}
+.karigari-scene-caption i{font-style:normal;color:#f1c58c}
+.product-stage>.product-yarn-trail,.product-stage>.dadi-character-wrap,.product-stage>.product-web-net,.product-stage>.product-tray,.product-stage>.product-stage-controls{display:none!important}
+.product-world-bottom{margin-top:clamp(12px,2vw,24px)}
+.product-world-bottom p{color:#f5dfd2}
+@media(max-width:760px){
+ .product-stage{width:100%;aspect-ratio:16/9;min-height:0;margin:12px auto 0}
+ .karigari-cgi-video{filter:drop-shadow(0 10px 16px #14071155)}
+ .karigari-scene-caption{bottom:0;font-size:6px;gap:7px;letter-spacing:.14em}
+ .karigari-video-hotspots button{border-radius:12px}
+}
+@media(prefers-reduced-motion:reduce){
+ .karigari-cgi-video{animation:none}
+}
