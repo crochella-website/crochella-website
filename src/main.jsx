@@ -92,6 +92,7 @@ function App() {
     </section>
 
     <section className="story-preview" id="kahani">
+      <video className="diwali-happy-wishes" autoPlay muted loop playsInline preload="metadata" aria-hidden="true"><source src="/uploads/diwali-happy-wishes.webm" type="video/webm"/></video>
       <DiwaliLantern />
       <div className="story-preview-label">01 / HAMAARI KAHANI</div>
       <div className="story-preview-copy"><p className="story-kicker">FATEHPUR · BAHUA · UTTAR PRADESH</p><h2>{site.story.title}</h2><p className="story-lead">{site.story.lead}</p><a href="#karigari" className="story-link">Suno poori kahani <span>↗</span></a></div>
