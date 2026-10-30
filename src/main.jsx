@@ -92,6 +92,35 @@ function App() {
     </section>
     <section className="coming-section" id="karigari"><span>02 / HAATHON KA JAADU</span><h2>Har loop mein<br/><em>thoda sa pyaar.</em></h2><p>From Dadi's hands to yours. Our making story is coming together.</p></section>
     <section className="coming-section collections-section" id="collections"><span>03 / THE LITTLE THINGS</span><h2>Chhoti cheezein.<br/><em>Badi khushiyaan.</em></h2><p>Handmade charms, crochet companions, bags, rugs and more.</p></section>
+
+    <section className="instagram-section" id="instagram" aria-labelledby="instagram-title">
+      <div className="instagram-inner">
+        <div className="instagram-copy">
+          <span className="instagram-eyebrow"><i/> THE CROCHELLA COMMUNITY</span>
+          <h2 id="instagram-title">A little more<br/><em>love in your feed.</em></h2>
+          <p>Follow along for tiny handmade joys, behind-the-scenes moments, and stories stitched with love.</p>
+          <a className="instagram-visit" href="https://www.instagram.com/crochellaart/" target="_blank" rel="noreferrer">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.7" r="1" className="ig-dot"/></svg>
+            Visit @crochellaart <span>↗</span>
+          </a>
+          <span className="instagram-note">GOOD THINGS ARE BETTER SHARED.</span>
+        </div>
+        <a className="instagram-qr-card" href="https://www.instagram.com/crochellaart/" target="_blank" rel="noreferrer" aria-label="Open Crochella Instagram profile">
+          <span className="qr-topline">SCAN TO SAY HELLO</span>
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=360x360&margin=12&data=https%3A%2F%2Fwww.instagram.com%2Fcrochellaart%2F" alt="QR code linking to Crochella Instagram profile"/>
+          <strong>@crochellaart</strong>
+          <small>Point your camera here</small>
+        </a>
+        <span className="instagram-flower flower-one">✳</span>
+        <span className="instagram-flower flower-two">✳</span>
+      </div>
+    </section>
+    <footer className="site-footer">
+      <a className="footer-brand" href="#home">Crochella<sup>®</sup><span>✳︎</span></a>
+      <p>Woven with love, from our hands to yours.</p>
+      <a href="https://www.instagram.com/crochellaart/" target="_blank" rel="noreferrer">@crochellaart ↗</a>
+      <small>© {new Date().getFullYear()} Crochella. Made with love.</small>
+    </footer>
   </main>;
 }
 
