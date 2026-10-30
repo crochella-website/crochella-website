@@ -337,35 +337,7 @@
 
 
 /* Dedicated Diwali canvas — intentionally content-free for the next creative brief. */
-.diwali-canvas-section{
-  position:relative;
-  isolation:isolate;
-  display:grid;
-  place-items:center;
-  width:100%;
-  min-height:clamp(520px,72vw,860px);
-  overflow:hidden;
-  background:#54232b;
-  border-top:1px solid rgba(242,196,109,.28);
-  border-bottom:1px solid rgba(242,196,109,.22);
 }
-.diwali-canvas-backdrop{
-  position:absolute;inset:0;width:100%;height:100%;
-  object-fit:cover;object-position:center;
-  z-index:-3;opacity:.96;
-}
-.diwali-canvas-shade{
-  position:absolute;inset:0;z-index:-2;pointer-events:none;
-  background:radial-gradient(ellipse at center,rgba(34,12,25,.06),rgba(31,10,23,.26) 78%);
-}
-.diwali-canvas-mandala{
-  display:block;position:relative;width:clamp(260px,44vw,570px);
-  max-height:78%;height:auto;object-fit:contain;
-  opacity:.94;filter:drop-shadow(0 0 22px rgba(244,183,47,.22));
-  transform-origin:50% 50%;animation:diwali-rangoli-rotate 110s linear infinite;
-  will-change:transform;
-}
-@keyframes diwali-rangoli-rotate{to{transform:rotate(360deg)}}
 .diwali-lantern-cluster{
   position:absolute;z-index:6;top:14%;right:7%;width:clamp(110px,17vw,220px);
   height:auto;max-height:40%;object-fit:contain;pointer-events:none;
@@ -377,23 +349,17 @@
   height:auto;object-fit:contain;pointer-events:none;opacity:.92;
   filter:drop-shadow(0 12px 20px rgba(20,8,20,.25));
 }
-.diwali-diya-wishes{
-  position:absolute;z-index:1;right:5%;bottom:2%;width:clamp(160px,24vw,300px);
-  height:auto;object-fit:contain;pointer-events:none;opacity:.86;
-  filter:drop-shadow(0 12px 20px rgba(20,8,20,.28));
-}
+
 @keyframes diwali-float{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-13px) rotate(2deg)}}
 .craft-section,.diwali-collections{position:relative;isolation:isolate;overflow:hidden}
 .craft-section>span,.craft-section>h2,.craft-section>p,.diwali-collections>span,.diwali-collections>h2,.diwali-collections>p{position:relative;z-index:2}
 @media(max-width:760px){
-  .diwali-canvas-section{min-height:470px;height:68svh}
-  .diwali-canvas-mandala{width:min(78vw,430px);max-height:70%}
+
   .diwali-lantern-cluster{top:15%;right:2%;width:112px;opacity:.85}
   .diwali-floating-lanterns{right:50%;top:auto;bottom:10px;transform:translateX(50%);width:190px}
-  .diwali-diya-wishes{right:50%;bottom:0;transform:translateX(50%);width:190px;opacity:.78}
+
 }
 @media(prefers-reduced-motion:reduce){
-  .diwali-canvas-mandala,.diwali-lantern-cluster{animation:none}
 }
 
 
@@ -401,24 +367,15 @@
 .story-preview{isolation:isolate}
 .story-preview-copy,.story-preview-label,.story-stamp{z-index:2}
 .story-preview>.diwali-lantern{z-index:5}
-.diwali-happy-wishes{position:absolute;z-index:1;top:0;left:0;width:100%;height:clamp(130px,19vw,240px);object-fit:contain;object-position:center top;pointer-events:none;opacity:.82;filter:drop-shadow(0 6px 12px rgba(73,21,28,.14))}
-.diwali-canvas-section{position:relative;display:grid;place-items:center;isolation:isolate;width:100%;min-height:clamp(520px,72vw,860px);overflow:hidden;background:#54232b;border-top:1px solid rgba(242,196,109,.28);border-bottom:1px solid rgba(242,196,109,.22)}
-.diwali-canvas-backdrop{position:absolute;inset:0;z-index:-3;width:100%;height:100%;object-fit:cover;object-position:center}
-.diwali-canvas-shade{position:absolute;inset:0;z-index:-2;pointer-events:none;background:radial-gradient(ellipse at center,rgba(34,12,25,.04),rgba(31,10,23,.28) 78%)}
-.diwali-canvas-mandala{display:block;position:relative;z-index:1;width:clamp(260px,42vw,560px);max-height:76%;height:auto;object-fit:contain;opacity:.96;filter:drop-shadow(0 0 22px rgba(244,183,47,.22));transform-origin:50% 50%;animation:diwali-rangoli-rotate 110s linear infinite;will-change:transform}
-.diwali-future-content{position:absolute;z-index:2;left:50%;top:50%;width:min(52vw,640px);height:min(34vh,320px);transform:translate(-50%,-50%);pointer-events:none}
+
+
 .diwali-floating-lanterns{position:absolute;z-index:1;right:4%;top:8%;width:clamp(150px,24vw,310px);height:auto;object-fit:contain;pointer-events:none;opacity:.95;filter:drop-shadow(0 12px 20px rgba(20,8,20,.25));animation:diwali-float 7s ease-in-out infinite}
-.diwali-diya-wishes{position:absolute;z-index:1;right:5%;bottom:2%;width:clamp(160px,24vw,300px);height:auto;object-fit:contain;pointer-events:none;opacity:.92;filter:drop-shadow(0 12px 20px rgba(20,8,20,.28))}
-@keyframes diwali-rangoli-rotate{to{transform:rotate(360deg)}}
+}
 @keyframes diwali-float{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-13px) rotate(2deg)}}
 .craft-section,.diwali-collections{position:relative;isolation:isolate;overflow:hidden}
 .craft-section>span,.craft-section>h2,.craft-section>p,.diwali-collections>span,.diwali-collections>h2,.diwali-collections>p{position:relative;z-index:2}
 @media(max-width:760px){
- .diwali-canvas-section{min-height:470px;height:68svh}
- .diwali-canvas-mandala{width:min(78vw,430px);max-height:70%}
- .diwali-future-content{width:76vw;height:28vh}
+
  .diwali-floating-lanterns{right:50%;top:auto;bottom:10px;transform:translateX(50%);width:190px}
- .diwali-diya-wishes{right:50%;bottom:0;width:190px;opacity:.86}
- .diwali-happy-wishes{height:130px;opacity:.68}
+
 }
-@media(prefers-reduced-motion:reduce){.diwali-canvas-mandala,.diwali-floating-lanterns{animation:none}}
