@@ -270,3 +270,10 @@
 .diwali-lantern{filter:drop-shadow(0 10px 25px rgba(18,8,25,.22))}
 .diwali-lantern:after{content:"";position:absolute;z-index:-1;top:28px;left:50%;width:120%;height:68%;transform:translateX(-50%);background:radial-gradient(ellipse,#ffcb6c25,transparent 68%);pointer-events:none}
 @media(max-width:760px){.hero-main:after{height:22px;opacity:.55}.tree-video{transform:translateY(-4px) scale(1.02)}}
+
+/* Tree video visibility and fallback */
+.tree-scene-wrap{min-height:clamp(390px,49vw,540px);overflow:visible}
+.tree-poster-fallback{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;z-index:0;filter:drop-shadow(0 16px 20px rgba(24,8,20,.2))}
+.tree-video{z-index:1;mix-blend-mode:screen;opacity:1;will-change:transform}
+.tree-scene-wrap video:not([src]){display:none}
+@media(max-width:640px){.tree-scene-wrap{min-height:390px}}
