@@ -423,3 +423,39 @@
 .product-detail-art img{display:block;width:100%;height:300px;object-fit:contain;filter:drop-shadow(0 16px 20px #17071166)}
 .product-detail-art small{margin-top:8px}
 @media(max-width:760px){.product-slot-image{width:100%;height:100%;object-fit:contain}.product-detail-art img{height:190px}}
+
+
+/* Product carousel refinements: names sit below the crochet pieces, never over them. */
+.product-stage{min-height:660px}
+.dadi-character-wrap{top:-38px;width:min(43vw,500px);z-index:4}
+.product-dadi-art{display:block;width:100%;height:auto;max-height:470px;object-fit:contain;filter:drop-shadow(0 20px 26px #16071170);animation:dadi-wool-bob 5s ease-in-out infinite}
+@keyframes dadi-wool-bob{0%,100%{transform:translateY(0) rotate(-.5deg)}50%{transform:translateY(-11px) rotate(.7deg)}}
+.product-tray{bottom:48px;padding-top:18px}
+.product-card-row{align-items:start;min-height:300px;gap:clamp(10px,1.5vw,20px)}
+.product-card-wrap{display:flex;min-width:0;flex-direction:column;align-items:center;gap:12px}
+.product-slot{width:100%;min-height:220px;height:220px;justify-content:center;padding:12px 10px 14px}
+.product-slot.is-active{height:220px;min-height:220px;transform:translateY(-9px) scale(1.035)}
+.product-slot-art{height:158px;margin:0}
+.product-slot-image{height:100%;width:100%;object-fit:contain;object-position:center}
+.product-slot-caption{display:flex;flex-direction:column;align-items:center;gap:5px;min-height:38px;text-align:center}
+.product-slot-title{font-size:13px;line-height:1.3;color:#fff0dc;font-weight:600}
+.product-slot-sub{margin:0;font-size:8px;letter-spacing:.18em;color:#eac6a5b8}
+.product-tray-front{margin-top:10px}
+.product-card-wrap:nth-child(odd) .product-slot{transform:rotate(-2deg)}
+.product-card-wrap:nth-child(even) .product-slot{transform:rotate(2deg) translateY(5px)}
+.product-card-wrap .product-slot.is-active{transform:translateY(-9px) scale(1.035)}
+.product-slot:hover{transform:translateY(-10px) rotate(0) scale(1.025)}
+@media(max-width:760px){
+ .product-stage{min-height:700px}
+ .dadi-character-wrap{top:10px;width:min(84vw,350px)}
+ .product-dadi-art{max-height:320px}
+ .product-tray{bottom:78px}
+ .product-card-row{min-height:260px;gap:7px}
+ .product-slot{height:172px;min-height:172px;padding:8px 4px}
+ .product-slot-art{height:122px}
+ .product-slot-caption{gap:4px;min-height:32px}
+ .product-slot-title{font-size:10px}
+ .product-slot-sub{font-size:6px}
+ .product-card-wrap:nth-child(odd) .product-slot,.product-card-wrap:nth-child(even) .product-slot{transform:none}
+ .product-card-wrap .product-slot.is-active{transform:translateY(-7px) scale(1.025)}
+}
