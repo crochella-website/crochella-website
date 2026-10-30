@@ -282,3 +282,13 @@
 /* The uploaded blossom animation has a black matte; screen blending removes it over the garden background. */
 .tree-scene-wrap{isolation:isolate;background:transparent}
 .tree-video{position:absolute;inset:0;z-index:2;display:block;width:100%;height:100%;object-fit:contain;object-position:center;mix-blend-mode:screen;opacity:1;filter:drop-shadow(0 18px 22px rgba(24,8,20,.18));pointer-events:none}
+
+
+/* Diwali lantern belongs to the blossom/Instagram section corner. */
+.tree-garden-inner{position:relative}
+.tree-garden-inner>.diwali-lantern{top:4px;right:clamp(4px,2vw,28px);width:clamp(76px,9vw,112px);height:clamp(138px,17vw,190px);z-index:8}
+.tree-garden-inner>.diwali-lantern .lantern-thread{height:16px}
+.tree-garden-inner>.diwali-lantern .lantern-video{height:calc(100% - 16px)}
+.tree-scene-wrap{isolation:auto;overflow:visible}
+.tree-video{position:absolute;inset:0;z-index:2;display:block;width:100%;height:100%;object-fit:contain;object-position:center;mix-blend-mode:screen;opacity:1;filter:drop-shadow(0 18px 22px rgba(24,8,20,.18));pointer-events:none;background:transparent}
+@media(max-width:640px){.tree-garden-inner>.diwali-lantern{top:-24px;right:0;width:66px;height:120px}.tree-garden-heading{padding-right:54px}}
