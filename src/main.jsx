@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import BlossomTree from './BlossomTree.jsx';
 import DiwaliLantern from './DiwaliLantern.jsx';
+import ProductShowcase from './ProductShowcase.jsx';
 import { createRoot } from 'react-dom/client';
 import './styles.css';
 import site from './content/site.json';
@@ -96,7 +97,7 @@ function App() {
       <div className="story-preview-copy"><p className="story-kicker">FATEHPUR · BAHUA · UTTAR PRADESH</p><h2>{site.story.title}</h2><p className="story-lead">{site.story.lead}</p><a href="#karigari" className="story-link">Suno poori kahani <span>↗</span></a></div>
       <div className="story-stamp">WOVEN<br/>WITH<br/><em>LOVE</em></div>
     </section>
-    <section className="coming-section craft-section" id="karigari"><video className="diwali-floating-lanterns" autoPlay muted loop playsInline preload="metadata" aria-hidden="true"><source src="/uploads/diwali-floating-lanterns.webm" type="video/webm"/></video><span>02 / HAATHON KA JAADU</span><h2>Har loop mein<br/><em>thoda sa pyaar.</em></h2><p>From Dadi's hands to yours. Our making story is coming together.</p></section>
+    <ProductShowcase />
     <section className="coming-section collections-section diwali-collections" id="collections"><span>03 / THE LITTLE THINGS</span><h2>Chhoti cheezein.<br/><em>Badi khushiyaan.</em></h2><p>Handmade charms, crochet companions, bags, rugs and more.</p><video className="diwali-shopping-bag" autoPlay muted loop playsInline preload="metadata" aria-hidden="true"><source src="/uploads/crochella-diwali-shopping-bag.webm" type="video/webm"/></video></section>
 
     <BlossomTree />
