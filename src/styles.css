@@ -833,3 +833,9 @@
 @media(prefers-reduced-motion:reduce){
  .karigari-cgi-video{animation:none}
 }
+
+
+/* Canvas chroma-key playback for the uploaded Dadi footage */
+.karigari-source-video{position:absolute!important;width:1px!important;height:1px!important;opacity:0!important;pointer-events:none!important;left:-2px!important;top:-2px!important}
+.karigari-cgi-canvas{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:contain;filter:drop-shadow(0 20px 28px #14071140)}
+@media(max-width:760px){.karigari-cgi-canvas{filter:drop-shadow(0 10px 16px #14071155)}}
