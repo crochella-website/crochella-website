@@ -21,6 +21,28 @@ function App() {
     return () => window.clearInterval(timer);
   }, []);
 
+  useEffect(() => {
+    const hero = document.querySelector('.hero-main');
+    if (!hero) return;
+    const onMove = (event) => {
+      const rect = hero.getBoundingClientRect();
+      const x = (event.clientX - rect.left) / rect.width - 0.5;
+      const y = (event.clientY - rect.top) / rect.height - 0.5;
+      hero.style.setProperty('--pointer-x', x.toFixed(3));
+      hero.style.setProperty('--pointer-y', y.toFixed(3));
+    };
+    const onLeave = () => {
+      hero.style.setProperty('--pointer-x', '0');
+      hero.style.setProperty('--pointer-y', '0');
+    };
+    hero.addEventListener('pointermove', onMove, { passive: true });
+    hero.addEventListener('pointerleave', onLeave);
+    return () => {
+      hero.removeEventListener('pointermove', onMove);
+      hero.removeEventListener('pointerleave', onLeave);
+    };
+  }, []);
+
   const copyEmail = async () => {
     try {
       await navigator.clipboard.writeText('hello@crochella.in');
@@ -40,7 +62,7 @@ function App() {
     </header>
     <div className={'mobile-menu '+(menuOpen?'is-open':'')} aria-hidden={!menuOpen}><nav>{links.map(([label,href])=><a key={label} href={href} onClick={()=>setMenuOpen(false)}>{label}</a>)}<a href="mailto:hello@crochella.in">Baat karein ↗</a></nav></div>
 
-    <section className="hero-main" id="home">
+    <section className="hero-main" id="home" aria-label="Crochella introduction">
       <div className="hero-red-glow"/>
       <div className="hero-copy">
         <div className="dadi-intro"><span>Namaste, milo</span><strong>D.A.D.I. se</strong><small>Dhaagon Aur Dil Ki Inventor</small></div>
@@ -55,7 +77,7 @@ function App() {
         <div className="hero-origin"><i/> HANDMADE WITH LOVE · FATEHPUR, BAHUA, U.P.</div>
       </div>
       <div className="hero-video-layer" aria-hidden="true">
-        <video className="hero-video" autoPlay muted loop playsInline preload="metadata">
+        <video className="hero-video" autoPlay muted loop playsInline preload="auto">
           <source src="/uploads/Crochella_Hero_Video_1080p%20(15).mp4" type="video/mp4"/>
         </video>
       </div>
