@@ -31,6 +31,7 @@ export default function ProductShowcase() {
   const [page, setPage] = useState(0);
   const [paused, setPaused] = useState(false);
   const [webBurst, setWebBurst] = useState(false);
+  const [burstTarget, setBurstTarget] = useState(null);
   const visibleCount = 5;
   const products = crochetSlots;
   const visibleProducts = Array.from({length:visibleCount},(_,i)=>products[(page+i)%products.length]);
@@ -50,19 +51,110 @@ export default function ProductShowcase() {
   }, []);
 
   const releaseProduct = product => {
+    setBurstTarget(product.id);
     setWebBurst(true);
-    window.setTimeout(() => { setSelected(product); setWebBurst(false); }, 620);
+    window.setTimeout(() => { setSelected(product); setWebBurst(false); setBurstTarget(null); }, 900);
   };
 
   return <section className="product-world" id="karigari" aria-label="Crochella handmade collections">
     <div className="product-world-glow" aria-hidden="true"/>
-    <div className="product-world-top"><div className="product-world-intro"><span className="product-eyebrow"><i/> OUR LITTLE CREATIONS</span><h2>Har loop mein<br/><em>thoda sa pyaar.</em></h2><p>Made slowly, with care. Every little piece carries a story from Dadi’s hands to yours.</p></div>
-      <div className="product-category-switch" role="tablist" aria-label="Choose a collection"><button className={category==='crochet'?'active':''} role="tab" aria-selected={category==='crochet'} onClick={()=>{setCategory('crochet');setSelected(null);}}><span>✿</span> Crochet</button><button className={category==='rugs'?'active':''} role="tab" aria-selected={category==='rugs'} onClick={()=>{setCategory('rugs');setSelected(null);}}><span>▦</span> Rugs</button></div>
+    <div className="product-world-top">
+      <div className="product-world-intro">
+        <span className="product-eyebrow"><i/> OUR LITTLE CREATIONS</span>
+        <h2>Har loop mein<br/><em>thoda sa pyaar.</em></h2>
+        <p>Made slowly, with care. Every little piece carries a story from Dadi’s hands to yours.</p>
+      </div>
+      <div className="product-category-switch" role="tablist" aria-label="Choose a collection">
+        <button className={category==='crochet'?'active':''} role="tab" aria-selected={category==='crochet'} onClick={()=>{setCategory('crochet');setSelected(null);}}><span>✿</span> Crochet</button>
+        <button className={category==='rugs'?'active':''} role="tab" aria-selected={category==='rugs'} onClick={()=>{setCategory('rugs');setSelected(null);}}><span>▦</span> Rugs</button>
+      </div>
     </div>
-    <div className="product-stage"><div className="product-yarn-trail" aria-hidden="true"><svg viewBox="0 0 1200 170" preserveAspectRatio="none"><path d="M-30 112 C150 18 230 180 390 85 S650 20 790 93 1020 150 1230 43"/></svg></div><div className="dadi-character-wrap web-swing-dadi"><DadiIllustration/><div className="dadi-caption">D.A.D.I. <span>·</span> the hands behind the magic</div></div><svg className={"product-web-net" + (webBurst ? " is-bursting" : "")} viewBox="0 0 1200 420" preserveAspectRatio="none" aria-hidden="true"><g className="web-strands"><path d="M1080 0 Q900 95 600 112 Q300 95 120 0"/><path d="M1080 0 Q900 180 600 198 Q300 180 120 0"/><path d="M1080 0 Q900 265 600 284 Q300 265 120 0"/><path d="M1080 0 Q900 350 600 370 Q300 350 120 0"/><path d="M120 0 Q250 180 600 112 Q950 180 1080 0"/><path d="M120 0 Q250 265 600 198 Q950 265 1080 0"/><path d="M120 0 Q250 350 600 284 Q950 350 1080 0"/><path d="M120 0 L1080 370 M1080 0 L120 370 M330 0 L870 370 M870 0 L330 370 M600 0 L600 390"/><path d="M0 125 Q300 35 600 112 T1200 125 M0 220 Q300 130 600 198 T1200 220 M0 310 Q300 220 600 284 T1200 310"/></g><g className="web-sparks"><circle cx="590" cy="190" r="5"/><circle cx="420" cy="120" r="3"/><circle cx="790" cy="260" r="4"/><circle cx="960" cy="155" r="3"/><circle cx="250" cy="285" r="4"/></g></svg>
-      {category==='crochet'?<><div className="product-shuttle" aria-hidden="true"><span/><i/></div><div className="product-tray" onMouseEnter={()=>setPaused(true)} onMouseLeave={()=>setPaused(false)} onFocus={()=>setPaused(true)} onBlur={e=>{if(!e.currentTarget.contains(e.relatedTarget))setPaused(false);}}><div className="product-tray-edge"/><div className="product-card-row">{visibleProducts.map((product,index)=>{const productIndex=(page+index)%products.length;return <div key={product.id} className="product-card-wrap"><button className={'product-slot '+product.tone+(active===productIndex?' is-active':'')} onClick={()=>{setActive(productIndex);releaseProduct(product);}} aria-label={'View '+product.name}><span className="product-slot-ribbon"/><span className="product-slot-art"><img className="product-slot-image" src={product.image} alt={product.note} loading="lazy"/><span className="product-slot-yarn"/></span></button><div className="product-slot-caption"><span className="product-slot-title">{product.note}</span><span className="product-slot-sub">HAND-CROCHETED</span></div></div>;})}</div><div className="product-tray-front"><span>HANDMADE WITH LOVE</span><i>✦</i><span>FATEHPUR · INDIA</span></div></div><div className="product-stage-controls"><button onClick={()=>step(-1)} aria-label="Previous crochet product">‹</button><span>{String(page+1).padStart(2,'0')} <i>/</i> {String(products.length).padStart(2,'0')}</span><button onClick={()=>step(1)} aria-label="Next crochet product">›</button></div></>:<div className="rugs-coming-panel"><span className="rugs-coming-icon">▦</span><h3>Room for something<br/><em>beautiful.</em></h3><p>The rug collection will have its own little world here. We’ll bring it to life next.</p><span className="rugs-coming-note">RUG COLLECTION · COMING NEXT</span></div>}
+
+    <div className="product-stage">
+      <div className="product-yarn-trail" aria-hidden="true"><svg viewBox="0 0 1200 170" preserveAspectRatio="none"><path d="M-30 112 C150 18 230 180 390 85 S650 20 790 93 1020 150 1230 43"/></svg></div>
+      <div className="dadi-character-wrap web-swing-dadi"><DadiIllustration/><div className="dadi-caption">D.A.D.I. <span>·</span> THE HANDS BEHIND THE MAGIC</div></div>
+
+      <svg className={"product-web-net" + (webBurst ? " is-bursting" : "")} viewBox="0 0 1200 470" preserveAspectRatio="none" aria-hidden="true">
+        <defs><radialGradient id="webGlow"><stop offset="0" stopColor="#fff8ee"/><stop offset="1" stopColor="#fff8ee" stopOpacity="0"/></radialGradient></defs>
+        <g className="web-strands">
+          <path d="M955 18 Q720 70 430 118 T15 210"/>
+          <path d="M955 18 Q730 150 470 205 T25 360"/>
+          <path d="M955 18 Q770 250 600 340 T260 465"/>
+          <path d="M955 18 Q930 210 950 470"/>
+          <path d="M955 18 Q1110 155 1190 300"/>
+          <path d="M955 18 Q1040 80 1195 90"/>
+          <path d="M955 18 Q820 15 650 8"/>
+          <path d="M955 18 Q600 15 270 8"/>
+          <path d="M955 18 Q470 55 115 92"/>
+          <path d="M955 18 Q850 100 610 112 Q340 120 120 92"/>
+          <path d="M955 18 Q850 175 610 205 Q330 230 25 210"/>
+          <path d="M955 18 Q850 260 610 300 Q340 350 25 360"/>
+          <path d="M955 18 Q900 350 600 410 Q430 445 260 465"/>
+          <path d="M115 92 Q500 165 955 18 Q1100 190 1195 300"/>
+          <path d="M25 210 Q420 285 955 18 Q1060 290 950 470"/>
+          <path d="M25 360 Q430 420 955 18"/>
+          <path d="M270 8 Q520 190 955 18 Q810 290 600 410"/>
+          <path d="M650 8 Q730 180 955 18 Q970 250 950 470"/>
+        </g>
+        <g className="web-sparks"><circle cx="610" cy="205" r="5"/><circle cx="430" cy="118" r="3"/><circle cx="820" cy="280" r="4"/><circle cx="1040" cy="170" r="3"/><circle cx="260" cy="360" r="4"/><circle cx="955" cy="18" r="7"/></g>
+      </svg>
+
+      {category==='crochet'?<>
+        <div className="product-shuttle" aria-hidden="true"><span/><i/></div>
+        <div className={"product-tray" + (webBurst ? " is-bursting" : "")} onMouseEnter={()=>setPaused(true)} onMouseLeave={()=>setPaused(false)} onFocus={()=>setPaused(true)} onBlur={e=>{if(!e.currentTarget.contains(e.relatedTarget))setPaused(false);}}>
+          <div className="product-tray-edge"/>
+          <div className="product-card-row">
+            {visibleProducts.map((product,index)=>{
+              const productIndex=(page+index)%products.length;
+              const isBurstTarget=burstTarget===product.id;
+              return <div key={product.id} className={"product-card-wrap" + (isBurstTarget?" is-burst-target":"") + (webBurst&&!isBurstTarget?" is-web-dimmed":"")}>
+                <button className={'product-slot '+product.tone+(active===productIndex?' is-active':'')} onClick={()=>{setActive(productIndex);releaseProduct(product);}} aria-label={'View '+product.name}>
+                  <span className="product-slot-ribbon"/>
+                  <span className="product-slot-art"><img className="product-slot-image" src={product.image} alt={product.note} loading="lazy"/><span className="product-slot-yarn"/></span>
+                </button>
+                <div className="product-slot-caption"><span className="product-slot-title">{product.note}</span><span className="product-slot-sub">HAND-CROCHETED</span></div>
+              </div>;
+            })}
+          </div>
+          <div className="product-tray-front"><span>HANDMADE WITH LOVE</span><i>✦</i><span>FATEHPUR · INDIA</span></div>
+        </div>
+        <div className="product-stage-controls"><button onClick={()=>step(-1)} aria-label="Previous crochet product">‹</button><span>{String(page+1).padStart(2,'0')} <i>/</i> {String(products.length).padStart(2,'0')}</span><button onClick={()=>step(1)} aria-label="Next crochet product">›</button></div>
+      </>:<div className="rugs-coming-panel"><span className="rugs-coming-icon">▦</span><h3>Room for something<br/><em>beautiful.</em></h3><p>The rug collection will have its own little world here. We’ll bring it to life next.</p><span className="rugs-coming-note">RUG COLLECTION · COMING NEXT</span></div>}
     </div>
+
     <div className="product-world-bottom"><span>01 — CROCHET COLLECTION</span><p>{category==='crochet'?'17 little creations, each made with love.':'A new collection, woven for your spaces.'}</p><a href="#collections">Explore our world <span>↗</span></a></div>
+
+    <div className="product-storyboard" aria-label="How Dadi's web interaction works">
+      <article className="storyboard-step">
+        <div className="storyboard-visual storyboard-initial">
+          <div className="storyboard-mini-dadi"><img src="/uploads/crochella-dadi-3d.png.png" alt=""/></div>
+          <div className="storyboard-mini-web"/>
+          <div className="storyboard-mini-products"><i>🐼</i><i>🐢</i><i>🍌</i><i>🎀</i><i>🍔</i></div>
+        </div>
+        <div className="storyboard-caption"><b>1</b><span>Initial State</span></div>
+      </article>
+      <span className="storyboard-arrow" aria-hidden="true">›</span>
+      <article className="storyboard-step">
+        <div className="storyboard-visual storyboard-tap">
+          <div className="storyboard-mini-dadi"><img src="/uploads/crochella-dadi-3d.png.png" alt=""/></div>
+          <div className="storyboard-mini-web"/>
+          <div className="storyboard-mini-products"><i>🐼</i><i className="mini-selected">🐢</i><i>🍌</i><i>🎀</i><i>🍔</i></div>
+          <span className="storyboard-cursor">☝</span>
+        </div>
+        <div className="storyboard-caption"><b>2</b><span>User Taps on a Product</span></div>
+      </article>
+      <span className="storyboard-arrow" aria-hidden="true">›</span>
+      <article className="storyboard-step">
+        <div className="storyboard-visual storyboard-burst">
+          <div className="storyboard-mini-dadi"><img src="/uploads/crochella-dadi-3d.png.png" alt=""/></div>
+          <div className="storyboard-mini-web mini-web-break"/>
+          <div className="storyboard-mini-products"><i>🐼</i><i className="mini-selected">🐢</i><i>🍌</i><i>🎀</i><i>🍔</i></div>
+          <span className="storyboard-sparkles">✦　✧　✦</span>
+        </div>
+        <div className="storyboard-caption"><b>3</b><span>Web Dissolves / Burst Effect</span></div>
+      </article>
+    </div>
+
     {selected&&category==='crochet'&&<div className="product-detail-backdrop" role="presentation" onClick={()=>setSelected(null)}><div className="product-detail-glass" role="dialog" aria-modal="true" aria-label={selected.name} onClick={e=>e.stopPropagation()}><button className="product-detail-close" onClick={()=>setSelected(null)} aria-label="Close product details">×</button><div className="product-detail-art"><img src={selected.image} alt={selected.name}/><small>MADE WITH LOVE · CROCHELLA</small></div><div className="product-detail-copy"><span className="product-eyebrow"><i/> HANDMADE CROCHET</span><h3>{selected.name}</h3><p>{selected.story}</p><div className="product-detail-meta"><span>Craft <b>Hand-crocheted</b></span><span>Finish <b>Gold-tone clasp</b></span><span>Origin <b>Fatehpur, India</b></span></div><div className="product-marketplace-note">Price and purchase links will be added once the product listings are ready.</div></div></div></div>}
   </section>;
 }
