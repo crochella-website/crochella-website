@@ -2,7 +2,7 @@
 :root{--cream:#fff0d8;--ink:#3a1716;--gold:#e6bd79;font-family:'DM Sans',sans-serif;background:#790018;color:var(--cream)}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0}a{color:inherit}.crochella-site{overflow:clip}
 .hero-nav{position:absolute;z-index:30;top:0;left:0;width:100%;display:flex;align-items:center;justify-content:space-between;padding:17px clamp(20px,3vw,42px);color:#fff}
-.brand-lockup{display:flex;align-items:center;gap:12px;text-decoration:none}.brand-word{font:clamp(23px,2.2vw,31px) 'Yatra One',serif;letter-spacing:-.055em}.brand-word sup{font:10px 'DM Sans';vertical-align:top}.brand-flower{font-size:28px}
+.brand-lockup{display:flex;align-items:center;gap:12px;text-decoration:none}.brand-word{font:clamp(23px,2.2vw,31px) 'Yatra One',serif;letter-spacing:-.055em}.brand-word sup{font:10px 'DM Sans';vertical-align:top}
 .desktop-nav{font-size:clamp(14px,1.55vw,20px)}.desktop-nav a,.nav-contact{text-decoration:none}.nav-comma{white-space:pre}.nav-contact{font-size:clamp(14px,1.5vw,19px);text-decoration:underline;text-underline-offset:4px}
 .menu-toggle,.mobile-menu{display:none}
 .hero-main{min-height:680px;height:100svh;position:relative;isolation:isolate;overflow:hidden;display:flex;align-items:center;padding:100px clamp(20px,3.6vw,54px) 70px;background:radial-gradient(ellipse at 82% 55%,#fa4350 0%,#e51b3c 28%,transparent 58%),linear-gradient(112deg,#7c001a,#b50025 44%,#ed153b)}
@@ -273,9 +273,9 @@
 
 /* Tree video visibility and fallback */
 .tree-scene-wrap{min-height:clamp(390px,49vw,540px);overflow:visible}
-.tree-poster-fallback{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;z-index:0;filter:drop-shadow(0 16px 20px rgba(24,8,20,.2))}
+
 .tree-video{z-index:1;mix-blend-mode:screen;opacity:1;will-change:transform}
-.tree-scene-wrap video:not([src]){display:none}
+
 @media(max-width:640px){.tree-scene-wrap{min-height:390px}}
 
 
@@ -286,9 +286,7 @@
 
 /* Diwali lantern belongs to the blossom/Instagram section corner. */
 .tree-garden-inner{position:relative}
-.tree-garden-inner>.diwali-lantern{top:4px;right:clamp(4px,2vw,28px);width:clamp(76px,9vw,112px);height:clamp(138px,17vw,190px);z-index:8}
-.tree-garden-inner>.diwali-lantern .lantern-thread{height:16px}
-.tree-garden-inner>.diwali-lantern .lantern-video{height:calc(100% - 16px)}
+
 .tree-scene-wrap{isolation:auto;overflow:visible}
 .tree-video{position:absolute;inset:0;z-index:2;display:block;width:100%;height:100%;object-fit:contain;object-position:center;mix-blend-mode:screen;opacity:1;filter:drop-shadow(0 18px 22px rgba(24,8,20,.18));pointer-events:none;background:transparent}
 @media(max-width:640px){.tree-garden-inner>.diwali-lantern{top:-24px;right:0;width:66px;height:120px}.tree-garden-heading{padding-right:54px}}
@@ -296,7 +294,7 @@
 
 /* Diwali refresh: use the supplied Crochella mark and a rotating rangoli mandala. */
 .brand-logo{display:block;width:clamp(118px,13vw,166px);height:auto;max-height:96px;object-fit:contain;filter:drop-shadow(0 3px 12px rgba(25,0,14,.25))}
-.brand-flower{display:none}
+
 .hero-main:before{content:none;background:none;opacity:0}
 .hero-mandala{position:absolute;z-index:4;top:-190px;right:-150px;width:clamp(390px,48vw,660px);height:auto;color:#f2c46d;opacity:.23;pointer-events:none;filter:drop-shadow(0 0 22px rgba(242,196,109,.14));animation:mandala-turn 72s linear infinite;transform-origin:50% 50%}
 @keyframes mandala-turn{to{transform:rotate(360deg)}}
