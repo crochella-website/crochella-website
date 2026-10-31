@@ -864,3 +864,31 @@
 @media(prefers-reduced-motion:reduce){
  .karigari-dadi-sprite{animation:none}
 }
+
+
+/* Clean static hero artwork with restrained shuttle motion */
+.karigari-dadi-sprite{display:none!important}
+.karigari-cgi-scene{inset:0;overflow:hidden;border-radius:clamp(14px,2vw,28px)}
+.karigari-hero-art{
+ position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center;
+ display:block;user-select:none;pointer-events:none;
+ animation:karigariHeroShuttle 6s ease-in-out infinite;
+}
+.karigari-video-hotspots{inset:0;z-index:6}
+.karigari-video-hotspots button{border-radius:22px;transition:background .2s ease,box-shadow .2s ease}
+.karigari-video-hotspots button:hover,.karigari-video-hotspots button:focus-visible{
+ background:rgba(255,238,218,.08);box-shadow:inset 0 0 0 1px rgba(255,225,185,.4)
+}
+.karigari-scene-caption{z-index:7}
+@keyframes karigariHeroShuttle{
+ 0%,100%{transform:translate3d(0,0,0)}
+ 50%{transform:translate3d(0,-7px,0)}
+}
+@media(max-width:760px){
+ .karigari-cgi-scene{border-radius:12px}
+ .karigari-hero-art{animation-duration:7s}
+ .karigari-video-hotspots button{border-radius:14px}
+}
+@media(prefers-reduced-motion:reduce){
+ .karigari-hero-art{animation:none}
+}
