@@ -1255,3 +1255,41 @@
  .crochellas-product-image .anti-metal-button-label{font-size:13px}
 }
 @media(prefers-reduced-motion:reduce){.crochellas-product-image .anti-metal-button *{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+/* Homepage string-tie envelope finale */
+.string-tie-footer{position:relative;display:flex;align-items:center;overflow:hidden;padding:clamp(54px,9vw,130px) clamp(22px,8vw,120px);background:#f4e8d6;color:#4b152b;isolation:isolate}
+.string-tie-footer:before{content:"";position:absolute;inset:0;z-index:-1;opacity:.24;background:radial-gradient(ellipse at 80% 15%,#d5ad7a66,transparent 40%),repeating-linear-gradient(0deg,transparent 0 7px,#8b60400c 8px 9px}
+.string-tie-inner{width:100%;max-width:1440px;margin:0 auto;display:grid;grid-template-columns:1fr minmax(300px,.8fr);align-items:center;gap:clamp(32px,8vw,120px)}
+.string-tie-meta{position:absolute;top:clamp(22px,4vw,54px);left:clamp(22px,8vw,120px);display:flex;gap:clamp(12px,2.5vw,34px);color:#987b7c;font-size:9px;letter-spacing:.17em;text-transform:uppercase}
+.string-tie-message{position:relative;z-index:2;max-width:680px}
+.string-tie-kicker{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#a7774b}
+.string-tie-message h2{margin:20px 0 26px;font:500 clamp(44px,6.6vw,92px)/.96 'Playfair Display',serif;letter-spacing:-.055em}
+.string-tie-message h2 em{color:#c28a50;font-weight:500}
+.string-tie-note{max-width:490px;color:#80696c;font-size:clamp(14px,1.3vw,17px);line-height:1.8}
+.string-tie-cta{display:inline-flex;align-items:center;gap:30px;margin-top:24px;padding:0 0 9px;border-bottom:1px solid #4b152b;color:#4b152b;text-decoration:none;font-size:13px}
+.string-tie-cta span{font-size:18px;transition:transform .2s}.string-tie-cta:hover span{transform:translate(3px,-3px)}
+.string-tie-envelope-wrap{display:flex;flex-direction:column;align-items:center;gap:16px;perspective:1000px}
+.string-tie-envelope{position:relative;width:min(100%,500px);aspect-ratio:1.4;border:0;background:transparent;cursor:pointer;isolation:isolate;transform-style:preserve-3d;filter:drop-shadow(0 24px 28px #5b29301c);transition:transform .4s}
+.string-tie-envelope:hover{transform:translateY(-5px) rotate(-1deg)}
+.string-tie-envelope-back{position:absolute;inset:0;z-index:1;border-radius:8px;background:#d8b88f;border:1px solid #b78e66}
+.string-tie-envelope-back:after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,#f0d8b5 0 50%,#d1ad83 50%);clip-path:polygon(0 0,50% 58%,100% 0,100% 100%,0 100%)}
+.string-tie-envelope-flap{position:absolute;inset:0;z-index:4;background:#e8cba5;clip-path:polygon(0 0,100% 0,50% 62%);transform-origin:top center;transition:transform .8s cubic-bezier(.2,.75,.2,1),z-index .1s .4s}
+.string-tie-paper{position:absolute;z-index:2;left:9%;right:9%;top:8%;height:78%;display:flex;flex-direction:column;gap:12px;padding:10% 9%;background:#fffaf1;color:#78545a;text-align:left;font:italic 16px 'Playfair Display',serif;box-shadow:0 2px 12px #57331a12;transition:transform .8s cubic-bezier(.2,.75,.2,1)}
+.string-tie-paper b{margin-top:auto;font-size:13px;font-weight:500}
+.string-tie-cord{position:absolute;z-index:5;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
+.string-tie-cord-path{fill:none;stroke:#9c5e37;stroke-width:5;stroke-linecap:round;stroke-dasharray:740;stroke-dashoffset:0;filter:drop-shadow(0 1px 1px #fff7)}
+.string-tie-cord-knot{fill:none;stroke:#9c5e37;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+.string-tie-seal{position:absolute;z-index:6;left:50%;top:50%;display:grid;place-items:center;width:48px;height:48px;border:2px solid #9c5e37;border-radius:50%;background:#c68d52;color:#fff4df;font:italic 25px 'Playfair Display',serif;transform:translate(-50%,-50%);box-shadow:0 2px 6px #4b152b25}
+.string-tie-hint{margin:0;color:#987b7c;font-size:10px;letter-spacing:.12em;text-transform:uppercase}
+.string-tie-footer.is-sealed .string-tie-cord-path{animation:stringTieWind 1.7s .15s ease-in-out forwards}
+.string-tie-footer.is-sealed .string-tie-cord-knot{animation:stringTieKnot .9s .7s ease-in-out both}
+.string-tie-footer.is-sealed .string-tie-seal{animation:stringTieSeal .65s .8s cubic-bezier(.2,.8,.2,1) both}
+.string-tie-footer.is-open .string-tie-envelope-flap{z-index:0;transform:rotateX(180deg)}
+.string-tie-footer.is-open .string-tie-paper{transform:translateY(-32%)}
+.string-tie-footer.is-open .string-tie-cord-path{stroke-dashoffset:740}
+.string-tie-footer.is-open .string-tie-seal{transform:translate(-50%,-50%) scale(.65);opacity:.45}
+@keyframes stringTieWind{0%{stroke-dashoffset:0}55%{stroke-dashoffset:350}100%{stroke-dashoffset:740}}
+@keyframes stringTieKnot{0%{transform:scale(1)}50%{transform:scale(1.15) rotate(12deg)}100%{transform:scale(.8)}}
+@keyframes stringTieSeal{0%{transform:translate(-50%,-50%) scale(1.3);opacity:.2}100%{transform:translate(-50%,-50%) scale(1);opacity:1}}
+@media(max-width:760px){.string-tie-footer{padding:100px 22px 56px;min-height:100svh!important}.string-tie-inner{grid-template-columns:1fr;gap:42px}.string-tie-meta{left:22px;right:22px;top:28px;gap:12px;flex-wrap:wrap;font-size:8px}.string-tie-message h2{font-size:clamp(46px,12vw,68px);margin:16px 0 20px}.string-tie-envelope{width:min(100%,420px)}.string-tie-paper{font-size:13px;gap:8px}.string-tie-seal{width:38px;height:38px;font-size:20px}}
+@media(prefers-reduced-motion:reduce){.string-tie-footer *{animation-duration:.01ms!important;transition-duration:.01ms!important}}
