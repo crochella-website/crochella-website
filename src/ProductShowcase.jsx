@@ -20,85 +20,27 @@ const crochetSlots = [
   { id:'heart', name:'Love Note', note:'Heart keychain', image:'/uploads/heart-keychain.png', tone:'rose', mark:'♥', story:'A bright red crochet heart, a tiny reminder to carry a little love.' },
 ];
 
-function KarigariKeyedVideo() {
-  const videoRef = useRef(null);
-  const canvasRef = useRef(null);
+function KarigariSpriteAnimation() {
+  const [frame, setFrame] = useState(0);
 
   useEffect(() => {
-    const video = videoRef.current;
-    const canvas = canvasRef.current;
-    if (!video || !canvas) return;
-    const ctx = canvas.getContext('2d', { willReadFrequently: true });
-    if (!ctx) return;
-
-    // Key the actual green-screen shade rather than all green hues, so the
-    // green crochet turtle and product details remain intact.
-    const width = 960;
-    const height = 540;
-    canvas.width = width;
-    canvas.height = height;
-    let raf = 0;
-    let stopped = false;
-    let lastVideoTime = -1;
-
-    const smooth = (a, b, value) => {
-      const t = Math.max(0, Math.min(1, (value - a) / (b - a)));
-      return t * t * (3 - 2 * t);
-    };
-
-    const draw = () => {
-      if (stopped) return;
-      if (video.readyState >= 2 && !video.paused && video.currentTime !== lastVideoTime) {
-        lastVideoTime = video.currentTime;
-        ctx.drawImage(video, 0, 0, width, height);
-        const frame = ctx.getImageData(0, 0, width, height);
-        const pixels = frame.data;
-        for (let i = 0; i < pixels.length; i += 4) {
-          const r = pixels[i];
-          const g = pixels[i + 1];
-          const b = pixels[i + 2];
-          // Source backdrop is approximately #39713b. A colour-distance key
-          // avoids wiping out the brighter/darker greens in the crochet props.
-          const dr = r - 57;
-          const dg = g - 113;
-          const db = b - 67;
-          const distance = Math.sqrt(dr * dr + dg * dg + db * db);
-          const keyed = 1 - smooth(17, 43, distance);
-          if (keyed > 0) {
-            pixels[i + 3] = Math.round(pixels[i + 3] * (1 - keyed));
-            // Reduce green spill on semi-transparent edge pixels.
-            if (pixels[i + 3] > 0 && pixels[i + 3] < 255) {
-              pixels[i + 1] = Math.min(g, Math.round((r + b) * 0.5 + 8));
-            }
-          }
-        }
-        ctx.putImageData(frame, 0, 0);
-      }
-      raf = window.requestAnimationFrame(draw);
-    };
-
-    video.muted = true;
-    video.loop = true;
-    video.playsInline = true;
-    const start = () => video.play().catch(() => {});
-    if (video.readyState >= 2) start();
-    else video.addEventListener('canplay', start, { once: true });
-    raf = window.requestAnimationFrame(draw);
-
-    return () => {
-      stopped = true;
-      window.cancelAnimationFrame(raf);
-      video.removeEventListener('canplay', start);
-      video.pause();
-    };
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reducedMotion) return;
+    const timer = window.setInterval(() => setFrame(current => (current + 1) % 15), 1000 / 24);
+    return () => window.clearInterval(timer);
   }, []);
 
-  return <>
-    <video ref={videoRef} className="karigari-source-video" muted loop playsInline autoPlay preload="auto" aria-hidden="true">
-      <source src="/uploads/crochella-dadi-web-catch-alpha.webm" type="video/webm"/>
-    </video>
-    <canvas ref={canvasRef} className="karigari-cgi-canvas" aria-label="Dadi catches the crochet keychains in her yarn web"/>
-  </>;
+  const column = frame % 5;
+  const row = Math.floor(frame / 5);
+  const positionX = column * 25;
+  const positionY = row * 50;
+
+  return <div
+    className="karigari-dadi-sprite"
+    role="img"
+    aria-label="Dadi flies in, casts her yarn web, and catches the crochet keychains"
+    style={{ backgroundPosition: `${positionX}% ${positionY}%` }}
+  />;
 }
 
 function DadiIllustration() {
@@ -154,7 +96,7 @@ export default function ProductShowcase() {
     <div className="product-stage">
       {category==='crochet'?<>
         <div className="karigari-cgi-scene">
-          <KarigariKeyedVideo/>
+          <KarigariSpriteAnimation/>
           <div className="karigari-video-hotspots" aria-label="Explore the crochet products">
             <button style={{left:'1%',top:'20%',width:'15%',height:'48%'}} onClick={()=>releaseProduct(crochetSlots.find(p=>p.id==='panda'))} aria-label="Explore Panda Pal"/>
             <button style={{left:'12%',top:'31%',width:'19%',height:'40%'}} onClick={()=>releaseProduct(crochetSlots.find(p=>p.id==='turtle'))} aria-label="Explore Turtle Buddy"/>
