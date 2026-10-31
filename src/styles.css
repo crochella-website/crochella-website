@@ -1153,3 +1153,36 @@
   .crochellas-nav-cta{padding:9px 10px!important;font-size:9px!important;white-space:nowrap}
   .crochellas-nav-mark{width:24px;height:24px}
 }
+
+
+/* Product-card ticket CTA: playful boarding animation before opening the detail page */
+.crochellas-product-image{position:relative}
+.crochellas-product-image-link{position:absolute;inset:0;display:block;overflow:hidden;border-radius:inherit}
+.crochellas-product-image-link img{pointer-events:none}
+.anti-metal-button{
+  position:absolute;right:18px;bottom:16px;z-index:4;display:inline-flex;align-items:center;justify-content:center;
+  min-width:112px;height:48px;padding:0 19px;overflow:hidden;border:0;border-radius:999px;
+  background:#4b152b;color:#fff8f1;font:500 14px/1 inherit;cursor:pointer;
+  box-shadow:0 5px 16px #35102022;transition:background .22s,transform .22s,box-shadow .22s;
+}
+.anti-metal-button:hover{background:#64203a;transform:translateY(-2px);box-shadow:0 8px 20px #35102030}
+.anti-metal-button:focus-visible{outline:2px solid #d69a42;outline-offset:3px}
+.anti-metal-button:disabled{cursor:wait}
+.anti-metal-button-label{position:relative;z-index:2;white-space:nowrap}
+.anti-metal-ticket{position:absolute;left:50%;top:50%;display:flex;align-items:center;gap:5px;padding:5px 8px;border:1px dashed #fff9;border-radius:3px;background:#f5e5c8;color:#4b152b;font:700 9px ui-monospace,monospace;opacity:0;transform:translate(-50%,-50%) rotate(-8deg) scale(.5)}
+.anti-metal-ticket small{font-size:8px;letter-spacing:.1em}
+.anti-metal-shuttle{position:absolute;left:-30px;top:50%;font-size:23px;opacity:0;transform:translateY(-50%)}
+.anti-metal-dots{position:absolute;right:14px;display:flex;gap:3px;opacity:0}
+.anti-metal-dots i{width:3px;height:3px;border-radius:50%;background:currentColor;animation:antiMetalDot .55s infinite alternate}
+.anti-metal-dots i:nth-child(2){animation-delay:.12s}.anti-metal-dots i:nth-child(3){animation-delay:.24s}
+.anti-metal-button.is-active .anti-metal-button-label{animation:antiMetalLabelOut .22s forwards}
+.anti-metal-button.is-active .anti-metal-dots{opacity:1}
+.anti-metal-button.is-active .anti-metal-ticket{animation:antiMetalTicket .76s cubic-bezier(.2,.75,.3,1) forwards}
+.anti-metal-button.is-active .anti-metal-shuttle{animation:antiMetalShuttle .52s ease-in-out .76s forwards}
+.anti-metal-button.is-active{background:#d5a24d;color:#4b152b}
+@keyframes antiMetalDot{to{opacity:.25;transform:translateY(-2px)}}
+@keyframes antiMetalLabelOut{to{opacity:0;transform:translateY(-8px)}}
+@keyframes antiMetalTicket{0%{opacity:0;transform:translate(-50%,-50%) rotate(-20deg) scale(.45)}25%{opacity:1;transform:translate(-50%,-50%) rotate(8deg) scale(1.08)}65%{opacity:1;transform:translate(-50%,-50%) rotate(-4deg) scale(1)}100%{opacity:0;transform:translate(100%,-180%) rotate(18deg) scale(.72)}}
+@keyframes antiMetalShuttle{0%{opacity:0;left:-30px}20%{opacity:1}100%{opacity:1;left:calc(100% + 40px)}}
+@media(max-width:560px){.anti-metal-button{right:12px;bottom:12px;min-width:102px;height:44px;padding:0 16px;font-size:13px}}
+@media(prefers-reduced-motion:reduce){.anti-metal-button,.anti-metal-button *{animation-duration:.01ms!important;transition-duration:.01ms!important}}
