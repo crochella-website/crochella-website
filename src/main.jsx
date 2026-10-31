@@ -111,4 +111,4 @@ function App() {
   </main>;
 }
 
-createRoot(document.getElementById('root')).render(window.location.pathname.replace(/\\/$/, '') === '/crochellas' ? <CrochellasPage/> : <App/>);
+createRoot(document.getElementById('root')).render(window.location.pathname.replace(/\/$/, '') === '/crochellas' ? <CrochellasPage/> : <App/>);
