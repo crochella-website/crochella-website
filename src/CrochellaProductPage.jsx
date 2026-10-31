@@ -36,7 +36,7 @@ export default function CrochellaProductPage({slug}){
      audio.pause();setSoundOn(false);
    }
  };
- const price= const price=pricing.products[product.id]?.price??99;
+ const price=pricing.products[product.id]?.price??99;
  return <main className="product-story-page">
   <header className="product-story-nav"><a href="/crochellas">← All little things</a><a className="product-story-logo" href="/">Crochella<span>®</span></a><a href="https://www.instagram.com/direct/t/17846754582500300" target="_blank" rel="noreferrer">Ask Dadi ↗</a></header>
   <section className="train-arrival" aria-label="The Crochella train arrives at Fatehpur">
@@ -45,7 +45,7 @@ export default function CrochellaProductPage({slug}){
     <div className="train-vehicle" aria-hidden="true"><span className="train-smoke">☁</span><span className="train-engine">🚂</span><span className="train-car">✿</span><span className="train-car">♥</span></div>
     <div className={'station-sign '+(arrived?'is-visible':'')}><small>NEXT STOP</small><strong>FATEHPUR<br/>STATION</strong><span>Welcome to Crochella</span></div>
    </div>
-   <div className={'station-story '+(arrived?'is-visible':'')}><span className="station-kicker">PLATFORM 01 · A STORY IN EVERY STITCH</span><h1>From Fatehpur,<br/><em>with love.</em></h1><p>In a little corner of Uttar Pradesh, Dadi and her crew turn yarn into tiny companions. Every loop is made by hand, with patience, warmth, and a story to share.</p><div className="arrival-audio-control"><audio ref={audioRef} preload="none" onPlay={()=>setSoundOn(true)} onPause={()=>setSoundOn(false)} onEnded={()=>setSoundOn(false)}><source src="/uploads/vidssave.com%20Train%20Announcements%20%E2%9D%A4%20%23indianrailways%20%23station%20%23train%20128KBPS.mp4" type="audio/mp4"/>Your browser does not support this audio.</audio><button className="arrival-sound" type="button" onClick={toggleArrivalAudio} aria-pressed={soundOn}>{soundOn?'Ⅱ Pause train announcement':'▶ Play train announcement'}</button></div></div>
+   <div className={'station-story '+(arrived?'is-visible':'')}><span className="station-kicker">PLATFORM 01 · A STORY IN EVERY STITCH</span><h1>From Fatehpur,<br/><em>with love.</em></h1><p>In a little corner of Uttar Pradesh, Dadi and her crew turn yarn into tiny companions. Every loop is made by hand, with patience, warmth, and a story to share.</p><div className="arrival-audio-control"><audio ref={audioRef} preload="none" onPlay={()=>setSoundOn(true)} onPause={()=>setSoundOn(false)} onEnded={()=>setSoundOn(false)}><source src="/uploads/train-announcement.mp4" type="audio/mp4"/>Your browser does not support this audio.</audio><button className="arrival-sound" type="button" onClick={toggleArrivalAudio} aria-pressed={soundOn}>{soundOn?'Ⅱ Pause train announcement':'▶ Play train announcement'}</button></div></div>
   </section>
   <section className="product-story-main">
    <div className="product-story-image"><div className="product-story-image-halo"/><img src={product.image} alt={product.name}/><span className="product-story-image-tag">HANDMADE IN FATEHPUR</span></div>
