@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import BlossomTree from './BlossomTree.jsx';
 import DiwaliLantern from './DiwaliLantern.jsx';
 import ProductShowcase from './ProductShowcase.jsx';
+import CrochellasPage from './CrochellasPage.jsx';
 import { createRoot } from 'react-dom/client';
 import './styles.css';
 import site from './content/site.json';
@@ -110,4 +111,4 @@ function App() {
   </main>;
 }
 
-createRoot(document.getElementById('root')).render(<App />);
+createRoot(document.getElementById('root')).render(window.location.pathname.replace(/\\/$/, '') === '/crochellas' ? <CrochellasPage/> : <App/>);
