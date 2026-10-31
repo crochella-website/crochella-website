@@ -1,0 +1,63 @@
+{
+  "currency": "INR",
+  "prices": [
+    99,
+    199,
+    250,
+    299,
+    499
+  ],
+  "products": {
+    "panda": {
+      "price": 99
+    },
+    "turtle": {
+      "price": 199
+    },
+    "banana": {
+      "price": 250
+    },
+    "bow": {
+      "price": 299
+    },
+    "burger": {
+      "price": 499
+    },
+    "lion": {
+      "price": 99
+    },
+    "avocado": {
+      "price": 199
+    },
+    "penguin": {
+      "price": 250
+    },
+    "handbag": {
+      "price": 299
+    },
+    "strawberry": {
+      "price": 499
+    },
+    "chilli": {
+      "price": 99
+    },
+    "bee": {
+      "price": 199
+    },
+    "bear": {
+      "price": 250
+    },
+    "evil-eye": {
+      "price": 299
+    },
+    "cherry": {
+      "price": 499
+    },
+    "sunflower": {
+      "price": 99
+    },
+    "heart": {
+      "price": 199
+    }
+  }
+}
