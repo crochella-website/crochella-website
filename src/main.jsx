@@ -68,6 +68,7 @@ function App() {
 
     <section className="hero-main" id="home" aria-label="Crochella introduction">
       <div className="hero-red-glow"/>
+      <img className="hero-mandala" src="/uploads/diwali-mandala.svg" alt="" aria-hidden="true" />
       <video className="diwali-lantern-cluster" autoPlay muted loop playsInline preload="metadata" aria-hidden="true"><source src="/uploads/diwali-lantern-cluster.webm" type="video/webm"/></video>
 
       <div className="festive-particles" aria-hidden="true">{Array.from({length:16},(_,i)=><i key={i}/>)}</div>
