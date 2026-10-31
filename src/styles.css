@@ -839,3 +839,28 @@
 .karigari-source-video{position:absolute!important;width:1px!important;height:1px!important;opacity:0!important;pointer-events:none!important;left:-2px!important;top:-2px!important}
 .karigari-cgi-canvas{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:contain;filter:drop-shadow(0 20px 28px #14071140)}
 @media(max-width:760px){.karigari-cgi-canvas{filter:drop-shadow(0 10px 16px #14071155)}}
+
+
+/* Frame-sequence animation replaces the green-screen video completely */
+.karigari-source-video,.karigari-cgi-canvas,.karigari-cgi-video{display:none!important}
+.karigari-dadi-sprite{
+ position:absolute;
+ left:50%;
+ top:50%;
+ width:100%;
+ aspect-ratio:2048/762;
+ transform:translate(-50%,-50%);
+ background-image:url('/uploads/crochella-dadi-sprite.png');
+ background-repeat:no-repeat;
+ background-size:500% 300%;
+ background-position:0 0;
+ mix-blend-mode:screen;
+ filter:drop-shadow(0 18px 26px #14071135);
+ pointer-events:none;
+}
+@media(max-width:760px){
+ .karigari-dadi-sprite{filter:drop-shadow(0 8px 14px #14071140)}
+}
+@media(prefers-reduced-motion:reduce){
+ .karigari-dadi-sprite{animation:none}
+}
