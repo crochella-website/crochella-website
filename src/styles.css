@@ -1162,7 +1162,7 @@
 .anti-metal-button{
   position:absolute;right:18px;bottom:16px;z-index:4;display:inline-flex;align-items:center;justify-content:center;
   min-width:112px;height:48px;padding:0 19px;overflow:hidden;border:0;border-radius:999px;
-  background:#4b152b;color:#fff8f1;font:500 14px/1 inherit;cursor:pointer;
+  background:#4b152b;color:#fff8f1;font:inherit;font-size:14px;font-weight:500;line-height:1;cursor:pointer;
   box-shadow:0 5px 16px #35102022;transition:background .22s,transform .22s,box-shadow .22s;
 }
 .anti-metal-button:hover{background:#64203a;transform:translateY(-2px);box-shadow:0 8px 20px #35102030}
