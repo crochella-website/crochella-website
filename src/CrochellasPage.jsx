@@ -3,7 +3,10 @@ import pricing from './content/crochella-pricing.json';
 
 const products=[{"id":"panda","name":"Panda Pal","image":"/uploads/panda-keychain.png","emoji":"🐼"},{"id":"turtle","name":"Turtle Buddy","image":"/uploads/turtle-keychain.png","emoji":"🐢"},{"id":"banana","name":"Bananita","image":"/uploads/banana-keychain.png","emoji":"🍌"},{"id":"bow","name":"Pink Bow","image":"/uploads/pink-bow-keychain.png","emoji":"🎀"},{"id":"burger","name":"Burger Buddy","image":"/uploads/burger-keychain.png","emoji":"🍔"},{"id":"lion","name":"Little Lion","image":"/uploads/lion-keychain.png","emoji":"🦁"},{"id":"avocado","name":"Avo Cutie","image":"/uploads/avocado-keychain.png","emoji":"🥑"},{"id":"penguin","name":"Penguin Pal","image":"/uploads/penguin-keychain.png","emoji":"🐧"},{"id":"handbag","name":"Mini Tote","image":"/uploads/handbag-keychain.png","emoji":"👜"},{"id":"strawberry","name":"Berry Sweet","image":"/uploads/strawberry-keychain.png","emoji":"🍓"},{"id":"chilli","name":"Chilli Pop","image":"/uploads/chilli-keychain.png","emoji":"🌶️"},{"id":"bee","name":"Busy Bee","image":"/uploads/bee-keychain.png","emoji":"🐝"},{"id":"bear","name":"Teddy Bear","image":"/uploads/bear-keychain.png","emoji":"🧸"},{"id":"evil-eye","name":"Good Vibes","image":"/uploads/evil-eye-keychain.png","emoji":"🧿"},{"id":"cherry","name":"Cherry Duo","image":"/uploads/cherry-keychain.png","emoji":"🍒"},{"id":"sunflower","name":"Sunshine","image":"/uploads/sunflower-keychain.png","emoji":"🌻"},{"id":"heart","name":"Love Note","image":"/uploads/heart-keychain.png","emoji":"♥"}];
 
-const askDadiMessage="Hi i want to place an order for this cute product";\nconst askDadiUrl="https://www.instagram.com/direct/t/17846754582500300";\n\nexport default function CrochellasPage(){
+const askDadiMessage="Hi i want to place an order for this cute product";
+const askDadiUrl="https://www.instagram.com/direct/t/17846754582500300";
+
+export default function CrochellasPage(){
   const [offset,setOffset]=useState(0);
   const [dragStart,setDragStart]=useState(null);
   const [dragDelta,setDragDelta]=useState(0);
