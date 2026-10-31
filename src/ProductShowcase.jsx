@@ -84,10 +84,10 @@ export default function ProductShowcase() {
         <div className="karigari-cgi-scene">
           <KarigariHeroImage/>
           <div className="karigari-video-hotspots" aria-label="Explore the crochet products">
-            <button style={{left:'1%',top:'20%',width:'15%',height:'48%'}} onClick={()=>releaseProduct(crochetSlots.find(p=>p.id==='panda'))} aria-label="Explore Panda Pal"/>
-            <button style={{left:'12%',top:'31%',width:'19%',height:'40%'}} onClick={()=>releaseProduct(crochetSlots.find(p=>p.id==='turtle'))} aria-label="Explore Turtle Buddy"/>
-            <button style={{left:'22%',top:'43%',width:'19%',height:'32%'}} onClick={()=>releaseProduct(crochetSlots.find(p=>p.id==='burger'))} aria-label="Explore Burger Buddy"/>
-            <button style={{left:'34%',top:'48%',width:'17%',height:'30%'}} onClick={()=>releaseProduct(crochetSlots.find(p=>p.id==='bow'))} aria-label="Explore Pink Bow"/>
+            <button className="karigari-hotspot hotspot-panda" onClick={()=>releaseProduct(crochetSlots.find(p=>p.id==='panda'))} aria-label="Explore Panda Pal"><span className="karigari-product-label">Panda Pal</span></button>
+            <button className="karigari-hotspot hotspot-turtle" onClick={()=>releaseProduct(crochetSlots.find(p=>p.id==='turtle'))} aria-label="Explore Turtle Buddy"><span className="karigari-product-label">Turtle Buddy</span></button>
+            <button className="karigari-hotspot hotspot-burger" onClick={()=>releaseProduct(crochetSlots.find(p=>p.id==='burger'))} aria-label="Explore Burger Buddy"><span className="karigari-product-label">Burger Buddy</span></button>
+            <button className="karigari-hotspot hotspot-bow" onClick={()=>releaseProduct(crochetSlots.find(p=>p.id==='bow'))} aria-label="Explore Pink Bow"><span className="karigari-product-label">Pink Bow</span></button>
           </div>
           <div className="karigari-scene-caption"><span>MADE BY HAND</span><i>✦</i><span>CAUGHT WITH LOVE</span></div>
         </div>
