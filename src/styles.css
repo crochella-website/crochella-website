@@ -1093,3 +1093,13 @@
 @keyframes productFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
 @media(max-width:760px){.product-story-nav{height:64px;padding:0 18px;font-size:10px}.product-story-logo{font-size:20px}.train-arrival{grid-template-columns:1fr;gap:0;padding:24px 22px 58px}.train-sky{height:330px;width:100%}.train-route{font-size:8px}.station-sign{top:46px;right:2%;min-width:125px;padding:12px}.station-sign strong{font-size:18px}.train-engine{font-size:80px}.train-car{width:55px;height:48px;font-size:20px}.train-track{bottom:55px}.train-vehicle{bottom:68px}.station-story{padding-top:28px}.station-story h1{font-size:54px}.station-story p{font-size:14px}.product-story-main{grid-template-columns:1fr;padding:60px 22px;gap:34px}.product-story-image{min-height:330px}.product-story-image img{height:285px}.product-story-copy h2{font-size:54px}.product-story-end{gap:20px;flex-wrap:wrap;font-size:9px}}
 @media(prefers-reduced-motion:reduce){.train-vehicle,.train-smoke,.train-star,.product-story-image img{animation:none}.station-sign,.station-story{transition:none;opacity:1;transform:none}}
+
+/* Crochellas product lifestyle hover swap */
+.crochellas-product-image{position:relative;display:block;overflow:hidden}
+.crochellas-product-image img{transition:opacity .38s ease,transform .6s cubic-bezier(.2,.7,.2,1)}
+.crochellas-product-lifestyle{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.035)}
+.crochellas-product-image.has-lifestyle:hover .crochellas-product-transparent,
+.crochellas-product-image.has-lifestyle:focus-visible .crochellas-product-transparent{opacity:0;transform:scale(.97)}
+.crochellas-product-image.has-lifestyle:hover .crochellas-product-lifestyle,
+.crochellas-product-image.has-lifestyle:focus-visible .crochellas-product-lifestyle{opacity:1;transform:scale(1)}
+@media(prefers-reduced-motion:reduce){.crochellas-product-image img{transition:none}}
