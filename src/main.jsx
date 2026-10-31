@@ -3,6 +3,7 @@ import BlossomTree from './BlossomTree.jsx';
 import DiwaliLantern from './DiwaliLantern.jsx';
 import ProductShowcase from './ProductShowcase.jsx';
 import CrochellasPage from './CrochellasPage.jsx';
+import CrochellaProductPage from './CrochellaProductPage.jsx';
 import { createRoot } from 'react-dom/client';
 import './styles.css';
 import site from './content/site.json';
@@ -112,4 +113,6 @@ function App() {
   </main>;
 }
 
-createRoot(document.getElementById('root')).render(window.location.pathname.replace(/\/$/, '') === '/crochellas' ? <CrochellasPage/> : <App/>);
+const routePath=window.location.pathname.replace(/\/$/, '');
+const productRoute=routePath.match(/^\/product\/([^/]+)$/);
+createRoot(document.getElementById('root')).render(productRoute ? <CrochellaProductPage slug={decodeURIComponent(productRoute[1])}/> : routePath === '/crochellas' ? <CrochellasPage/> : <App/>);
