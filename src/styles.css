@@ -1020,3 +1020,52 @@
 .crochellas-marquee-caption i{font-style:normal;color:#c68d52;padding:0 8px}
 @media(max-width:700px){.crochellas-festive-marquee{height:112px}.crochellas-path-item.is-product{width:23px;height:23px}.crochellas-path-item.is-offer{padding:6px 9px;font-size:9px}.crochellas-marquee-caption{font-size:7px;letter-spacing:.12em}}
 @media(prefers-reduced-motion:reduce){.crochellas-path-item{will-change:auto}}
+
+
+/* Floating festive marquee: transparent foreground layer */
+.crochellas-festive-marquee{
+  position:relative;
+  z-index:40;
+  height:142px;
+  margin-top:-52px;
+  margin-bottom:-42px;
+  padding:0;
+  overflow:visible;
+  background:transparent;
+  border:0;
+  isolation:isolate;
+  pointer-events:none;
+}
+.crochellas-marquee-path{
+  z-index:0;
+  overflow:visible;
+}
+.crochellas-marquee-path path{
+  stroke:rgba(255,239,224,.28);
+  stroke-dasharray:2 10;
+}
+.crochellas-path-items{
+  z-index:2;
+  overflow:visible;
+}
+.crochellas-path-item{
+  filter:drop-shadow(0 8px 12px rgba(48,12,29,.16));
+}
+.crochellas-path-item.is-offer{
+  background:rgba(255,250,244,.96);
+  border-color:rgba(111,38,66,.13);
+  box-shadow:0 10px 24px rgba(48,12,29,.12),inset 0 1px 0 rgba(255,255,255,.9);
+}
+.crochellas-path-item.is-product{
+  width:34px;
+  height:34px;
+  filter:drop-shadow(0 8px 10px rgba(48,12,29,.2));
+}
+@media(max-width:700px){
+  .crochellas-festive-marquee{
+    height:112px;
+    margin-top:-35px;
+    margin-bottom:-28px;
+  }
+  .crochellas-path-item.is-product{width:27px;height:27px}
+}
