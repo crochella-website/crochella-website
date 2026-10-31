@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import BlossomTree from './BlossomTree.jsx';
 import DiwaliLantern from './DiwaliLantern.jsx';
 import ProductShowcase from './ProductShowcase.jsx';
+import StringTieFooter from './StringTieFooter.jsx';
 import CrochellasPage from './CrochellasPage.jsx';
 import CrochellaProductPage from './CrochellaProductPage.jsx';
 import { createRoot } from 'react-dom/client';
@@ -104,6 +105,7 @@ function App() {
     <section className="coming-section collections-section diwali-collections" id="collections"><span>03 / THE LITTLE THINGS</span><h2>Chhoti cheezein.<br/><em>Badi khushiyaan.</em></h2><p>Handmade charms, crochet companions, bags, rugs and more.</p><video className="diwali-shopping-bag" autoPlay muted loop playsInline preload="metadata" aria-hidden="true"><source src="/uploads/crochella-diwali-shopping-bag.webm" type="video/webm"/></video></section>
 
     <BlossomTree />
+    <StringTieFooter meta={['Crochella', 'Handmade with love', 'Made to keep']} tapes={['A little note,', 'just for you.']} note={{ kicker: 'P.S.', text: 'Every little creation starts with a thread and a thought. Have an idea, a question, or a project in mind? We would love to hear from you.', cta: 'Write to us' }} height="100svh" />
     <footer className="site-footer">
       <a className="footer-brand" href="#home">Crochella<sup>®</sup></a>
       <p>Woven with love, from our hands to yours.</p>
