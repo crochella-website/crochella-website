@@ -26,7 +26,8 @@ const products=[
 export default function CrochellaProductPage({slug}){
  const product=products.find(p=>p.id===slug)||products[0];
  const [arrived,setArrived]=useState(false);
- const [soundOn,setSoundOn]=useState(false);\n const [audioError,setAudioError]=useState(false);
+ const [soundOn,setSoundOn]=useState(false);
+ const [audioError,setAudioError]=useState(false);
  const audioRef=useRef(null);
  useEffect(()=>{const timer=window.setTimeout(()=>setArrived(true),3900);return()=>window.clearTimeout(timer)},[slug]);
  const toggleArrivalAudio=async()=>{
