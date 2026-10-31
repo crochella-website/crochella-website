@@ -1186,3 +1186,28 @@
 @keyframes antiMetalShuttle{0%{opacity:0;left:-30px}20%{opacity:1}100%{opacity:1;left:calc(100% + 40px)}}
 @media(max-width:560px){.anti-metal-button{right:12px;bottom:12px;min-width:102px;height:44px;padding:0 16px;font-size:13px}}
 @media(prefers-reduced-motion:reduce){.anti-metal-button,.anti-metal-button *{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+
+/* Refined ticket-collector CTA: validation, ticket lift, then a little train departure. */
+.anti-metal-button{isolation:isolate;min-width:118px;height:48px;background:#4b152b;color:#fff8f1}
+.anti-metal-button-label{transition:opacity .18s,transform .18s}
+.anti-metal-ticket{z-index:3;left:50%;top:50%;width:92px;min-height:40px;box-sizing:border-box;justify-content:flex-start;gap:7px;padding:5px 7px;background:#fff5df;border:1px dashed #a66b35;border-radius:4px;box-shadow:0 3px 8px #35102025;font:700 8px ui-monospace,monospace;transform:translate(-50%,-50%) rotate(-9deg) scale(.35)}
+.anti-metal-ticket>span:last-child{display:flex;flex-direction:column;gap:2px}
+.anti-metal-ticket b{font-size:7px;letter-spacing:.1em}
+.anti-metal-ticket small{font-size:6px;letter-spacing:.06em}
+.ticket-stamp{display:grid;place-items:center;width:18px;height:18px;border:1px solid #a66b35;border-radius:50%;font-size:12px}
+.anti-metal-shuttle{z-index:4;left:-44px;top:50%;font-size:25px;line-height:1;filter:drop-shadow(0 2px 2px #35102025);opacity:0;transform:translateY(-50%) scaleX(-1)}
+.anti-metal-coin{position:absolute;right:12px;top:50%;font:800 13px Georgia,serif;opacity:0;transform:translateY(-50%) scale(.5);z-index:2}
+.anti-metal-button.is-active{background:#d5a24d;color:#4b152b}
+.anti-metal-button.is-active .anti-metal-button-label{animation:antiMetalLabelOut .2s forwards}
+.anti-metal-button.is-active .anti-metal-dots{opacity:1}
+.anti-metal-button.is-active .anti-metal-ticket{animation:antiMetalTicket 1s cubic-bezier(.2,.75,.3,1) forwards}
+.anti-metal-button.is-active .anti-metal-coin{animation:antiMetalCoin .45s ease-out .45s forwards}
+.anti-metal-button.phase-validated .anti-metal-ticket{opacity:1;transform:translate(-50%,-50%) rotate(0) scale(1)}
+.anti-metal-button.phase-departing .anti-metal-ticket{animation:antiMetalTicketDepart .42s ease-in forwards}
+.anti-metal-button.is-active .anti-metal-shuttle{animation:antiMetalShuttle 0.62s ease-in-out .92s forwards}
+@keyframes antiMetalTicket{0%{opacity:0;transform:translate(-50%,-50%) rotate(-22deg) scale(.35)}18%{opacity:1;transform:translate(-50%,-50%) rotate(8deg) scale(1.08)}38%,72%{opacity:1;transform:translate(-50%,-50%) rotate(0) scale(1)}100%{opacity:1;transform:translate(-50%,-50%) rotate(0) scale(1)}}
+@keyframes antiMetalTicketDepart{to{opacity:0;transform:translate(90%,-165%) rotate(14deg) scale(.65)}}
+@keyframes antiMetalCoin{0%{opacity:0;transform:translateY(-50%) scale(.3) rotate(-20deg)}50%{opacity:1;transform:translateY(-50%) scale(1.2) rotate(10deg)}100%{opacity:0;transform:translateY(-90%) scale(.7) rotate(25deg)}}
+@keyframes antiMetalShuttle{0%{opacity:0;left:-44px;transform:translateY(-50%) scaleX(-1)}15%{opacity:1}100%{opacity:1;left:calc(100% + 44px);transform:translateY(-50%) scaleX(-1)}}
+@media(max-width:560px){.anti-metal-button{min-width:108px;height:44px}}
