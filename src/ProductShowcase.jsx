@@ -26,7 +26,7 @@ function KarigariSpriteAnimation() {
   useEffect(() => {
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (reducedMotion) return;
-    const timer = window.setInterval(() => setFrame(current => (current + 1) % 15), 1000 / 24);
+    const timer = window.setInterval(() => setFrame(current => (current + 1) % 15), 1000 / 3);
     return () => window.clearInterval(timer);
   }, []);
 
