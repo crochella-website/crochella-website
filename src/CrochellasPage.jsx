@@ -63,7 +63,6 @@ export default function CrochellasPage(){
           {i%3===0?<span>{i===0?'✨ Diwali · 40% OFF':i===3?'💖 No extra shipping':'😊 Handmade with love'}</span>:<img src={products[(i*2)%products.length].image} alt=""/>}
         </div>)}
       </div>
-      <span className="crochellas-marquee-caption">LITTLE JOYS, MADE BY HAND <i>✦</i> FESTIVE LOVE FROM DADI</span>
     </section>
     <section className="crochellas-featured" aria-label="Featured crochet product carousel">
       <div className="crochellas-featured-heading"><span>01 / A LITTLE PREVIEW</span><p>Made to make you smile.</p></div>
