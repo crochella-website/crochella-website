@@ -21,10 +21,11 @@ const crochetSlots = [
 ];
 
 function KarigariHeroImage() {
-  return <div
+  return <img
     className="karigari-hero-art"
-    role="img"
-    aria-label="Dadi flying with four crochet keychains caught in her yarn web"
+    src="/uploads/Web-Slinging%20Grandma%20and%20Crochet%20Crew.png"
+    alt="Dadi flying in from the top right, with crochet keychains caught in her transparent yarn web"
+    draggable="false"
   />;
 }
 
