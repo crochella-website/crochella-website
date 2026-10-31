@@ -918,3 +918,39 @@
  .karigari-hero-art{width:115%;height:100%;right:-8%;object-position:top right}
 }
 @media(prefers-reduced-motion:reduce){.karigari-hero-art{animation:none}}
+
+
+/* Precisely align invisible clickable zones to the four product charms in the hero artwork */
+.karigari-video-hotspots{position:absolute;inset:0;z-index:8;pointer-events:none}
+.karigari-video-hotspots .karigari-hotspot{
+ position:absolute;display:flex;align-items:center;justify-content:center;
+ padding:0;border:0!important;border-radius:0!important;background:transparent!important;
+ box-shadow:none!important;outline-offset:3px;cursor:pointer;pointer-events:auto;
+}
+.karigari-video-hotspots .hotspot-panda{left:23%;top:9%;width:19%;height:29%}
+.karigari-video-hotspots .hotspot-turtle{left:39%;top:31%;width:20%;height:28%}
+.karigari-video-hotspots .hotspot-burger{left:27%;top:56%;width:22%;height:31%}
+.karigari-video-hotspots .hotspot-bow{left:50%;top:57%;width:20%;height:31%}
+.karigari-product-label{
+ position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) translateY(8px);
+ padding:7px 13px;border:1px solid #f8e9dc55;border-radius:999px;
+ background:rgba(67,22,43,.82);color:#fff8f0;font-size:clamp(11px,.85vw,14px);
+ font-weight:600;letter-spacing:.015em;white-space:nowrap;
+ box-shadow:0 6px 24px #210b1740;backdrop-filter:blur(8px);
+ opacity:0;transition:opacity .2s ease,transform .2s ease;pointer-events:none;
+}
+.karigari-hotspot:hover .karigari-product-label,
+.karigari-hotspot:focus-visible .karigari-product-label{
+ opacity:1;transform:translate(-50%,-50%) translateY(0)
+}
+.karigari-hotspot:focus-visible{outline:2px solid #fff2df!important}
+@media(hover:none){
+ .karigari-product-label{top:auto;bottom:4%;transform:translate(-50%,0);opacity:1;font-size:10px;padding:5px 9px}
+}
+@media(max-width:760px){
+ .karigari-video-hotspots .hotspot-panda{left:21%;top:8%;width:22%;height:30%}
+ .karigari-video-hotspots .hotspot-turtle{left:38%;top:30%;width:23%;height:29%}
+ .karigari-video-hotspots .hotspot-burger{left:25%;top:55%;width:25%;height:32%}
+ .karigari-video-hotspots .hotspot-bow{left:49%;top:56%;width:23%;height:32%}
+ .karigari-product-label{font-size:10px;padding:5px 8px}
+}
