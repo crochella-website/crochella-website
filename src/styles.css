@@ -1128,3 +1128,28 @@
 .crochellas-product-image img.crochellas-product-transparent{position:relative;z-index:1}
 .crochellas-product-image.has-lifestyle:hover img.crochellas-product-transparent,.crochellas-product-image.has-lifestyle:focus-visible img.crochellas-product-transparent{opacity:0}
 .crochellas-product-image.has-lifestyle:hover img.crochellas-product-lifestyle,.crochellas-product-image.has-lifestyle:focus-visible img.crochellas-product-lifestyle{opacity:1;transform:scale(1)}
+
+/* Final responsive pass: full-bleed lifestyle photo and compact ticket-style nav */
+.crochellas-product-image.has-lifestyle img.crochellas-product-lifestyle{
+  position:absolute;
+  inset:0;
+  display:block;
+  width:100%;
+  height:100%;
+  max-width:none;
+  object-fit:cover;
+  object-position:center;
+}
+.crochellas-nav nav a:focus-visible,
+.crochellas-nav-cta:focus-visible,
+.crochellas-wordmark:focus-visible{
+  outline:2px solid #bc3a28;
+  outline-offset:3px;
+}
+@media(max-width:560px){
+  .crochellas-nav{height:66px;padding:0 14px;gap:10px}
+  .crochellas-nav nav{display:none}
+  .crochellas-nav-brand{font-size:12px;letter-spacing:.12em}
+  .crochellas-nav-cta{padding:9px 10px!important;font-size:9px!important;white-space:nowrap}
+  .crochellas-nav-mark{width:24px;height:24px}
+}
