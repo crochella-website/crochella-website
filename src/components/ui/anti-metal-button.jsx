@@ -1,8 +1,8 @@
 import React, { useRef, useState } from 'react';
 
-export function AntiMetalButton({ onClick, className = '', label = 'Get your ticket' }) {
+export function AntiMetalButton({ onClick, className = '', label = 'Product' }) {
   const [phase, setPhase] = useState('idle');
-  const timer = useRef([]);
+  const timers = useRef([]);
 
   const playCashChime = async () => {
     try {
@@ -11,7 +11,6 @@ export function AntiMetalButton({ onClick, className = '', label = 'Get your tic
       const ctx = new AudioContextClass();
       await ctx.resume();
       const now = ctx.currentTime;
-      // A short, bright checkout / ticket-validation chime.
       [1046.5, 1318.5, 1760, 2093].forEach((frequency, index) => {
         const start = now + index * 0.065;
         const oscillator = ctx.createOscillator();
@@ -34,9 +33,9 @@ export function AntiMetalButton({ onClick, className = '', label = 'Get your tic
     if (phase !== 'idle') return;
     setPhase('boarding');
     playCashChime();
-    timer.current.push(window.setTimeout(() => setPhase('validated'), 520));
-    timer.current.push(window.setTimeout(() => setPhase('departing'), 1050));
-    timer.current.push(window.setTimeout(() => onClick?.(), 1580));
+    timers.current.push(window.setTimeout(() => setPhase('validated'), 520));
+    timers.current.push(window.setTimeout(() => setPhase('departing'), 1050));
+    timers.current.push(window.setTimeout(() => onClick?.(), 1580));
   };
 
   return (
@@ -47,10 +46,13 @@ export function AntiMetalButton({ onClick, className = '', label = 'Get your tic
       disabled={phase !== 'idle'}
       aria-label={`Open ${label}`}
     >
+      <span className="anti-metal-icon" aria-hidden="true">
+        <span className="anti-metal-dots"><i/><i/><i/><i/><i/><i/><i/></span>
+        <span className="anti-metal-icon-ticket">✓</span>
+      </span>
       <span className="anti-metal-button-label">{phase === 'idle' ? 'Enquire' : phase === 'validated' ? 'Ticket ready' : 'All aboard…'}</span>
-      <span className="anti-metal-ticket" aria-hidden="true"><span className="ticket-stamp">✓</span><span><b>CROCHELLA</b><small>ONE LITTLE JOY</small></span></span>
+      <span className="anti-metal-ticket" aria-hidden="true"><span className="ticket-stamp">✓</span><span><b>CROCHELLA</b><small>ONE LITTLE JOY</small></span>
       <span className="anti-metal-shuttle" aria-hidden="true">🚂</span>
-      <span className="anti-metal-dots" aria-hidden="true"><i/><i/><i/></span>
       <span className="anti-metal-coin" aria-hidden="true">₹</span>
     </button>
   );
