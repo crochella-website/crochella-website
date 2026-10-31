@@ -21,11 +21,10 @@ const crochetSlots = [
 ];
 
 function KarigariHeroImage() {
-  return <img
+  return <div
     className="karigari-hero-art"
-    src="/uploads/karigari-dadi-web-hero.png"
-    alt="Dadi flying in from the upper right, holding a yarn web with four handmade crochet keychains caught inside"
-    draggable="false"
+    role="img"
+    aria-label="Dadi flying with four crochet keychains caught in her yarn web"
   />;
 }
 
