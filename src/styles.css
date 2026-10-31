@@ -1004,16 +1004,19 @@
 @media(prefers-reduced-motion:reduce){.crochellas-banner-art img,.crochellas-carousel-card,.crochellas-product-image img{animation:none;transition:none}}
 
 
-/* Festive marquee between the Crochellas hero and preview */
-.crochellas-festive-marquee{position:relative;overflow:hidden;background:#f8efe5;color:#581d35;border-top:1px solid rgba(91,31,54,.1);border-bottom:1px solid rgba(91,31,54,.1);padding:15px 0}
-.crochellas-marquee-track{display:flex;width:max-content;animation:crochellas-marquee-drift 36s linear infinite;will-change:transform}
-.crochellas-marquee-group{display:flex;align-items:center;gap:42px;padding-right:42px;white-space:nowrap}
-.crochellas-marquee-message{display:inline-flex;align-items:center;gap:10px;font-size:clamp(12px,1vw,14px);font-weight:500;letter-spacing:.025em}
-.crochellas-marquee-message b{font-size:18px;font-weight:400}
-.crochellas-marquee-message strong{display:inline-block;border-radius:999px;background:#6e203f;color:#fff3df;padding:7px 12px;font-size:11px;letter-spacing:.1em}
-.crochellas-marquee-product{display:inline-flex;align-items:center;gap:8px;color:#8a5a6b;font-size:11px;letter-spacing:.04em}
-.crochellas-marquee-product img{width:30px;height:30px;object-fit:contain;filter:drop-shadow(0 2px 3px rgba(72,27,44,.12))}
-.crochellas-festive-marquee:hover .crochellas-marquee-track{animation-play-state:paused}
-@keyframes crochella-marquee-drift{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-@media(max-width:700px){.crochellas-festive-marquee{padding:12px 0}.crochellas-marquee-group{gap:24px;padding-right:24px}.crochellas-marquee-product img{width:25px;height:25px}.crochellas-marquee-message{font-size:11px}}
-@media(prefers-reduced-motion:reduce){.crochellas-marquee-track{animation:none}}
+
+
+
+/* Refined SVG-path festive marquee */
+.crochellas-festive-marquee{height:142px;position:relative;overflow:hidden;background:#f8efe5;color:#581d35;border-block:1px solid rgba(91,31,54,.1);padding:0}
+.crochellas-marquee-path{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
+.crochellas-marquee-path path{fill:none;stroke:rgba(111,38,66,.13);stroke-width:1;stroke-dasharray:3 8}
+.crochellas-path-items{position:absolute;inset:0;pointer-events:none}
+.crochellas-path-item{position:absolute;left:0;top:0;display:flex;align-items:center;justify-content:center;will-change:transform}
+.crochellas-path-item.is-product{width:30px;height:30px;opacity:.86}
+.crochellas-path-item.is-product img{display:block;width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 2px 3px rgba(72,27,44,.12))}
+.crochellas-path-item.is-offer{padding:7px 12px;border:1px solid rgba(111,38,66,.15);border-radius:999px;background:rgba(255,250,244,.88);box-shadow:0 3px 12px rgba(72,27,44,.05);white-space:nowrap;color:#67213f;font-size:11px;font-weight:600;letter-spacing:.025em}
+.crochellas-marquee-caption{position:absolute;left:50%;bottom:7px;transform:translateX(-50%);white-space:nowrap;color:#9b7482;font-size:8px;letter-spacing:.18em}
+.crochellas-marquee-caption i{font-style:normal;color:#c68d52;padding:0 8px}
+@media(max-width:700px){.crochellas-festive-marquee{height:112px}.crochellas-path-item.is-product{width:23px;height:23px}.crochellas-path-item.is-offer{padding:6px 9px;font-size:9px}.crochellas-marquee-caption{font-size:7px;letter-spacing:.12em}}
+@media(prefers-reduced-motion:reduce){.crochellas-path-item{will-change:auto}}
