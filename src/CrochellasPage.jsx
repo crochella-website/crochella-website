@@ -24,6 +24,18 @@ export default function CrochellasPage(){
       <div className="crochellas-banner-art" aria-hidden="true"><img src="/uploads/Web-Slinging%20Grandma%20and%20Crochet%20Crew.png" alt=""/></div>
       <span className="crochellas-banner-note">HANDMADE · NOT MASS-MADE</span>
     </section>
+    <section className="crochellas-festive-marquee" aria-label="Crochella festive offers">
+      <div className="crochellas-marquee-track">
+        {[0,1].map(copy=><div className="crochellas-marquee-group" key={copy} aria-hidden={copy===1}>
+          <span className="crochellas-marquee-message"><b>✨</b> Diwali Festive Offer <strong>40% OFF</strong> across the collection</span>
+          <span className="crochellas-marquee-product"><img src="/uploads/panda-keychain.png" alt=""/> Handmade with love</span>
+          <span className="crochellas-marquee-message"><b>💖</b> No extra shipping cost</span>
+          <span className="crochellas-marquee-product"><img src="/uploads/turtle-keychain.png" alt=""/> Little joys, delivered</span>
+          <span className="crochellas-marquee-message"><b>😊</b> A little charm, a lot of love</span>
+          <span className="crochellas-marquee-product"><img src="/uploads/pink-bow-keychain.png" alt=""/> Made slowly by Dadi</span>
+        </div>)}
+      </div>
+    </section>
     <section className="crochellas-featured" aria-label="Featured crochet product carousel">
       <div className="crochellas-featured-heading"><span>01 / A LITTLE PREVIEW</span><p>Made to make you smile.</p></div>
       <div className="crochellas-carousel" onPointerDown={onPointerDown} onPointerMove={onPointerMove} onPointerUp={onPointerUp} onPointerCancel={onPointerUp} style={{touchAction:'pan-y'}}>
