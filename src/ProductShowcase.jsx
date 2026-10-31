@@ -20,26 +20,12 @@ const crochetSlots = [
   { id:'heart', name:'Love Note', note:'Heart keychain', image:'/uploads/heart-keychain.png', tone:'rose', mark:'♥', story:'A bright red crochet heart, a tiny reminder to carry a little love.' },
 ];
 
-function KarigariSpriteAnimation() {
-  const [frame, setFrame] = useState(0);
-
-  useEffect(() => {
-    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reducedMotion) return;
-    const timer = window.setInterval(() => setFrame(current => (current + 1) % 15), 1000 / 3);
-    return () => window.clearInterval(timer);
-  }, []);
-
-  const column = frame % 5;
-  const row = Math.floor(frame / 5);
-  const positionX = column * 25;
-  const positionY = row * 50;
-
-  return <div
-    className="karigari-dadi-sprite"
-    role="img"
-    aria-label="Dadi flies in, casts her yarn web, and catches the crochet keychains"
-    style={{ backgroundPosition: `${positionX}% ${positionY}%` }}
+function KarigariHeroImage() {
+  return <img
+    className="karigari-hero-art"
+    src="/uploads/karigari-dadi-web-hero.png"
+    alt="Dadi flying in from the upper right, holding a yarn web with four handmade crochet keychains caught inside"
+    draggable="false"
   />;
 }
 
@@ -96,7 +82,7 @@ export default function ProductShowcase() {
     <div className="product-stage">
       {category==='crochet'?<>
         <div className="karigari-cgi-scene">
-          <KarigariSpriteAnimation/>
+          <KarigariHeroImage/>
           <div className="karigari-video-hotspots" aria-label="Explore the crochet products">
             <button style={{left:'1%',top:'20%',width:'15%',height:'48%'}} onClick={()=>releaseProduct(crochetSlots.find(p=>p.id==='panda'))} aria-label="Explore Panda Pal"/>
             <button style={{left:'12%',top:'31%',width:'19%',height:'40%'}} onClick={()=>releaseProduct(crochetSlots.find(p=>p.id==='turtle'))} aria-label="Explore Turtle Buddy"/>
