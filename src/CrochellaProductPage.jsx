@@ -32,8 +32,20 @@ export default function CrochellaProductPage({slug}){
      const Ctx=window.AudioContext||window.webkitAudioContext;if(!Ctx)return;
      const ctx=audioRef.current||new Ctx();audioRef.current=ctx;if(ctx.state==='suspended')ctx.resume();
      const now=ctx.currentTime;
-     [[660,0],[880,.18],[1046,.36]].forEach(([freq,delay])=>{const osc=ctx.createOscillator(),gain=ctx.createGain();osc.type='sine';osc.frequency.setValueAtTime(freq,now+delay);gain.gain.setValueAtTime(.0001,now+delay);gain.gain.exponentialRampToValueAtTime(.12,now+delay+.025);gain.gain.exponentialRampToValueAtTime(.0001,now+delay+.45);osc.connect(gain);gain.connect(ctx.destination);osc.start(now+delay);osc.stop(now+delay+.48)});
-     setSoundOn(true);window.setTimeout(()=>setSoundOn(false),1000);
+     // Soft rolling train rumble: filtered noise with a short fade.
+     const buffer=ctx.createBuffer(1,ctx.sampleRate*2,ctx.sampleRate),data=buffer.getChannelData(0);
+     for(let i=0;i<data.length;i++)data[i]=(Math.random()*2-1)*.55;
+     const noise=ctx.createBufferSource(),filter=ctx.createBiquadFilter(),rumble=ctx.createGain();
+     noise.buffer=buffer;filter.type='lowpass';filter.frequency.setValueAtTime(180,now);filter.frequency.linearRampToValueAtTime(420,now+.8);
+     rumble.gain.setValueAtTime(.0001,now);rumble.gain.linearRampToValueAtTime(.075,now+.12);rumble.gain.exponentialRampToValueAtTime(.0001,now+1.5);
+     noise.connect(filter);filter.connect(rumble);rumble.connect(ctx.destination);noise.start(now);noise.stop(now+1.55);
+     // A gentle whistle followed by the platform arrival chime.
+     const whistle=ctx.createOscillator(),whistleGain=ctx.createGain();
+     whistle.type='sine';whistle.frequency.setValueAtTime(520,now+.12);whistle.frequency.exponentialRampToValueAtTime(760,now+.48);whistle.frequency.exponentialRampToValueAtTime(560,now+.95);
+     whistleGain.gain.setValueAtTime(.0001,now+.12);whistleGain.gain.exponentialRampToValueAtTime(.045,now+.22);whistleGain.gain.exponentialRampToValueAtTime(.0001,now+1.05);
+     whistle.connect(whistleGain);whistleGain.connect(ctx.destination);whistle.start(now+.12);whistle.stop(now+1.1);
+     [[660,1.05],[880,1.23],[1046,1.41]].forEach(([freq,delay])=>{const osc=ctx.createOscillator(),gain=ctx.createGain();osc.type='sine';osc.frequency.setValueAtTime(freq,now+delay);gain.gain.setValueAtTime(.0001,now+delay);gain.gain.exponentialRampToValueAtTime(.10,now+delay+.025);gain.gain.exponentialRampToValueAtTime(.0001,now+delay+.42);osc.connect(gain);gain.connect(ctx.destination);osc.start(now+delay);osc.stop(now+delay+.45)});
+     setSoundOn(true);window.setTimeout(()=>setSoundOn(false),1900);
    }catch{}
  };
  const price=pricing.products[product.id]?.price??99;
@@ -45,7 +57,7 @@ export default function CrochellaProductPage({slug}){
     <div className="train-vehicle" aria-hidden="true"><span className="train-smoke">☁</span><span className="train-engine">🚂</span><span className="train-car">✿</span><span className="train-car">♥</span></div>
     <div className={'station-sign '+(arrived?'is-visible':'')}><small>NEXT STOP</small><strong>FATEHPUR<br/>STATION</strong><span>Welcome to Crochella</span></div>
    </div>
-   <div className={'station-story '+(arrived?'is-visible':'')}><span className="station-kicker">PLATFORM 01 · A STORY IN EVERY STITCH</span><h1>From Fatehpur,<br/><em>with love.</em></h1><p>In a little corner of Uttar Pradesh, Dadi and her crew turn yarn into tiny companions. Every loop is made by hand, with patience, warmth, and a story to share.</p><button className="arrival-sound" onClick={playArrival}>{soundOn?'♪ Playing arrival chime':'♫ Hear the station chime'}</button></div>
+   <div className={'station-story '+(arrived?'is-visible':'')}><span className="station-kicker">PLATFORM 01 · A STORY IN EVERY STITCH</span><h1>From Fatehpur,<br/><em>with love.</em></h1><p>In a little corner of Uttar Pradesh, Dadi and her crew turn yarn into tiny companions. Every loop is made by hand, with patience, warmth, and a story to share.</p><button className="arrival-sound" onClick={playArrival}>{soundOn?'♪ Playing arrival sounds':'♫ Hear train & platform sounds'}</button></div>
   </section>
   <section className="product-story-main">
    <div className="product-story-image"><div className="product-story-image-halo"/><img src={product.image} alt={product.name}/><span className="product-story-image-tag">HANDMADE IN FATEHPUR</span></div>
