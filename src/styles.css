@@ -904,3 +904,17 @@
  mix-blend-mode:screen;
  animation:karigariHeroShuttle 6s ease-in-out infinite;
 }
+
+
+/* Position the uploaded transparent web-slinging Dadi artwork at the scene's top-right */
+.karigari-hero-art{
+ position:absolute;top:0;right:0;left:auto;width:min(100%,1250px);height:100%;
+ aspect-ratio:auto;object-fit:contain;object-position:top right;
+ transform:none;display:block;background:none;background-image:none;
+ background-size:auto;background-position:top right;mix-blend-mode:normal;
+ animation:karigariHeroShuttle 6s ease-in-out infinite;
+}
+@media(max-width:760px){
+ .karigari-hero-art{width:115%;height:100%;right:-8%;object-position:top right}
+}
+@media(prefers-reduced-motion:reduce){.karigari-hero-art{animation:none}}
