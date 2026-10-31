@@ -27,28 +27,16 @@ export default function CrochellaProductPage({slug}){
  const [soundOn,setSoundOn]=useState(false);
  const audioRef=useRef(null);
  useEffect(()=>{const timer=window.setTimeout(()=>setArrived(true),3900);return()=>window.clearTimeout(timer)},[slug]);
- const playArrival=()=>{
-   try{
-     const Ctx=window.AudioContext||window.webkitAudioContext;if(!Ctx)return;
-     const ctx=audioRef.current||new Ctx();audioRef.current=ctx;if(ctx.state==='suspended')ctx.resume();
-     const now=ctx.currentTime;
-     // Soft rolling train rumble: filtered noise with a short fade.
-     const buffer=ctx.createBuffer(1,ctx.sampleRate*2,ctx.sampleRate),data=buffer.getChannelData(0);
-     for(let i=0;i<data.length;i++)data[i]=(Math.random()*2-1)*.55;
-     const noise=ctx.createBufferSource(),filter=ctx.createBiquadFilter(),rumble=ctx.createGain();
-     noise.buffer=buffer;filter.type='lowpass';filter.frequency.setValueAtTime(180,now);filter.frequency.linearRampToValueAtTime(420,now+.8);
-     rumble.gain.setValueAtTime(.0001,now);rumble.gain.linearRampToValueAtTime(.075,now+.12);rumble.gain.exponentialRampToValueAtTime(.0001,now+1.5);
-     noise.connect(filter);filter.connect(rumble);rumble.connect(ctx.destination);noise.start(now);noise.stop(now+1.55);
-     // A gentle whistle followed by the platform arrival chime.
-     const whistle=ctx.createOscillator(),whistleGain=ctx.createGain();
-     whistle.type='sine';whistle.frequency.setValueAtTime(520,now+.12);whistle.frequency.exponentialRampToValueAtTime(760,now+.48);whistle.frequency.exponentialRampToValueAtTime(560,now+.95);
-     whistleGain.gain.setValueAtTime(.0001,now+.12);whistleGain.gain.exponentialRampToValueAtTime(.045,now+.22);whistleGain.gain.exponentialRampToValueAtTime(.0001,now+1.05);
-     whistle.connect(whistleGain);whistleGain.connect(ctx.destination);whistle.start(now+.12);whistle.stop(now+1.1);
-     [[660,1.05],[880,1.23],[1046,1.41]].forEach(([freq,delay])=>{const osc=ctx.createOscillator(),gain=ctx.createGain();osc.type='sine';osc.frequency.setValueAtTime(freq,now+delay);gain.gain.setValueAtTime(.0001,now+delay);gain.gain.exponentialRampToValueAtTime(.10,now+delay+.025);gain.gain.exponentialRampToValueAtTime(.0001,now+delay+.42);osc.connect(gain);gain.connect(ctx.destination);osc.start(now+delay);osc.stop(now+delay+.45)});
-     setSoundOn(true);window.setTimeout(()=>setSoundOn(false),1900);
-   }catch{}
+ const toggleArrivalAudio=async()=>{
+   const audio=audioRef.current;
+   if(!audio)return;
+   if(audio.paused){
+     try{await audio.play();setSoundOn(true)}catch{setSoundOn(false)}
+   }else{
+     audio.pause();setSoundOn(false);
+   }
  };
- const price=pricing.products[product.id]?.price??99;
+ const price= const price=pricing.products[product.id]?.price??99;
  return <main className="product-story-page">
   <header className="product-story-nav"><a href="/crochellas">← All little things</a><a className="product-story-logo" href="/">Crochella<span>®</span></a><a href="https://www.instagram.com/direct/t/17846754582500300" target="_blank" rel="noreferrer">Ask Dadi ↗</a></header>
   <section className="train-arrival" aria-label="The Crochella train arrives at Fatehpur">
@@ -57,7 +45,7 @@ export default function CrochellaProductPage({slug}){
     <div className="train-vehicle" aria-hidden="true"><span className="train-smoke">☁</span><span className="train-engine">🚂</span><span className="train-car">✿</span><span className="train-car">♥</span></div>
     <div className={'station-sign '+(arrived?'is-visible':'')}><small>NEXT STOP</small><strong>FATEHPUR<br/>STATION</strong><span>Welcome to Crochella</span></div>
    </div>
-   <div className={'station-story '+(arrived?'is-visible':'')}><span className="station-kicker">PLATFORM 01 · A STORY IN EVERY STITCH</span><h1>From Fatehpur,<br/><em>with love.</em></h1><p>In a little corner of Uttar Pradesh, Dadi and her crew turn yarn into tiny companions. Every loop is made by hand, with patience, warmth, and a story to share.</p><button className="arrival-sound" onClick={playArrival}>{soundOn?'♪ Playing arrival sounds':'♫ Hear train & platform sounds'}</button></div>
+   <div className={'station-story '+(arrived?'is-visible':'')}><span className="station-kicker">PLATFORM 01 · A STORY IN EVERY STITCH</span><h1>From Fatehpur,<br/><em>with love.</em></h1><p>In a little corner of Uttar Pradesh, Dadi and her crew turn yarn into tiny companions. Every loop is made by hand, with patience, warmth, and a story to share.</p><div className="arrival-audio-control"><audio ref={audioRef} preload="none" onPlay={()=>setSoundOn(true)} onPause={()=>setSoundOn(false)} onEnded={()=>setSoundOn(false)}><source src="/uploads/vidssave.com%20Train%20Announcements%20%E2%9D%A4%20%23indianrailways%20%23station%20%23train%20128KBPS.mp4" type="audio/mp4"/>Your browser does not support this audio.</audio><button className="arrival-sound" type="button" onClick={toggleArrivalAudio} aria-pressed={soundOn}>{soundOn?'Ⅱ Pause train announcement':'▶ Play train announcement'}</button></div></div>
   </section>
   <section className="product-story-main">
    <div className="product-story-image"><div className="product-story-image-halo"/><img src={product.image} alt={product.name}/><span className="product-story-image-tag">HANDMADE IN FATEHPUR</span></div>
