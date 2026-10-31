@@ -51,7 +51,7 @@ export default function CrochellasPage(){
   const onPointerUp=()=>{if(Math.abs(dragDelta)>24)move(dragDelta<0?1:-1);setDragStart(null);setDragDelta(0)};
   const featured=products[offset];
   return <main className="crochellas-page">
-    <header className="crochellas-nav"><a className="crochellas-wordmark" href="/">Crochella<span>®</span></a><nav><a href="/#kahani">Our story</a><a href="/#karigari">Karigari</a><a href="#collection">Collection</a></nav><a className="crochellas-nav-cta" href="#collection">Shop handmade <span>↗</span></a></header>
+    <header className="crochellas-nav"><a className="crochellas-wordmark" href="/"><span className="crochellas-nav-mark" aria-hidden="true">C</span><span className="crochellas-nav-brand">Crochella<sup>®</sup></span></a><nav><a href="/#kahani">Our story</a><a href="/#karigari">Karigari</a><a href="#collection">Collection</a></nav><a className="crochellas-nav-cta" href="#collection">Shop handmade <span>↗</span></a></header>
     <section className="crochellas-banner">
       <div className="crochellas-banner-copy"><span className="crochellas-kicker"><i/> THE LITTLE THINGS, MADE WITH LOVE</span><h1>Meet your new<br/><em>crochet bestie.</em></h1><p>Little handmade joys, stitched slowly by Dadi and her crew. Pick a charm that feels like you.</p><a className="crochellas-banner-button" href="#collection">Find your little thing <span>↓</span></a></div>
       <div className="crochellas-banner-art" aria-hidden="true"><img src="/uploads/Web-Slinging%20Grandma%20and%20Crochet%20Crew.png" alt=""/></div>
