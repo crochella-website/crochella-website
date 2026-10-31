@@ -41,7 +41,22 @@ export default function ProductShowcase() {
   const [paused, setPaused] = useState(false);
   const [webBurst, setWebBurst] = useState(false);
   const [burstTarget, setBurstTarget] = useState(null);
+  const [webProductIndex, setWebProductIndex] = useState(0);
+  const [webProductFade, setWebProductFade] = useState(false);
   const visibleCount = 5;
+  const webProducts = crochetSlots;
+  const changeWebProduct = direction => {
+    setWebProductFade(true);
+    window.setTimeout(() => {
+      setWebProductIndex(index => (index + direction + webProducts.length) % webProducts.length);
+      setWebProductFade(false);
+    }, 180);
+  };
+  useEffect(() => {
+    if (category !== 'crochet' || selected) return;
+    const timer = window.setInterval(() => changeWebProduct(1), 1200);
+    return () => window.clearInterval(timer);
+  }, [category, selected, webProducts.length]);
   const products = crochetSlots;
   const visibleProducts = Array.from({length:visibleCount},(_,i)=>products[(page+i)%products.length]);
   const step = (direction) => { setPage(current=>(current+direction+products.length)%products.length); setActive(current=>(current+direction+products.length)%products.length); };
@@ -88,6 +103,14 @@ export default function ProductShowcase() {
             <button className="karigari-hotspot hotspot-turtle" onClick={()=>releaseProduct(crochetSlots.find(p=>p.id==='turtle'))} aria-label="Explore Turtle Buddy"><span className="karigari-product-label">Turtle Buddy</span></button>
             <button className="karigari-hotspot hotspot-burger" onClick={()=>releaseProduct(crochetSlots.find(p=>p.id==='burger'))} aria-label="Explore Burger Buddy"><span className="karigari-product-label">Burger Buddy</span></button>
             <button className="karigari-hotspot hotspot-bow" onClick={()=>releaseProduct(crochetSlots.find(p=>p.id==='bow'))} aria-label="Explore Pink Bow"><span className="karigari-product-label">Pink Bow</span></button>
+          </div>
+          <div className="web-product-carousel" aria-label="Featured crochet product">
+            <button className="web-carousel-arrow web-carousel-prev" aria-label="Previous product" onClick={()=>changeWebProduct(-1)}><span>‹</span></button>
+            <button className={`web-product-card ${webProductFade?'is-fading':''}`} onClick={()=>releaseProduct(webProducts[webProductIndex])} aria-label={`Open ${webProducts[webProductIndex].name} details`}>
+              <img src={webProducts[webProductIndex].image} alt="" />
+              <span>{webProducts[webProductIndex].name}</span>
+            </button>
+            <button className="web-carousel-arrow web-carousel-next" aria-label="Next product" onClick={()=>changeWebProduct(1)}><span>›</span></button>
           </div>
           <div className="karigari-scene-caption"><span>MADE BY HAND</span><i>✦</i><span>CAUGHT WITH LOVE</span></div>
         </div>
