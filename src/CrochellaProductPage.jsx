@@ -26,7 +26,7 @@ export default function CrochellaProductPage({slug}){
  const [arrived,setArrived]=useState(false);
  const [soundOn,setSoundOn]=useState(false);
  const audioRef=useRef(null);
- useEffect(()=>{const timer=window.setTimeout(()=>setArrived(true),1800);return()=>window.clearTimeout(timer)},[slug]);
+ useEffect(()=>{const timer=window.setTimeout(()=>setArrived(true),3900);return()=>window.clearTimeout(timer)},[slug]);
  const playArrival=()=>{
    try{
      const Ctx=window.AudioContext||window.webkitAudioContext;if(!Ctx)return;
