@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import pricing from './content/crochella-pricing.json';
 
+const TRAIN_ANNOUNCEMENT_URL = '/uploads/vidssave.com%20Train%20Announcements%20%F0%9F%92%96%20%23indianrailways%20%23station%20%23train%20128KBPS.mp4';
+
 const products=[
 {id:'panda',name:'Panda Pal',image:'/uploads/panda-keychain.png',emoji:'🐼',story:'A tiny panda pal, crocheted stitch by stitch. Soft, playful, and ready to travel wherever your bag goes.',detail:'A little companion for everyday adventures.'},
 {id:'turtle',name:'Turtle Buddy',image:'/uploads/turtle-keychain.png',emoji:'🐢',story:'A little turtle with a textured shell and a gentle smile, made slowly by hand in soft yarn.',detail:'Carry a reminder to take life one stitch at a time.'},
