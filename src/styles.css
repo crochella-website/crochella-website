@@ -1121,3 +1121,10 @@
 .arrival-sound:hover,.arrival-sound:focus-visible{background:#ffffff18;border-color:#f5d9bd}
 .arrival-sound[aria-pressed="true"]{background:#f1c56d;color:#45152a;border-color:#f1c56d}
 @media(max-width:760px){.crochellas-nav{height:68px;padding:0 16px;gap:8px}.crochellas-nav-brand{font-size:11px;letter-spacing:.12em}.crochellas-nav-mark{width:23px;height:23px}.crochellas-nav nav{display:flex;gap:0}.crochellas-nav nav a{padding:8px 6px;font-size:8px;letter-spacing:.04em}.crochellas-nav-cta{padding:8px!important;font-size:8px!important}.crochellas-nav-cta span{margin-left:3px}.arrival-audio-control{margin-top:17px}.arrival-sound{width:100%;min-height:46px}}
+
+
+/* Lifestyle photography fills its product card rather than inheriting the transparent cutout sizing */
+.crochellas-product-image img.crochellas-product-lifestyle{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:cover;object-position:center;display:block}
+.crochellas-product-image img.crochellas-product-transparent{position:relative;z-index:1}
+.crochellas-product-image.has-lifestyle:hover img.crochellas-product-transparent,.crochellas-product-image.has-lifestyle:focus-visible img.crochellas-product-transparent{opacity:0}
+.crochellas-product-image.has-lifestyle:hover img.crochellas-product-lifestyle,.crochellas-product-image.has-lifestyle:focus-visible img.crochellas-product-lifestyle{opacity:1;transform:scale(1)}
