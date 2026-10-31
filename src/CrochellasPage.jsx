@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import pricing from './content/crochella-pricing.json';
 
 const products=[{"id":"panda","name":"Panda Pal","image":"/uploads/panda-keychain.png","emoji":"🐼"},{"id":"turtle","name":"Turtle Buddy","image":"/uploads/turtle-keychain.png","emoji":"🐢"},{"id":"banana","name":"Bananita","image":"/uploads/banana-keychain.png","emoji":"🍌"},{"id":"bow","name":"Pink Bow","image":"/uploads/pink-bow-keychain.png","emoji":"🎀"},{"id":"burger","name":"Burger Buddy","image":"/uploads/burger-keychain.png","emoji":"🍔"},{"id":"lion","name":"Little Lion","image":"/uploads/lion-keychain.png","emoji":"🦁"},{"id":"avocado","name":"Avo Cutie","image":"/uploads/avocado-keychain.png","emoji":"🥑"},{"id":"penguin","name":"Penguin Pal","image":"/uploads/penguin-keychain.png","emoji":"🐧"},{"id":"handbag","name":"Mini Tote","image":"/uploads/handbag-keychain.png","emoji":"👜"},{"id":"strawberry","name":"Berry Sweet","image":"/uploads/strawberry-keychain.png","emoji":"🍓"},{"id":"chilli","name":"Chilli Pop","image":"/uploads/chilli-keychain.png","emoji":"🌶️"},{"id":"bee","name":"Busy Bee","image":"/uploads/bee-keychain.png","emoji":"🐝"},{"id":"bear","name":"Teddy Bear","image":"/uploads/bear-keychain.png","emoji":"🧸"},{"id":"evil-eye","name":"Good Vibes","image":"/uploads/evil-eye-keychain.png","emoji":"🧿"},{"id":"cherry","name":"Cherry Duo","image":"/uploads/cherry-keychain.png","emoji":"🍒"},{"id":"sunflower","name":"Sunshine","image":"/uploads/sunflower-keychain.png","emoji":"🌻"},{"id":"heart","name":"Love Note","image":"/uploads/heart-keychain.png","emoji":"♥"}];
@@ -7,6 +7,36 @@ export default function CrochellasPage(){
   const [offset,setOffset]=useState(0);
   const [dragStart,setDragStart]=useState(null);
   const [dragDelta,setDragDelta]=useState(0);
+  const marqueeRef=useRef(null);
+  useEffect(()=>{
+    const root=marqueeRef.current;
+    if(!root)return;
+    const path=root.querySelector('path');
+    const items=[...root.querySelectorAll('[data-path-index]')];
+    if(!path||!items.length||!path.getTotalLength)return;
+    let raf=0,last=0,progress=0,paused=false;
+    const length=path.getTotalLength();
+    const tick=now=>{
+      if(!last)last=now;
+      const dt=Math.min((now-last)/1000,.05);last=now;
+      if(!paused&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches)progress=(progress+dt*34)%length;
+      const bounds=root.getBoundingClientRect();
+      const sx=bounds.width/1440,sy=bounds.height/140;
+      items.forEach((el,i)=>{
+        const distance=(progress+i*(length/items.length))%length;
+        const point=path.getPointAtLength(distance);
+        const before=path.getPointAtLength(Math.max(0,distance-1));
+        const after=path.getPointAtLength(Math.min(length,distance+1));
+        const angle=Math.atan2((after.y-before.y)*sy,(after.x-before.x)*sx)*180/Math.PI;
+        el.style.transform=`translate3d(${point.x*sx}px,${point.y*sy}px,0) translate(-50%,-50%) rotate(${angle*.42}deg)`;
+      });
+      raf=requestAnimationFrame(tick);
+    };
+    const pause=()=>{paused=true},resume=()=>{paused=false};
+    root.addEventListener('pointerenter',pause);root.addEventListener('pointerleave',resume);
+    raf=requestAnimationFrame(tick);
+    return()=>{cancelAnimationFrame(raf);root.removeEventListener('pointerenter',pause);root.removeEventListener('pointerleave',resume)};
+  },[]);
   useEffect(()=>{
     if(dragStart!==null)return;
     const timer=window.setInterval(()=>setOffset(v=>(v+1)%products.length),3200);
@@ -24,17 +54,16 @@ export default function CrochellasPage(){
       <div className="crochellas-banner-art" aria-hidden="true"><img src="/uploads/Web-Slinging%20Grandma%20and%20Crochet%20Crew.png" alt=""/></div>
       <span className="crochellas-banner-note">HANDMADE · NOT MASS-MADE</span>
     </section>
-    <section className="crochellas-festive-marquee" aria-label="Crochella festive offers">
-      <div className="crochellas-marquee-track">
-        {[0,1].map(copy=><div className="crochellas-marquee-group" key={copy} aria-hidden={copy===1}>
-          <span className="crochellas-marquee-message"><b>✨</b> Diwali Festive Offer <strong>40% OFF</strong> across the collection</span>
-          <span className="crochellas-marquee-product"><img src="/uploads/panda-keychain.png" alt=""/> Handmade with love</span>
-          <span className="crochellas-marquee-message"><b>💖</b> No extra shipping cost</span>
-          <span className="crochellas-marquee-product"><img src="/uploads/turtle-keychain.png" alt=""/> Little joys, delivered</span>
-          <span className="crochellas-marquee-message"><b>😊</b> A little charm, a lot of love</span>
-          <span className="crochellas-marquee-product"><img src="/uploads/pink-bow-keychain.png" alt=""/> Made slowly by Dadi</span>
+    <section ref={marqueeRef} className="crochellas-festive-marquee" aria-label="Crochella festive offers">
+      <svg className="crochellas-marquee-path" viewBox="0 0 1440 140" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M-30 92 C180 8 340 18 505 88 S805 142 980 66 S1260 4 1470 78" />
+      </svg>
+      <div className="crochellas-path-items" aria-hidden="true">
+        {Array.from({length:12},(_,i)=><div className={`crochellas-path-item ${i%3===0?'is-offer':'is-product'}`} data-path-index={i} key={i}>
+          {i%3===0?<span>{i===0?'✨ Diwali · 40% OFF':i===3?'💖 No extra shipping':'😊 Handmade with love'}</span>:<img src={products[(i*2)%products.length].image} alt=""/>}
         </div>)}
       </div>
+      <span className="crochellas-marquee-caption">LITTLE JOYS, MADE BY HAND <i>✦</i> FESTIVE LOVE FROM DADI</span>
     </section>
     <section className="crochellas-featured" aria-label="Featured crochet product carousel">
       <div className="crochellas-featured-heading"><span>01 / A LITTLE PREVIEW</span><p>Made to make you smile.</p></div>
