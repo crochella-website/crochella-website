@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import pricing from './content/crochella-pricing.json';
 
-const TRAIN_ANNOUNCEMENT_URL = '/uploads/vidssave.com%20Train%20Announcements%20%F0%9F%92%96%20%23indianrailways%20%23station%20%23train%20128KBPS.mp4';
+const TRAIN_ANNOUNCEMENT_URL = '/uploads/' + encodeURIComponent('vidssave.com Train Announcements ❤ #indianrailways #station #train 128KBPS.mp4');
 
 const products=[
 {id:'panda',name:'Panda Pal',image:'/uploads/panda-keychain.png',emoji:'🐼',story:'A tiny panda pal, crocheted stitch by stitch. Soft, playful, and ready to travel wherever your bag goes.',detail:'A little companion for everyday adventures.'},
@@ -26,14 +26,14 @@ const products=[
 export default function CrochellaProductPage({slug}){
  const product=products.find(p=>p.id===slug)||products[0];
  const [arrived,setArrived]=useState(false);
- const [soundOn,setSoundOn]=useState(false);
+ const [soundOn,setSoundOn]=useState(false);\n const [audioError,setAudioError]=useState(false);
  const audioRef=useRef(null);
  useEffect(()=>{const timer=window.setTimeout(()=>setArrived(true),3900);return()=>window.clearTimeout(timer)},[slug]);
  const toggleArrivalAudio=async()=>{
    const audio=audioRef.current;
    if(!audio)return;
    if(audio.paused){
-     try{await audio.play();setSoundOn(true)}catch{setSoundOn(false)}
+     try{audio.currentTime=0;await audio.play();setSoundOn(true);setAudioError(false)}catch{setSoundOn(false);setAudioError(true)}
    }else{
      audio.pause();setSoundOn(false);
    }
@@ -47,7 +47,7 @@ export default function CrochellaProductPage({slug}){
     <div className="train-vehicle" aria-hidden="true"><span className="train-smoke">☁</span><span className="train-engine">🚂</span><span className="train-car">✿</span><span className="train-car">♥</span></div>
     <div className={'station-sign '+(arrived?'is-visible':'')}><small>NEXT STOP</small><strong>FATEHPUR<br/>STATION</strong><span>Welcome to Crochella</span></div>
    </div>
-   <div className={'station-story '+(arrived?'is-visible':'')}><span className="station-kicker">PLATFORM 01 · A STORY IN EVERY STITCH</span><h1>From Fatehpur,<br/><em>with love.</em></h1><p>In a little corner of Uttar Pradesh, Dadi and her crew turn yarn into tiny companions. Every loop is made by hand, with patience, warmth, and a story to share.</p><div className="arrival-audio-control"><audio ref={audioRef} src={TRAIN_ANNOUNCEMENT_URL} preload="metadata" onPlay={()=>setSoundOn(true)} onPause={()=>setSoundOn(false)} onEnded={()=>setSoundOn(false)} onError={()=>setSoundOn(false)}>Your browser does not support this audio.</audio><button className="arrival-sound" type="button" onClick={toggleArrivalAudio} aria-pressed={soundOn}>{soundOn?'Ⅱ Pause train announcement':'▶ Play train announcement'}</button></div></div>
+   <div className={'station-story '+(arrived?'is-visible':'')}><span className="station-kicker">PLATFORM 01 · A STORY IN EVERY STITCH</span><h1>From Fatehpur,<br/><em>with love.</em></h1><p>In a little corner of Uttar Pradesh, Dadi and her crew turn yarn into tiny companions. Every loop is made by hand, with patience, warmth, and a story to share.</p><div className="arrival-audio-control"><audio ref={audioRef} src={TRAIN_ANNOUNCEMENT_URL} controls preload="metadata" onPlay={()=>{setSoundOn(true);setAudioError(false)}} onPause={()=>setSoundOn(false)} onEnded={()=>setSoundOn(false)} onError={()=>{setSoundOn(false);setAudioError(true)}} aria-label="Train station announcement audio">Your browser does not support this audio.</audio><button className="arrival-sound" type="button" onClick={toggleArrivalAudio} aria-pressed={soundOn}>{soundOn?'Ⅱ Pause train announcement':'▶ Play train announcement'}</button>{audioError&&<p className="arrival-audio-error" role="status">The announcement could not load. Please try the player again.</p>}</div></div>
   </section>
   <section className="product-story-main">
    <div className="product-story-image"><div className="product-story-image-halo"/><img src={product.image} alt={product.name}/><span className="product-story-image-tag">HANDMADE IN FATEHPUR</span></div>
