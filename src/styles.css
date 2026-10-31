@@ -1211,3 +1211,6 @@
 @keyframes antiMetalCoin{0%{opacity:0;transform:translateY(-50%) scale(.3) rotate(-20deg)}50%{opacity:1;transform:translateY(-50%) scale(1.2) rotate(10deg)}100%{opacity:0;transform:translateY(-90%) scale(.7) rotate(25deg)}}
 @keyframes antiMetalShuttle{0%{opacity:0;left:-44px;transform:translateY(-50%) scaleX(-1)}15%{opacity:1}100%{opacity:1;left:calc(100% + 44px);transform:translateY(-50%) scaleX(-1)}}
 @media(max-width:560px){.anti-metal-button{min-width:108px;height:44px}}
+
+.arrival-audio-control audio{display:block;width:min(100%,360px);height:40px;margin:16px 0 10px;accent-color:#f1c56d}
+.arrival-audio-error{margin:8px 0!important;color:#ffd0c8!important;font-size:12px!important}
