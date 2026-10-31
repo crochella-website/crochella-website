@@ -892,3 +892,15 @@
 @media(prefers-reduced-motion:reduce){
  .karigari-hero-art{animation:none}
 }
+
+
+/* Use the uploaded sprite sheet as a single still hero frame (no sequence playback) */
+.karigari-hero-art{
+ position:absolute;left:50%;top:50%;width:min(100%,1100px);aspect-ratio:1.6;
+ transform:translate(-50%,-50%);
+ background-image:url('/uploads/crochella-dadi-sprite.png');
+ background-repeat:no-repeat;background-size:500% 300%;background-position:25% 100%;
+ display:block;pointer-events:none;user-select:none;
+ mix-blend-mode:screen;
+ animation:karigariHeroShuttle 6s ease-in-out infinite;
+}
