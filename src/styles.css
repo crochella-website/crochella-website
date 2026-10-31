@@ -1073,7 +1073,7 @@
 /* Diwali mandala hero layer */
 .hero-main{background:linear-gradient(112deg,#650019 0%,#8f1230 48%,#a51e3b 100%)}
 .hero-red-glow{background:linear-gradient(90deg,rgba(54,0,18,.26),transparent 72%)}
-.hero-mandala{position:absolute;z-index:5;top:50%;right:-7%;width:clamp(380px,62vw,920px);height:auto;max-height:118%;object-fit:contain;opacity:.16;mix-blend-mode:screen;pointer-events:none;transform:translate3d(calc(var(--pointer-x,0)*-8px),calc(-50% + var(--pointer-y,0)*-6px),0);animation:hero-mandala-turn 100s linear infinite;filter:drop-shadow(0 0 18px rgba(255,190,68,.12)}
+.hero-mandala{position:absolute;z-index:5;top:50%;right:-7%;width:clamp(380px,62vw,920px);height:auto;max-height:118%;object-fit:contain;opacity:.16;mix-blend-mode:screen;pointer-events:none;transform:translate3d(calc(var(--pointer-x,0)*-8px),calc(-50% + var(--pointer-y,0)*-6px),0);animation:hero-mandala-turn 100s linear infinite;filter:drop-shadow(0 0 18px rgba(255,190,68,.12))}
 @keyframes hero-mandala-turn{from{rotate:0deg}to{rotate:360deg}}
 @media(max-width:760px){.hero-mandala{top:48%;right:-44%;width:118vw;max-height:95%;opacity:.12}}
 @media(prefers-reduced-motion:reduce){.hero-mandala{animation:none}}
