@@ -1480,3 +1480,45 @@
 @keyframes rugPulse{to{opacity:.25;transform:scale(.7)}}
 @media(max-width:760px){.rugs-showcase{padding:66px 0 28px}.rugs-showcase-top{align-items:flex-start;padding:0 20px;margin-bottom:25px}.rugs-showcase-top h2{font-size:clamp(43px,12vw,68px)}.rugs-showcase-top p{max-width:290px;line-height:1.5}.rugs-all-link{font-size:11px;padding:10px 12px}.rugs-filter-row{padding:0 20px;margin-bottom:18px}.rugs-conveyor{gap:12px;padding:8px 20px 22px;scroll-padding-inline:20px}.rug-conveyor-card{flex-basis:76vw;opacity:1;transform:none}.rug-conveyor-card.is-current{transform:none}.rug-image-link{aspect-ratio:1/1}.rug-card-meta h3{font-size:14px}.rug-card-meta strong{font-size:12px}.rugs-arrow{display:none}.rugs-showcase-bottom{padding:0 20px;gap:10px;font-size:8px}.rugs-showcase-bottom span:first-child{max-width:120px}.rugs-all-link{align-self:flex-end}}
 @media(prefers-reduced-motion:reduce){.rugs-showcase *{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+
+/* Rug conveyor belt: interactive editorial showroom */
+.rugs-showcase{background:#0b0b0b;color:#f7f1e7;padding-top:clamp(68px,8vw,112px)}
+.rugs-showcase:before{background:radial-gradient(ellipse at 50% 58%,#34302b55,transparent 58%),linear-gradient(135deg,#101010,#080808)}
+.rugs-eyebrow{color:#c8b79f}
+.rugs-showcase-top h2{color:#f7f1e7}
+.rugs-showcase-top h2 em{color:#d7b78c}
+.rugs-showcase-top p{color:#b8ada0}
+.rugs-all-link{border-color:#66584b;color:#f7f1e7}
+.rugs-all-link:hover{background:#f7f1e7;color:#171412}
+.rugs-filter-row button{border-color:#49413a;color:#c9bdb1}
+.rugs-filter-row button.is-active,.rugs-filter-row button:hover{background:#e9d7bd;border-color:#e9d7bd;color:#211914}
+.rugs-belt-experience{max-width:1500px;margin:0 auto;padding:14px 0 24px;background:radial-gradient(ellipse at 50% 45%,#242424 0%,#111 48%,#090909 78%);border:1px solid #ffffff12;border-radius:4px;overflow:hidden}
+.rugs-belt-heading{display:flex;justify-content:space-between;padding:0 clamp(18px,3vw,42px);color:#b7a48d;font-size:10px;letter-spacing:.22em}
+.rugs-belt-scene{position:relative;width:100%;height:clamp(390px,47vw,650px);overflow:hidden;perspective:1100px}
+.rugs-belt-shadow{position:absolute;left:13%;top:14%;width:74%;height:72%;border-radius:50%;background:#000;filter:blur(35px);opacity:.8}
+.rugs-belt-outer{position:absolute;left:12%;top:13%;width:76%;height:74%;border-radius:50%;background:linear-gradient(145deg,#555,#1d1d1d 24%,#080808 48%,#353535 70%,#111);border:2px solid #777;box-shadow:0 22px 32px #000a,inset 0 0 0 8px #151515,inset 0 0 0 10px #555}
+.rugs-belt-outer:before{content:"";position:absolute;inset:5%;border-radius:50%;border:1px solid #ffffff25;background:repeating-conic-gradient(from 0deg,#ffffff08 0deg 1deg,transparent 1deg 12deg)}
+.rugs-belt-inner{position:absolute;left:31%;top:34%;width:38%;height:32%;border-radius:50%;background:linear-gradient(145deg,#050505,#1a1a1a);border:2px solid #5b5b5b;box-shadow:0 8px 14px #000b,inset 0 0 0 5px #101010}
+.rugs-belt-center{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:9px;text-align:center;pointer-events:none;color:#e9d7bd}
+.rugs-belt-center span,.rugs-belt-center small{font-size:9px;letter-spacing:.2em;color:#a99b8b}
+.rugs-belt-center strong{font:500 clamp(24px,3.6vw,48px)/.98 'Playfair Display',serif;letter-spacing:-.04em}
+.rugs-belt-center em{color:#d5a77a}
+.rugs-belt-items{position:absolute;inset:0}
+.rugs-belt-item{position:absolute;width:clamp(105px,14vw,190px);padding:0;border:0;background:transparent;color:#f7f1e7;cursor:pointer;transition:filter .25s}
+.rugs-belt-item:hover,.rugs-belt-item.is-selected{filter:brightness(1.18);z-index:50!important}
+.rugs-belt-plate{display:block;aspect-ratio:1;border-radius:50%;padding:9%;background:radial-gradient(circle at 35% 25%,#fafafa,#c9c9c9 58%,#777);border:3px solid #aaa;box-shadow:0 12px 16px #0009,inset 0 2px 4px #fff;transition:transform .3s,border-color .3s}
+.rugs-belt-item:hover .rugs-belt-plate,.rugs-belt-item.is-selected .rugs-belt-plate{transform:scale(1.09);border-color:#e2bd8f}
+.rugs-belt-plate img{width:100%;height:100%;display:block;object-fit:contain;border-radius:50%;mix-blend-mode:multiply}
+.rugs-belt-product-label{display:block;margin-top:9px;font-size:clamp(9px,1vw,12px);text-shadow:0 2px 8px #000;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rugs-belt-controls{display:flex;align-items:center;justify-content:center;gap:10px;padding:4px 18px 18px}
+.rugs-belt-controls button{width:42px;height:42px;border:1px solid #333;border-radius:50%;background:#171717;color:#eee;font-size:17px;cursor:pointer}
+.rugs-belt-controls button:hover{background:#e9d7bd;color:#211914}
+.rugs-belt-controls span{margin-left:14px;color:#9c9287;font-size:13px}
+.rugs-selected-product{display:flex;align-items:center;gap:16px;width:min(760px,calc(100% - 36px));margin:0 auto 18px;padding:12px 16px;border:1px solid #ffffff20;border-radius:12px;background:#191716}
+.rugs-selected-product>img{width:76px;height:76px;object-fit:contain;border-radius:8px;background:#e8dfd3;padding:6px}
+.rugs-selected-product div{flex:1;min-width:0}.rugs-selected-product div span{font-size:9px;letter-spacing:.15em;color:#b6a28e;text-transform:uppercase}.rugs-selected-product h3{margin:4px 0;font:500 20px 'Playfair Display',serif}.rugs-selected-product strong{font-size:13px}
+.rugs-selected-product>a{padding:10px 14px;border-radius:999px;background:#e9d7bd;color:#211914;text-decoration:none;font-size:12px}
+.rugs-selected-product>button{border:0;background:transparent;color:#c8b9a8;font-size:24px;cursor:pointer}
+.rugs-showcase-bottom{color:#9a8b7b}.rugs-progress{background:#39332e}.rugs-progress i{background:#d5a77a}
+@media(max-width:760px){.rugs-showcase{padding:64px 0 26px}.rugs-showcase-top{padding:0 20px}.rugs-belt-experience{border-radius:0}.rugs-belt-heading{font-size:8px;letter-spacing:.12em}.rugs-belt-scene{height:430px}.rugs-belt-outer{left:3%;top:17%;width:94%;height:65%}.rugs-belt-inner{left:31%;top:36%;width:38%;height:28%}.rugs-belt-item{width:clamp(78px,23vw,118px)}.rugs-belt-plate{border-width:2px}.rugs-belt-product-label{font-size:9px;max-width:100px}.rugs-belt-controls{flex-wrap:wrap}.rugs-belt-controls span{flex-basis:100%;text-align:center;margin:5px 0 0;font-size:11px}.rugs-selected-product{gap:10px;padding:10px}.rugs-selected-product>img{width:54px;height:54px}.rugs-selected-product h3{font-size:15px}.rugs-selected-product>a{font-size:10px;padding:9px}.rugs-selected-product div span{font-size:8px}}
+@media(prefers-reduced-motion:reduce){.rugs-belt-item,.rugs-belt-plate{transition:none}}
