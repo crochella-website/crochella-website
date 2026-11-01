@@ -42,7 +42,7 @@ export default function DiwaliDhamakaPage() {
       <span className="diwali-city-scroll-label">SCROLL TO WANDER <b>↓</b></span>
     </section>
     <section className="diwali-city-story diwali-city-scene">
-      <div className="diwali-city-story-card"><span>02 / THE LANTERN RIVER</span><h2>Built slowly,<br/><em>lit by hand.</em></h2><p>Every stitch carries a little warmth. Wander through our festive river town, where handmade treasures glow beside the water.</p><div className="diwali-city-stats"><div><b>100%</b><small>handmade</small></div><div><b>∞</b><small>little stories</small></div><div><b>1</b><small>loving Dadi</small></div></div>
+      <div className="diwali-city-story-card"><span>02 / THE LANTERN RIVER</span><h2>Built slowly,<br/><em>lit by hand.</em></h2><p>Every stitch carries a little warmth. Wander through our festive river town, where handmade treasures glow beside the water.</p><div className="diwali-city-stats"><div><b>100%</b><small>handmade</small></div><div><b>∞</b><small>little stories</small></div><div><b>1</b><small>loving Dadi</small></div></div></div>
       <div className="diwali-city-pavilion" aria-hidden="true"><div className="diwali-city-roof"/><div className="diwali-city-pavilion-lights">{Array.from({length:11},(_,i)=><i key={i}/>)}</div><div className="diwali-city-clock">Crochella<br/><b>♥</b></div></div>
       <div className="diwali-city-reflections" aria-hidden="true"/>
     </section>
