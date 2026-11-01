@@ -1522,3 +1522,35 @@
 .rugs-showcase-bottom{color:#9a8b7b}.rugs-progress{background:#39332e}.rugs-progress i{background:#d5a77a}
 @media(max-width:760px){.rugs-showcase{padding:64px 0 26px}.rugs-showcase-top{padding:0 20px}.rugs-belt-experience{border-radius:0}.rugs-belt-heading{font-size:8px;letter-spacing:.12em}.rugs-belt-scene{height:430px}.rugs-belt-outer{left:3%;top:17%;width:94%;height:65%}.rugs-belt-inner{left:31%;top:36%;width:38%;height:28%}.rugs-belt-item{width:clamp(78px,23vw,118px)}.rugs-belt-plate{border-width:2px}.rugs-belt-product-label{font-size:9px;max-width:100px}.rugs-belt-controls{flex-wrap:wrap}.rugs-belt-controls span{flex-basis:100%;text-align:center;margin:5px 0 0;font-size:11px}.rugs-selected-product{gap:10px;padding:10px}.rugs-selected-product>img{width:54px;height:54px}.rugs-selected-product h3{font-size:15px}.rugs-selected-product>a{font-size:10px;padding:9px}.rugs-selected-product div span{font-size:8px}}
 @media(prefers-reduced-motion:reduce){.rugs-belt-item,.rugs-belt-plate{transition:none}}
+
+/* Theme-aligned conveyor and continuous smooth rotation */
+.rugs-showcase{background:#f4e9dc!important;color:#351d1b!important}
+.rugs-showcase:before{background:radial-gradient(ellipse at 50% 48%,#fff8ef 0%,#f4e9dc 62%,#ead9c8 100%)!important}
+.rugs-showcase-top h2{color:#351d1b!important}
+.rugs-showcase-top h2 em{color:#a6533d!important}
+.rugs-showcase-top p{color:#765c50!important}
+.rugs-eyebrow{color:#8a6655!important}
+.rugs-all-link{color:#482b24!important;border-color:#cdb49e!important}
+.rugs-filter-row button{color:#775c4e!important;border-color:#d9c4b0!important}
+.rugs-filter-row button.is-active,.rugs-filter-row button:hover{background:#4a2924!important;color:#fff5e9!important;border-color:#4a2924!important}
+.rugs-belt-experience{background:transparent!important;border:0!important;border-radius:0!important;overflow:visible!important}
+.rugs-belt-heading{color:#8c6d58!important}
+.rugs-belt-scene{overflow:hidden}
+.rugs-belt-shadow{opacity:.22!important}
+.rugs-belt-items{position:absolute;inset:0;transform:rotate(var(--belt-offset,0deg));transform-origin:50% 50%;animation:rugs-belt-revolve 36s linear infinite;will-change:transform}
+.rugs-belt-experience.is-paused .rugs-belt-items,.rugs-belt-experience:hover .rugs-belt-items{animation-play-state:paused}
+.rugs-belt-item{animation:rugs-belt-counter 36s linear infinite;will-change:transform}
+.rugs-belt-experience.is-paused .rugs-belt-item,.rugs-belt-experience:hover .rugs-belt-item{animation-play-state:paused}
+@keyframes rugs-belt-revolve{from{transform:rotate(var(--belt-offset,0deg))}to{transform:rotate(calc(var(--belt-offset,0deg) + 360deg))}}
+@keyframes rugs-belt-counter{from{rotate:0deg}to{rotate:-360deg}}
+.rugs-belt-center{color:#6c493a!important}
+.rugs-belt-center span,.rugs-belt-center small{color:#8c7463!important}
+.rugs-belt-controls button{background:#fffaf4!important;border-color:#dfcbb8!important;color:#57392e!important;box-shadow:0 3px 8px #6d4b3514}
+.rugs-belt-controls button:hover{background:#4a2924!important;color:#fff5e9!important}
+.rugs-belt-controls span,.rugs-showcase-bottom{color:#8b6e5c!important}
+.rugs-progress{background:#dfcbb8!important}.rugs-progress i{background:#a6533d!important}
+.rugs-selected-product{background:#fff8f0!important;border-color:#dfcbb8!important;color:#351d1b!important}
+.rugs-selected-product div span{color:#986c55!important}
+.rugs-selected-product>a{background:#4a2924!important;color:#fff5e9!important}
+.rugs-selected-product>button{color:#765c50!important}
+@media(prefers-reduced-motion:reduce){.rugs-belt-items,.rugs-belt-item{animation:none!important}}
