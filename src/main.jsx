@@ -120,4 +120,5 @@ function App() {
 
 const routePath=window.location.pathname.replace(/\/$/, '');
 const productRoute=routePath.match(/^\/product\/([^/]+)$/);
-createRoot(document.getElementById('root')).render(productRoute ? <CrochellaProductPage slug={decodeURIComponent(productRoute[1])}/> : routePath === '/crochellas' ? <CrochellasPage/> : routePath === '/diwali-dhamaka' ? <DiwaliDhamakaPage/> : <App/>);
+const policyRoutes=['/privacy-policy','/shipping-policy','/returns-refunds','/terms','/contact'];
+createRoot(document.getElementById('root')).render(productRoute ? <CrochellaProductPage slug={decodeURIComponent(productRoute[1])}/> : routePath === '/crochellas' ? <CrochellasPage/> : routePath === '/diwali-dhamaka' ? <DiwaliDhamakaPage/> : policyRoutes.includes(routePath) ? <PolicyPages path={routePath}/> : <App/>);
