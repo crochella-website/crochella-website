@@ -7,6 +7,7 @@ import CrochellasPage from './CrochellasPage.jsx';
 import CrochellaProductPage from './CrochellaProductPage.jsx';
 import DiwaliDhamakaPage from './DiwaliDhamakaPage.jsx';
 import PolicyPages from './PolicyPages.jsx';
+import UpiPaymentPage from './UpiPaymentPage.jsx';
 import './PolicyPages.css';
 import { createRoot } from 'react-dom/client';
 import './styles.css';
@@ -121,4 +122,4 @@ function App() {
 const routePath=window.location.pathname.replace(/\/$/, '');
 const productRoute=routePath.match(/^\/product\/([^/]+)$/);
 const policyRoutes=['/privacy-policy','/shipping-policy','/returns-refunds','/terms','/contact'];
-createRoot(document.getElementById('root')).render(productRoute ? <CrochellaProductPage slug={decodeURIComponent(productRoute[1])}/> : routePath === '/crochellas' ? <CrochellasPage/> : routePath === '/diwali-dhamaka' ? <DiwaliDhamakaPage/> : policyRoutes.includes(routePath) ? <PolicyPages path={routePath}/> : <App/>);
+createRoot(document.getElementById('root')).render(productRoute ? <CrochellaProductPage slug={decodeURIComponent(productRoute[1])}/> : routePath === '/pay' ? <UpiPaymentPage/> : routePath === '/crochellas' ? <CrochellasPage/> : routePath === '/diwali-dhamaka' ? <DiwaliDhamakaPage/> : policyRoutes.includes(routePath) ? <PolicyPages path={routePath}/> : <App/>);
