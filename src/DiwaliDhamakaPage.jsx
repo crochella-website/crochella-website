@@ -27,7 +27,7 @@ export default function DiwaliDhamakaPage() {
   }, []);
   return <main className="diwali-city-page">
     <header className={`hero-nav diwali-city-nav ${scrolled ? 'is-scrolled' : ''}`}>
-      <a className="brand-lockup" href="/" aria-label="Crochella home"><span className="diwali-nav-monogram">C</span><span className="diwali-nav-wordmark">Crochella<sup>®</sup></span></a>
+      <a className="brand-lockup" href="/" aria-label="Crochella home"><span className="crochella-mark" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M12 29c-4.8 0-7.5-3.1-7.5-7.1 0-4.2 3.2-7.1 7.2-7.1C13.1 8.2 18.1 4 24 4c5.1 0 9.6 3.2 11.5 7.8 5.1.4 8.9 4.5 8.9 9.5 0 5.4-4.3 9.4-10 9.4H12Z" fill="currentColor"/><path d="M10 34h27M15 39h18" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"/></svg></span><span className="brand-wordmark">Crochella<sup>®</sup></span></a>
       <nav className="desktop-nav" aria-label="Main navigation">{navItems.map(([label,href])=><a key={label} className={label==='Diwali Dhamaka'?'is-current':''} href={href}>{label}</a>)}</nav>
       <a className="nav-contact" href="mailto:hello@crochella.in">Baat karein ↗</a>
     </header>
