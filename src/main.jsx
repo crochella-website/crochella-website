@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import BlossomTree from './BlossomTree.jsx';
 import DiwaliLantern from './DiwaliLantern.jsx';
 import ProductShowcase from './ProductShowcase.jsx';
+import RugsShowcase from './RugsShowcase.jsx';
 import StringTieFooter from './StringTieFooter.jsx';
 import CrochellasPage from './CrochellasPage.jsx';
 import CrochellaProductPage from './CrochellaProductPage.jsx';
@@ -106,6 +107,7 @@ function App() {
       <div className="story-stamp">WOVEN<br/>WITH<br/><em>LOVE</em></div>
     </section>
     <ProductShowcase />
+    <RugsShowcase />
     <section className="coming-section collections-section diwali-collections" id="collections"><span>03 / THE LITTLE THINGS</span><h2>Chhoti cheezein.<br/><em>Badi khushiyaan.</em></h2><p>Handmade charms, crochet companions, bags, rugs and more.</p><video className="diwali-shopping-bag" autoPlay muted loop playsInline preload="metadata" aria-hidden="true"><source src="/uploads/crochella-diwali-shopping-bag.webm" type="video/webm"/></video></section>
 
     <BlossomTree />
