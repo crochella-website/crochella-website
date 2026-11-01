@@ -40,7 +40,7 @@ export default function RugsShowcase(){
   useEffect(()=>{setAngle(0);setSelected(null);},[category]);
   const move=d=>{setAngle(a=>a+d);setPaused(true);};
   const format=n=>'₹'+n.toLocaleString('en-IN');
-  const beltItems=visible.length?Array.from({length:Math.min(7,visible.length)},(_,i)=>visible[((angle+i)%visible.length+visible.length)%visible.length]):[];
+  const beltItems=visible.length?Array.from({length:Math.min(7,visible.length)},(_,i)=>visible[i%visible.length]):[];
   return <section className="rugs-showcase" id="rugs" aria-labelledby="rugs-title">
     <div className="rugs-showcase-top"><div><span className="rugs-eyebrow">04 / THE RUG EDIT</span><h2 id="rugs-title">Made to be <em>lived in.</em></h2><p>Soft underfoot. Full of character. Handcrafted for your kind of home.</p></div><a className="rugs-all-link" href="https://ruggybuggy.com/collections/all" target="_blank" rel="noreferrer">Shop all rugs ↗</a></div>
     <div className="rugs-filter-row" role="tablist" aria-label="Filter rug categories">{categories.map(c=><button key={c} className={category===c?'is-active':''} role="tab" aria-selected={category===c} onClick={()=>setCategory(c)}>{c}</button>)}</div>
