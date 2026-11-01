@@ -1293,3 +1293,97 @@
 @keyframes stringTieSeal{0%{transform:translate(-50%,-50%) scale(1.3);opacity:.2}100%{transform:translate(-50%,-50%) scale(1);opacity:1}}
 @media(max-width:760px){.string-tie-footer{padding:100px 22px 56px;min-height:100svh!important}.string-tie-inner{grid-template-columns:1fr;gap:42px}.string-tie-meta{left:22px;right:22px;top:28px;gap:12px;flex-wrap:wrap;font-size:8px}.string-tie-message h2{font-size:clamp(46px,12vw,68px);margin:16px 0 20px}.string-tie-envelope{width:min(100%,420px)}.string-tie-paper{font-size:13px;gap:8px}.string-tie-seal{width:38px;height:38px;font-size:20px}}
 @media(prefers-reduced-motion:reduce){.string-tie-footer *{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+/* Shared Crochella nav treatment: sticky, warm-paper surface across home and Diwali */
+.hero-nav:not(.diwali-city-nav){position:fixed;top:0;left:0;right:0;z-index:80;padding:12px clamp(20px,4.5vw,72px);min-height:76px;color:#4b152b;background:rgba(255,250,243,.94);border-bottom:1px solid rgba(75,21,43,.09);box-shadow:0 8px 28px rgba(49,15,28,.06);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+.hero-nav:not(.diwali-city-nav) .brand-lockup{gap:10px}
+.hero-nav:not(.diwali-city-nav) .brand-logo{width:clamp(96px,11vw,148px);height:auto;max-height:44px;object-fit:contain;filter:brightness(0) saturate(100%) invert(15%) sepia(29%) saturate(1560%) hue-rotate(286deg) brightness(87%) contrast(95%)}
+.hero-nav:not(.diwali-city-nav) .desktop-nav{display:flex;align-items:center;gap:clamp(12px,1.8vw,28px);font-size:13px;font-weight:500}
+.hero-nav:not(.diwali-city-nav) .desktop-nav a{position:relative;text-decoration:none;padding:9px 0;color:#4b152b;transition:color .2s}
+.hero-nav:not(.diwali-city-nav) .desktop-nav a:after{content:"";position:absolute;left:0;right:100%;bottom:3px;height:1px;background:#c18b53;transition:right .22s}
+.hero-nav:not(.diwali-city-nav) .desktop-nav a:hover:after{right:0}
+.hero-nav:not(.diwali-city-nav) .nav-comma{display:none}
+.hero-nav:not(.diwali-city-nav) .nav-contact{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:999px;background:#4b152b;color:#fff8ef;text-decoration:none;font-size:12px;letter-spacing:.02em}
+.hero-nav:not(.diwali-city-nav) .menu-toggle span{background:#4b152b}
+.hero-nav:not(.diwali-city-nav) .menu-toggle{border-radius:50%;background:#f3e7dc}
+@media(max-width:760px){.hero-nav:not(.diwali-city-nav){min-height:64px;padding:10px 17px}.hero-nav:not(.diwali-city-nav) .brand-logo{width:112px;max-height:38px}.hero-nav:not(.diwali-city-nav) .menu-toggle{display:flex}.hero-nav:not(.diwali-city-nav) .desktop-nav,.hero-nav:not(.diwali-city-nav) .nav-contact{display:none}}
+/* Lantern river Diwali Dhamaka page */
+.diwali-city-page{min-height:100vh;background:#031b1c;color:#f8e9cf;overflow:hidden}
+.diwali-city-nav{position:fixed;z-index:100;top:0;left:0;right:0;display:flex;align-items:center;justify-content:space-between;padding:14px clamp(20px,4.5vw,72px);min-height:76px;color:#f8e9cf;background:linear-gradient(180deg,rgba(2,18,20,.72),transparent);transition:background .3s,backdrop-filter .3s}
+.diwali-city-nav.is-scrolled{background:rgba(255,250,243,.94);color:#4b152b;box-shadow:0 8px 28px #130b100d;backdrop-filter:blur(18px)}
+.diwali-nav-monogram{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:#e8bd72;color:#3c1c20;font:700 20px 'Playfair Display',serif}
+.diwali-nav-wordmark{font:600 20px 'Playfair Display',serif;letter-spacing:-.03em}.diwali-nav-wordmark sup{font:9px 'DM Sans',sans-serif}
+.diwali-city-nav .desktop-nav{display:flex;gap:clamp(12px,2vw,30px);align-items:center;font-size:12px}
+.diwali-city-nav .desktop-nav a{text-decoration:none;opacity:.9}
+.diwali-city-nav .desktop-nav a:hover,.diwali-city-nav .desktop-nav a.is-current{color:#efc46f}
+.diwali-city-nav.is-scrolled .desktop-nav a:hover,.diwali-city-nav.is-scrolled .desktop-nav a.is-current{color:#a66a38}
+.diwali-city-nav .nav-contact{font-size:12px;text-decoration:none;padding:11px 17px;border:1px solid #f8e9cf55;border-radius:999px}
+.diwali-city-nav.is-scrolled .nav-contact{border-color:#4b152b33}
+.diwali-city-hero{position:relative;min-height:100svh;display:grid;place-items:center;isolation:isolate;overflow:hidden;background:#031719}
+.diwali-city-sky{position:absolute;inset:0;z-index:-5;background:radial-gradient(ellipse at 76% 14%,#fff4c7 0,#e9c87528 2%,transparent 18%),linear-gradient(180deg,#07191d 0%,#123137 47%,#071d1e 74%,#041514 100%)}
+.diwali-city-sky:after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 100%,#e0a45c16,transparent 50%),linear-gradient(180deg,transparent 35%,#020e10a6)}
+.diwali-city-lanterns{position:absolute;z-index:4;top:12%;left:0;right:0;height:28%;display:flex;justify-content:space-around;align-items:flex-start;pointer-events:none}
+.diwali-city-lanterns:before{content:"";position:absolute;left:-4%;right:-4%;top:14%;height:1px;background:#d4a76d99;transform:rotate(2deg);box-shadow:0 0 8px #e7bb7a55}
+.diwali-city-lanterns i{position:relative;top:calc(var(--i)*1.1%);width:clamp(10px,1.2vw,17px);height:clamp(17px,2.2vw,29px);border-radius:48% 48% 42% 42%;background:radial-gradient(circle at 35% 28%,#fff7cb,#f8c66f 35%,#b65d2e 100%);box-shadow:0 0 12px 4px #f4bd6c44;animation:diwali-lantern-sway 4s ease-in-out infinite;animation-delay:calc(var(--i)*-.19s)}
+.diwali-city-lanterns i:before{content:"";position:absolute;left:50%;top:-15px;height:15px;width:1px;background:#d6b07a88}
+@keyframes diwali-lantern-sway{50%{transform:translateY(7px) rotate(5deg)}}
+.diwali-city-buildings{position:absolute;left:0;right:0;bottom:30%;height:33%;background:linear-gradient(180deg,#172b2e,#0a1b1d);clip-path:polygon(0 36%,5% 36%,5% 22%,13% 22%,13% 42%,20% 42%,20% 9%,29% 9%,29% 35%,39% 35%,39% 0,48% 0,48% 33%,60% 33%,60% 14%,70% 14%,70% 42%,78% 42%,78% 18%,88% 18%,88% 39%,95% 39%,95% 10%,100% 10%,100% 100%,0 100%)}
+.diwali-city-buildings:after{content:"";position:absolute;inset:20% 0 0;background:repeating-linear-gradient(90deg,transparent 0 28px,#e9b568 29px 32px,transparent 33px 51px);opacity:.55}
+.diwali-city-bridge{position:absolute;z-index:2;left:0;right:0;bottom:29%;height:24%;border-top:7px solid #1d3c3d;background:linear-gradient(180deg,#183638,#0c2224);box-shadow:0 -5px 18px #f1b86b18}
+.diwali-city-bridge:before{content:"";position:absolute;left:0;right:0;top:-16px;height:8px;background:#9c542c;box-shadow:0 0 14px #e8a24c55}
+.diwali-city-bridge span{position:relative;display:inline-block;width:10%;height:100%;border-left:4px solid #7b3e26;border-right:4px solid #7b3e26;margin-left:1%;background:repeating-linear-gradient(180deg,#f4b45c 0 5px,transparent 6px 30px)}
+.diwali-city-water{position:absolute;z-index:1;left:0;right:0;bottom:0;height:36%;background:linear-gradient(180deg,#0b292b,#041415 70%);overflow:hidden}
+.diwali-city-water:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(180deg,transparent 0 9px,#e9b96b18 10px 11px,transparent 12px 26px);transform:translateY(var(--water-shift,0))}
+.diwali-city-water i{position:absolute;top:calc(8% + var(--i)*13%);left:calc(5% + var(--i)*15%);width:clamp(35px,9vw,130px);height:3px;background:#eab76566;filter:blur(2px);transform:rotate(-2deg);animation:diwali-water-glimmer 4s ease-in-out infinite;animation-delay:calc(var(--i)*-.6s)}
+.diwali-city-water i:nth-child(1){--i:0}.diwali-city-water i:nth-child(2){--i:1}.diwali-city-water i:nth-child(3){--i:2}.diwali-city-water i:nth-child(4){--i:3}.diwali-city-water i:nth-child(5){--i:4}.diwali-city-water i:nth-child(6){--i:5}
+@keyframes diwali-water-glimmer{50%{opacity:.2;transform:translateX(25px) scaleX(.6)}}
+.diwali-city-floating-diyas{position:absolute;z-index:5;bottom:12%;left:5%;right:5%;display:flex;justify-content:space-around;pointer-events:none}
+.diwali-city-floating-diyas i{width:clamp(25px,4vw,55px);height:12px;border-radius:50%;background:radial-gradient(ellipse,#fff2ba,#e4a34d 50%,#70401e 75%);box-shadow:0 -9px 17px #ffd78377;animation:diwali-diya-float 5s ease-in-out infinite}
+.diwali-city-floating-diyas i:nth-child(even){animation-delay:-2.2s;transform:translateY(-12px)}
+@keyframes diwali-diya-float{50%{translate:0 -12px}}
+.diwali-city-hero-copy{position:relative;z-index:8;text-align:center;margin-top:35px;text-shadow:0 3px 22px #0009}
+.diwali-city-eyebrow,.diwali-city-scroll-label{font-size:10px;letter-spacing:.24em;color:#e8c58f}
+.diwali-city-hero h1{margin:20px 0 14px;font:500 clamp(64px,10vw,138px)/.92 'Playfair Display',serif;letter-spacing:-.065em;color:#fff3dd}
+.diwali-city-hero h1 em,.diwali-city-story h2 em,.diwali-city-market h2 em,.diwali-city-finale h2 em{color:#eac27d;font-weight:500}
+.diwali-city-hero-copy p{font-size:clamp(14px,1.5vw,19px);line-height:1.7;color:#f6e7d0c9}
+.diwali-city-button{display:inline-flex;align-items:center;gap:25px;margin-top:20px;padding:13px 21px;border-radius:999px;background:#e9b45c;color:#2c2018;text-decoration:none;font-size:12px;font-weight:700;box-shadow:0 6px 24px #e6ad5933}
+.diwali-city-scroll-label{position:absolute;z-index:8;bottom:25px;left:50%;transform:translateX(-50%);white-space:nowrap}
+.diwali-city-scroll-label b{margin-left:10px}
+.diwali-city-scene{position:relative;min-height:100svh;overflow:hidden;isolation:isolate}
+.diwali-city-story{display:flex;align-items:center;padding:clamp(80px,10vw,140px) 7vw;background:linear-gradient(180deg,#041617,#0c2829 65%,#06191a)}
+.diwali-city-story:before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(ellipse at 72% 55%,#d69b4a16,transparent 45%),linear-gradient(180deg,#031719,transparent 30%,#031719)}
+.diwali-city-story-card,.diwali-city-market-card,.diwali-city-finale-copy{position:relative;z-index:5;width:min(480px,100%);padding:clamp(25px,4vw,52px);background:rgba(8,35,35,.88);border:1px solid #d7b26a2a;box-shadow:0 22px 80px #0003;backdrop-filter:blur(12px)}
+.diwali-city-story-card>span,.diwali-city-market-card>span,.diwali-city-finale-copy>span{font-size:9px;letter-spacing:.22em;color:#d6b779}
+.diwali-city-story h2,.diwali-city-market h2,.diwali-city-finale h2{margin:20px 0;font:500 clamp(42px,5vw,68px)/1.02 'Playfair Display',serif;letter-spacing:-.05em}
+.diwali-city-story-card p,.diwali-city-market-card p,.diwali-city-finale-copy p{color:#e9ddc1b8;font-size:13px;line-height:1.8}
+.diwali-city-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:25px}
+.diwali-city-stats div{padding:15px 10px;background:#ffffff08;border:1px solid #ffffff12;text-align:center}
+.diwali-city-stats b{display:block;font:25px 'Playfair Display',serif;color:#eac27d}.diwali-city-stats small{font-size:9px;color:#e9ddc199}
+.diwali-city-pavilion{position:absolute;right:5%;top:14%;width:min(58vw,850px);height:42%;border-bottom:6px solid #55321f;background:linear-gradient(180deg,transparent 0 20%,#183536 20% 100%);box-shadow:0 24px 0 #091c1d}
+.diwali-city-roof{position:absolute;top:0;left:-5%;right:-5%;height:35%;background:#261b18;clip-path:polygon(0 45%,9% 45%,13% 10%,50% 0,87% 10%,91% 45%,100% 45%,95% 65%,5% 65%);border-bottom:3px solid #a65a2d}
+.diwali-city-pavilion-lights{position:absolute;top:37%;left:4%;right:4%;display:flex;justify-content:space-between}
+.diwali-city-pavilion-lights i{width:9px;height:28px;background:#eab765;box-shadow:0 0 14px #eab765}
+.diwali-city-clock{position:absolute;left:50%;top:20%;transform:translateX(-50%);padding:13px 18px;background:#372a21;border:1px solid #c08b50;color:#f4d59b;text-align:center;font-size:8px;letter-spacing:.12em}
+.diwali-city-clock b{font-size:23px}
+.diwali-city-reflections{position:absolute;right:0;bottom:0;width:70%;height:50%;background:repeating-linear-gradient(180deg,transparent 0 18px,#dba75c0d 19px 21px);transform:skewX(-20deg)}
+.diwali-city-market{display:flex;align-items:flex-end;justify-content:flex-end;padding:10vh 7vw;background:linear-gradient(180deg,#071c1d,#102f30 45%,#041718)}
+.diwali-city-market-stalls{position:absolute;inset:0 0 20%;display:flex;align-items:flex-end;justify-content:space-around;gap:1%;padding:0 3%}
+.diwali-city-market-stalls div{position:relative;width:13%;height:50%;background:linear-gradient(180deg,#291e19 0 20%,#57311e 20% 100%);border-top:8px solid #a8582c;box-shadow:0 0 28px #f2b75b18}
+.diwali-city-market-stalls div:nth-child(even){height:62%}
+.diwali-city-market-stalls span{position:absolute;top:-18px;left:-8%;width:116%;height:18px;background:#201916;clip-path:polygon(0 100%,10% 0,90% 0,100% 100%)}
+.diwali-city-market-stalls i{position:absolute;inset:30% 10% 15%;background:repeating-linear-gradient(0deg,#d99c4e 0 4px,transparent 5px 16px),repeating-linear-gradient(90deg,transparent 0 16px,#e3b76c 17px 19px)}
+.diwali-city-market-stalls b{position:absolute;top:8%;left:20%;right:20%;height:12%;background:#eacb8a;box-shadow:0 0 18px #eacb8a}
+.diwali-city-market-card{width:min(560px,100%);margin-bottom:3vh}
+.diwali-city-market-products{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:24px}
+.diwali-city-market-products a{display:flex;flex-direction:column;gap:6px;padding:9px;background:#fff8ed0a;border:1px solid #fff2d411;border-radius:5px;text-decoration:none}
+.diwali-city-market-products img{width:100%;aspect-ratio:1;object-fit:contain;background:#f2e6d8;border-radius:3px}
+.diwali-city-market-products b{font-size:11px}.diwali-city-market-products small{font-size:9px;color:#d9c6a4}
+.diwali-city-finale{display:flex;align-items:center;padding:10vh 7vw;background:linear-gradient(180deg,#041718,#061b1d 65%,#020f10)}
+.diwali-city-finale:before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 75% 20%,#e9b96b22,transparent 30%),linear-gradient(180deg,transparent 45%,#020b0c)}
+.diwali-city-finale-copy{width:min(480px,100%)}
+.diwali-city-pier-lights{position:absolute;right:0;left:0;bottom:15%;display:flex;justify-content:space-around}
+.diwali-city-pier-lights i{width:8px;height:34px;background:#e9b96b;box-shadow:0 0 18px #e9b96b88}
+.diwali-city-footer{display:flex;justify-content:space-between;align-items:center;gap:18px;padding:28px clamp(20px,5vw,72px);background:#020f10;color:#e9d9bc;font-size:10px;letter-spacing:.1em}
+.diwali-city-footer a{color:inherit;text-decoration:none}.diwali-city-footer>a:first-child{font:22px 'Playfair Display',serif;letter-spacing:0}
+@media(max-width:760px){.diwali-city-nav{min-height:64px;padding:10px 17px}.diwali-city-nav .desktop-nav,.diwali-city-nav .nav-contact{display:none}.diwali-city-nav .brand-lockup{gap:8px}.diwali-nav-wordmark{font-size:18px}.diwali-city-hero{min-height:100svh}.diwali-city-lanterns{top:13%;height:22%}.diwali-city-hero-copy{padding:0 20px;margin-top:55px}.diwali-city-hero h1{font-size:clamp(58px,16vw,92px)}.diwali-city-buildings{height:27%;bottom:32%}.diwali-city-bridge{bottom:30%;height:19%}.diwali-city-water{height:35%}.diwali-city-story{padding:100px 20px 60px;align-items:flex-end;min-height:110svh}.diwali-city-story-card{width:100%;padding:25px}.diwali-city-pavilion{right:-12%;top:10%;width:95%;height:34%;opacity:.82}.diwali-city-market{padding:70px 20px 40px;align-items:flex-end;min-height:110svh}.diwali-city-market-stalls{inset:0 0 38%;padding:0 1%;gap:2%}.diwali-city-market-stalls div{width:14%;height:43%}.diwali-city-market-stalls div:nth-child(even){height:53%}.diwali-city-market-card{padding:24px 18px;width:100%;margin:0}.diwali-city-market-products{gap:7px}.diwali-city-market-products a{padding:5px}.diwali-city-market-products b{font-size:10px}.diwali-city-market-products small{font-size:8px}.diwali-city-finale{padding:90px 20px 60px;min-height:100svh}.diwali-city-finale-copy{padding:25px;width:100%}.diwali-city-footer{flex-wrap:wrap;justify-content:center;text-align:center}.diwali-city-footer span{width:100%;order:3;font-size:8px}}
+@media(prefers-reduced-motion:reduce){.diwali-city-page *{animation-duration:.01ms!important;transition-duration:.01ms!important}}
