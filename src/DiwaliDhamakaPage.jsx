@@ -11,7 +11,7 @@ export default function DiwaliDhamakaPage() {
       setScrolled(window.scrollY > 40);
       cancelAnimationFrame(raf);
       raf = requestAnimationFrame(() => {
-        page?.style.setProperty('--diwali-parallax', `${Math.min(window.scrollY, window.innerHeight) * .16}px`);
+        const amount = Math.min(window.scrollY, window.innerHeight);\n        page?.style.setProperty('--diwali-parallax-sky', `${-amount * .16}px`);\n        page?.style.setProperty('--diwali-parallax-lanterns', `${amount * .056}px`);\n        page?.style.setProperty('--diwali-parallax-buildings', `${amount * .0352}px`);\n        page?.style.setProperty('--diwali-parallax-bridge', `${amount * .0192}px`);\n        page?.style.setProperty('--diwali-parallax-water', `${-amount * .0064}px`);\n        page?.style.setProperty('--diwali-parallax-pavilion', `${amount * .0224}px`);\n        page?.style.setProperty('--diwali-parallax-stalls', `${amount * .016}px`);
       });
     };
     onScroll();
