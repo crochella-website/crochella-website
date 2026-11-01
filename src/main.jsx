@@ -6,6 +6,7 @@ import StringTieFooter from './StringTieFooter.jsx';
 import CrochellasPage from './CrochellasPage.jsx';
 import CrochellaProductPage from './CrochellaProductPage.jsx';
 import DiwaliDhamakaPage from './DiwaliDhamakaPage.jsx';
+import PolicyPages from './PolicyPages.jsx';
 import { createRoot } from 'react-dom/client';
 import './styles.css';
 import site from './content/site.json';
