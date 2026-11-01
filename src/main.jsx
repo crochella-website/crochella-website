@@ -7,6 +7,7 @@ import CrochellasPage from './CrochellasPage.jsx';
 import CrochellaProductPage from './CrochellaProductPage.jsx';
 import DiwaliDhamakaPage from './DiwaliDhamakaPage.jsx';
 import PolicyPages from './PolicyPages.jsx';
+import './PolicyPages.css';
 import { createRoot } from 'react-dom/client';
 import './styles.css';
 import site from './content/site.json';
@@ -112,7 +113,7 @@ function App() {
       <a className="footer-brand" href="#home">Crochella<sup>®</sup></a>
       <p>Woven with love, from our hands to yours.</p>
       <a href="https://www.instagram.com/crochellaart/" target="_blank" rel="noreferrer">@crochellaart ↗</a>
-      <small>© {new Date().getFullYear()} Crochella. Made with love.</small>
+      <nav className="site-legal-links"><a href="/privacy-policy">Privacy</a><a href="/shipping-policy">Shipping</a><a href="/returns-refunds">Returns</a><a href="/terms">Terms</a><a href="/contact">Contact</a></nav><small>© {new Date().getFullYear()} Crochella. Made with love.</small>
     </footer>
   </main>;
 }
