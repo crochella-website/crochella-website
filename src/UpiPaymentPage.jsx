@@ -12,10 +12,11 @@ export default function UpiPaymentPage(){
   const slug = params.get('product') || '';
   const product = products.find(([id])=>id===slug);
   const price = product ? pricing.products[slug]?.price : null;
-  const payee = 'Crochella';
+  const payee = 'Ms Anshika Gupta';
   const upiId = '9044900495@ptaxis';
   const upi = price ? `upi://pay?pa=${upiId}&pn=${encodeURIComponent(payee)}&am=${price}&cu=INR&tn=${encodeURIComponent('Crochella '+product[1])}` : `upi://pay?pa=${upiId}&pn=${encodeURIComponent(payee)}&cu=INR`;
-  const qr = 'https://api.qrserver.com/v1/create-qr-code/?size=360x360&margin=12&data='+encodeURIComponent(upi);
+  const qrPayload = `upi://pay?pa=${upiId}&pn=${encodeURIComponent(payee)}&cu=INR`;
+  const qr = 'https://api.qrserver.com/v1/create-qr-code/?size=360x360&margin=12&data='+encodeURIComponent(qrPayload);
   const message = `Hi Crochella! I have made a UPI payment ${price ? 'of ₹'+price+' for '+product[1] : ''}. Please confirm my order. I will attach the payment screenshot.`;
   return <main className="upi-page">
     <header className="upi-nav"><a href="/">Crochella<sup>®</sup></a><a href="/crochellas">Back to shop ↗</a></header>
