@@ -5,10 +5,18 @@ const navItems = [['Kahani','/#kahani'],['Karigari','/#karigari'],['Collections'
 export default function DiwaliDhamakaPage() {
   const [scrolled, setScrolled] = useState(false);
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
+    const page = document.querySelector('.diwali-city-page');
+    let raf = 0;
+    const onScroll = () => {
+      setScrolled(window.scrollY > 40);
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        page?.style.setProperty('--diwali-parallax', `${Math.min(window.scrollY, window.innerHeight) * .16}px`);
+      });
+    };
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
+    return () => { cancelAnimationFrame(raf); window.removeEventListener('scroll', onScroll); };
   }, []);
   return <main className="diwali-city-page">
     <header className={`hero-nav diwali-city-nav ${scrolled ? 'is-scrolled' : ''}`}>
