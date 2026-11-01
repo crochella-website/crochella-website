@@ -1554,3 +1554,19 @@
 .rugs-selected-product>a{background:#4a2924!important;color:#fff5e9!important}
 .rugs-selected-product>button{color:#765c50!important}
 @media(prefers-reduced-motion:reduce){.rugs-belt-items,.rugs-belt-item{animation:none!important}}
+
+/* Reference-matched rug belt: elevated 3D tray, layered track and fluid orbit */
+.rugs-belt-scene{perspective:1400px;perspective-origin:50% 48%;overflow:visible;isolation:isolate}
+.rugs-belt-shadow{left:10%;top:24%;width:80%;height:66%;filter:blur(30px);opacity:.28!important;background:#4a3024}
+.rugs-belt-outer{left:8%;top:12%;width:84%;height:76%;border:2px solid #aaa;background:linear-gradient(180deg,#555 0%,#282828 8%,#111 25%,#080808 72%,#292929 92%,#555 100%);box-shadow:0 26px 24px #6b4a3330,inset 0 0 0 5px #171717,inset 0 0 0 8px #777,inset 0 0 0 11px #242424;transform:rotateX(18deg);transform-style:preserve-3d}
+.rugs-belt-outer:before{inset:5%;border:1px solid #ffffff2c;background:repeating-conic-gradient(from -8deg,#ffffff0b 0deg 1deg,transparent 1deg 10deg),radial-gradient(ellipse at 50% 48%,#222 0 31%,#111 32% 55%,#242424 56% 100%)}
+.rugs-belt-outer:after{content:"";position:absolute;inset:1.7%;border-radius:50%;border:1px solid #ffffff20;box-shadow:inset 0 0 0 2px #0008}
+.rugs-belt-inner{left:30%;top:33%;width:40%;height:34%;border:2px solid #666;background:linear-gradient(180deg,#292929,#070707 65%,#1b1b1b);box-shadow:0 14px 18px #0009,inset 0 0 0 5px #111,inset 0 0 0 7px #555;transform:rotateX(18deg);}
+.rugs-belt-items{transform-style:preserve-3d;animation-duration:30s!important}
+.rugs-belt-item{animation-duration:30s!important;filter:drop-shadow(0 8px 7px #2e211b22)}
+.rugs-belt-plate{background:radial-gradient(circle at 32% 24%,#fff,#e8e4df 55%,#aaa 82%,#777);border:3px solid #d0cbc5;box-shadow:0 13px 15px #0005,inset 0 2px 4px #fff,inset 0 -3px 4px #777;}
+.rugs-belt-plate img{background:#eee8df;border-radius:50%;padding:3%;}
+.rugs-belt-item:hover .rugs-belt-plate,.rugs-belt-item.is-selected .rugs-belt-plate{box-shadow:0 17px 20px #0006,inset 0 2px 4px #fff;border-color:#d8b28a}
+.rugs-belt-center{z-index:2;text-shadow:0 1px 0 #fff8;}
+.rugs-belt-controls{position:relative;z-index:4}
+@media(max-width:760px){.rugs-belt-outer{left:1%;width:98%;top:18%;height:65%}.rugs-belt-inner{left:29%;width:42%;top:36%;height:30%}.rugs-belt-items{animation-duration:38s!important}.rugs-belt-item{animation-duration:38s!important}}
