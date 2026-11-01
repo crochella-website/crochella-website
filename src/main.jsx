@@ -57,7 +57,7 @@ function App() {
     } catch { window.location.href = 'mailto:hello@crochella.in'; }
   };
 
-  const links = [['Kahani','#kahani'],['Karigari','#karigari'],['Collections','#collections'],['Shop','#collections']];
+  const links = [['Kahani','#kahani'],['Karigari','#karigari'],['Collections','#collections'],['Shop','#collections'],['Diwali Dhamaka','/diwali-dhamaka/']];
 
   return <main className="crochella-site">
     <header className="hero-nav">
