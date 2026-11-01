@@ -3,6 +3,8 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 const RUG_PRICES = [
   [/keyboard|wrist-rest/,1299],
   [/premium-spiderman-anime-rug/,3200],
+  [/premium-abstract-wave|premium-botanical-abstract/,5275],
+  [/cute-kawaii-alien-face/,1566],
   [/one-piece-logo/,3549],
   [/grizzley/,2799],
   [/snoopy/,2949],
@@ -30,7 +32,7 @@ const RUG_PRICES = [
 
 const CATEGORY = (name) => /keyboard|wrist-rest/.test(name) ? 'Gaming' : /official-hand-tufted|delhi-capitals|chennai-supar|royal-challengers|kolkata-knight|lucknow-super|kings-xi|rajasthan-royal|sunrisers|mumbai-indian/.test(name) ? 'Team Rugs' : 'Character & Home';
 const titleFromFile = (name) => name.replace(/\.(jpe?g|png|webp)$/i,'').replace(/-\d{5,}$/,'').split('-').map(w=>w.length<3?w.toUpperCase():w[0].toUpperCase()+w.slice(1)).join(' ').replace(/\bVs\b/g,'vs').replace(/\bKawaii\b/g,'Kawaii');
-const priceFor = (name) => RUG_PRICES.find(([pattern])=>pattern.test(name))?.[1] ?? 2949;
+const priceFor = (name) => RUG_PRICES.find(([pattern])=>pattern.test(name))?.[1] ?? null;
 
 async function extractZipImages(buffer) {
   const view = new DataView(buffer);
@@ -111,7 +113,7 @@ export default function RugsShowcase() {
     {loadError ? <div className="rugs-load-error">Rug images couldn’t load. Please check that <code>public/uploads/Rugs Product.zip</code> is committed to the repository.</div> : !items.length ? <div className="rugs-loading"><span/>Unpacking the rug collection…</div> : <div className="rugs-conveyor-shell">
       <button className="rugs-arrow rugs-arrow-prev" onClick={()=>move(-1)} aria-label="Previous rugs" disabled={active===0}>←</button>
       <div className="rugs-conveyor" ref={railRef} onScroll={e=>{const cards=[...e.currentTarget.querySelectorAll('.rug-conveyor-card')];if(!cards.length)return;const center=e.currentTarget.getBoundingClientRect().left+e.currentTarget.clientWidth/2;let nearest=0,dist=Infinity;cards.forEach((el,i)=>{const r=el.getBoundingClientRect();const d=Math.abs(r.left+r.width/2-center);if(d<dist){dist=d;nearest=i;}});setActive(nearest);}}>
-        {visible.map((product,i)=><article className={'rug-conveyor-card '+(i===active?'is-current':'')} key={product.id} onClick={()=>{setActive(i);}}><a className="rug-image-link" href="https://ruggybuggy.com/collections/all" target="_blank" rel="noreferrer" aria-label={'Shop '+product.name}><img src={product.image} alt={product.name} loading={i<5?'eager':'lazy'}/><span className="rug-card-index">{product.number}</span><span className="rug-card-arrow">↗</span></a><div className="rug-card-meta"><div><h3>{product.name}</h3><span>{product.category}</span></div><strong>{format(product.price)}</strong></div></article>)}
+        {visible.map((product,i)=><article className={'rug-conveyor-card '+(i===active?'is-current':'')} key={product.id} onClick={()=>{setActive(i);}}><a className="rug-image-link" href="https://ruggybuggy.com/collections/all" target="_blank" rel="noreferrer" aria-label={'Shop '+product.name}><img src={product.image} alt={product.name} loading={i<5?'eager':'lazy'}/><span className="rug-card-index">{product.number}</span><span className="rug-card-arrow">↗</span></a><div className="rug-card-meta"><div><h3>{product.name}</h3><span>{product.category}</span></div><strong>{product.price ? format(product.price) : <a href="https://ruggybuggy.com/collections/all" target="_blank" rel="noreferrer">View price ↗</a>}</strong></div></article>)}
       </div>
       <button className="rugs-arrow rugs-arrow-next" onClick={()=>move(1)} aria-label="Next rugs" disabled={active>=visible.length-1}>→</button>
     </div>}
