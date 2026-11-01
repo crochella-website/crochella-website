@@ -1570,3 +1570,23 @@
 .rugs-belt-center{z-index:2;text-shadow:0 1px 0 #fff8;}
 .rugs-belt-controls{position:relative;z-index:4}
 @media(max-width:760px){.rugs-belt-outer{left:1%;width:98%;top:18%;height:65%}.rugs-belt-inner{left:29%;width:42%;top:36%;height:30%}.rugs-belt-items{animation-duration:38s!important}.rugs-belt-item{animation-duration:38s!important}}
+
+
+/* Rug belt interaction polish: hover only pauses the moving track, not its controls. */
+.rugs-belt-experience:hover .rugs-belt-items,
+.rugs-belt-experience:hover .rugs-belt-item{animation-play-state:running!important}
+.rugs-belt-scene:hover .rugs-belt-items,
+.rugs-belt-scene:hover .rugs-belt-item,
+.rugs-belt-experience.is-paused .rugs-belt-items,
+.rugs-belt-experience.is-paused .rugs-belt-item{animation-play-state:paused!important}
+.rugs-belt-items{transform-style:preserve-3d;animation-name:rugs-belt-revolve-3d!important}
+.rugs-belt-item{transform-style:preserve-3d}
+.rugs-belt-plate{transform:rotateX(-18deg);backface-visibility:hidden}
+@keyframes rugs-belt-revolve-3d{
+ from{transform:rotateX(18deg) rotate(var(--belt-offset,0deg))}
+ to{transform:rotateX(18deg) rotate(calc(var(--belt-offset,0deg) + 360deg))}
+}
+@media(max-width:760px){
+ .rugs-belt-items{animation-name:rugs-belt-revolve!important}
+ .rugs-belt-plate{transform:none}
+}
