@@ -1388,12 +1388,12 @@
 @media(max-width:760px){.diwali-city-nav{min-height:64px;padding:10px 17px}.diwali-city-nav .desktop-nav,.diwali-city-nav .nav-contact{display:none}.diwali-city-nav .brand-lockup{gap:8px}.diwali-nav-wordmark{font-size:18px}.diwali-city-hero{min-height:100svh}.diwali-city-lanterns{top:13%;height:22%}.diwali-city-hero-copy{padding:0 20px;margin-top:55px}.diwali-city-hero h1{font-size:clamp(58px,16vw,92px)}.diwali-city-buildings{height:27%;bottom:32%}.diwali-city-bridge{bottom:30%;height:19%}.diwali-city-water{height:35%}.diwali-city-story{padding:100px 20px 60px;align-items:flex-end;min-height:110svh}.diwali-city-story-card{width:100%;padding:25px}.diwali-city-pavilion{right:-12%;top:10%;width:95%;height:34%;opacity:.82}.diwali-city-market{padding:70px 20px 40px;align-items:flex-end;min-height:110svh}.diwali-city-market-stalls{inset:0 0 38%;padding:0 1%;gap:2%}.diwali-city-market-stalls div{width:14%;height:43%}.diwali-city-market-stalls div:nth-child(even){height:53%}.diwali-city-market-card{padding:24px 18px;width:100%;margin:0}.diwali-city-market-products{gap:7px}.diwali-city-market-products a{padding:5px}.diwali-city-market-products b{font-size:10px}.diwali-city-market-products small{font-size:8px}.diwali-city-finale{padding:90px 20px 60px;min-height:100svh}.diwali-city-finale-copy{padding:25px;width:100%}.diwali-city-footer{flex-wrap:wrap;justify-content:center;text-align:center}.diwali-city-footer span{width:100%;order:3;font-size:8px}}
 @media(prefers-reduced-motion:reduce){.diwali-city-page *{animation-duration:.01ms!important;transition-duration:.01ms!important}}
 
-.diwali-city-page{--diwali-parallax:0px}
-.diwali-city-sky{transform:translate3d(0,calc(var(--diwali-parallax) * -1),0) scale(1.12);transform-origin:center top;will-change:transform}
-.diwali-city-lanterns{transform:translate3d(0,calc(var(--diwali-parallax) * .35),0);will-change:transform}
-.diwali-city-buildings-back{transform:translate3d(0,calc(var(--diwali-parallax) * .22),0)}
-.diwali-city-bridge{transform:translate3d(0,calc(var(--diwali-parallax) * .12),0)}
-.diwali-city-water{transform:translate3d(0,calc(var(--diwali-parallax) * -.04),0)}
-.diwali-city-pavilion{transform:translate3d(0,calc(var(--diwali-parallax) * .14),0)}
-.diwali-city-market-stalls{transform:translate3d(0,calc(var(--diwali-parallax) * .1),0)}
+.diwali-city-page{--diwali-parallax-sky:0px;--diwali-parallax-lanterns:0px;--diwali-parallax-buildings:0px;--diwali-parallax-bridge:0px;--diwali-parallax-water:0px;--diwali-parallax-pavilion:0px;--diwali-parallax-stalls:0px}
+.diwali-city-sky{transform:translate3d(0,var(--diwali-parallax-sky),0) scale(1.12);transform-origin:center top;will-change:transform}
+.diwali-city-lanterns{transform:translate3d(0,var(--diwali-parallax-lanterns),0);will-change:transform}
+.diwali-city-buildings-back{transform:translate3d(0,var(--diwali-parallax-buildings),0)}
+.diwali-city-bridge{transform:translate3d(0,var(--diwali-parallax-bridge),0)}
+.diwali-city-water{transform:translate3d(0,var(--diwali-parallax-water),0)}
+.diwali-city-pavilion{transform:translate3d(0,var(--diwali-parallax-pavilion),0)}
+.diwali-city-market-stalls{transform:translate3d(0,var(--diwali-parallax-stalls),0)}
 @media(prefers-reduced-motion:reduce){.diwali-city-sky,.diwali-city-lanterns,.diwali-city-buildings-back,.diwali-city-bridge,.diwali-city-water,.diwali-city-pavilion,.diwali-city-market-stalls{transform:none!important}}
