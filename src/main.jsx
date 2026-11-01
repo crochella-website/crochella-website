@@ -5,6 +5,7 @@ import ProductShowcase from './ProductShowcase.jsx';
 import StringTieFooter from './StringTieFooter.jsx';
 import CrochellasPage from './CrochellasPage.jsx';
 import CrochellaProductPage from './CrochellaProductPage.jsx';
+import DiwaliDhamakaPage from './DiwaliDhamakaPage.jsx';
 import { createRoot } from 'react-dom/client';
 import './styles.css';
 import site from './content/site.json';
@@ -117,4 +118,4 @@ function App() {
 
 const routePath=window.location.pathname.replace(/\/$/, '');
 const productRoute=routePath.match(/^\/product\/([^/]+)$/);
-createRoot(document.getElementById('root')).render(productRoute ? <CrochellaProductPage slug={decodeURIComponent(productRoute[1])}/> : routePath === '/crochellas' ? <CrochellasPage/> : <App/>);
+createRoot(document.getElementById('root')).render(productRoute ? <CrochellaProductPage slug={decodeURIComponent(productRoute[1])}/> : routePath === '/crochellas' ? <CrochellasPage/> : routePath === '/diwali-dhamaka' ? <DiwaliDhamakaPage/> : <App/>);
