@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import pricing from './content/crochella-pricing.json';
 
+const SUPPORT_PHONE = '919044900495';
 const TRAIN_ANNOUNCEMENT_URL = '/uploads/' + encodeURIComponent('vidssave.com Train Announcements ❤ #indianrailways #station #train 128KBPS.mp4');
 
 const products=[
@@ -52,7 +53,7 @@ export default function CrochellaProductPage({slug}){
   </section>
   <section className="product-story-main">
    <div className="product-story-image"><div className="product-story-image-halo"/><img src={product.image} alt={product.name}/><span className="product-story-image-tag">HANDMADE IN FATEHPUR</span></div>
-   <div className="product-story-copy"><span className="product-story-kicker">{product.emoji} · A LITTLE CROCHET COMPANION</span><h2>{product.name}</h2><p className="product-story-detail">{product.detail}</p><p>{product.story}</p><div className="product-story-price">₹{price}<small>INR · No extra shipping cost</small></div><div className="product-story-actions"><a className="product-story-ask" href="https://www.instagram.com/direct/t/17846754582500300" target="_blank" rel="noreferrer">Ask Dadi about this <span>↗</span></a><a className="product-story-back" href="/crochellas">Explore all products</a></div><p className="product-story-checkout-note">Online checkout is coming next. For now, message Dadi to place your order.</p></div>
+   <div className="product-story-copy"><span className="product-story-kicker">{product.emoji} · A LITTLE CROCHET COMPANION</span><h2>{product.name}</h2><p className="product-story-detail">{product.detail}</p><p>{product.story}</p><div className="product-story-price">₹{price}<small>INR · No extra shipping cost</small></div><div className="product-story-actions"><a className="product-story-ask" href={`https://wa.me/${SUPPORT_PHONE}?text=${encodeURIComponent(`Hi Crochella! I would like to order ${product.name} (₹${price}). Please share availability, delivery, and payment details.`)}`} target="_blank" rel="noreferrer">Order on WhatsApp <span>↗</span></a><a className="product-story-back" href="/crochellas">Explore all products</a></div><p className="product-story-checkout-note">Estimated delivery: 2–4 days in Tier 1 cities (including Delhi NCR), around 1 week elsewhere. Online payment checkout is being prepared; our team will confirm the order and payment method with you.</p><p className="product-story-checkout-note"><a href="/shipping-policy">Shipping</a> · <a href="/returns-refunds">Returns & refunds</a></div>
   </section>
   <section className="product-story-end"><span>MADE SLOWLY · LOVED EVERYWHERE</span><a href="/crochellas">Find another little thing ↗</a></section>
  </main>
