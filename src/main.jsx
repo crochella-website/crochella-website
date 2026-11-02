@@ -112,11 +112,26 @@ function App() {
 
     <BlossomTree />
     <StringTieFooter meta={['Crochella', 'Handmade with love', 'Made to keep']} tapes={['A little note,', 'just for you.']} note={{ kicker: 'P.S.', text: 'Every little creation starts with a thread and a thought. Have an idea, a question, or a project in mind? We would love to hear from you.', cta: 'Write to us' }} height="100svh" />
-    <footer className="site-footer">
-      <a className="footer-brand" href="#home">Crochella<sup>®</sup></a>
-      <p>Woven with love, from our hands to yours.</p>
-      <a href="https://www.instagram.com/crochellaart/" target="_blank" rel="noreferrer">@crochellaart ↗</a>
-      <nav className="site-legal-links"><a href="/privacy-policy">Privacy</a><a href="/shipping-policy">Shipping</a><a href="/returns-refunds">Returns</a><a href="/terms">Terms</a><a href="/contact">Contact</a></nav><small>© {new Date().getFullYear()} Crochella. Made with love.</small>
+    <footer className="site-footer pick-footer">
+      <div className="pick-footer-art" aria-hidden="true">
+        <span className="pick-doodle pick-doodle-flower">✿</span>
+        <span className="pick-doodle pick-doodle-heart">♡</span>
+        <span className="pick-doodle pick-doodle-yarn">🧶</span>
+        <span className="pick-doodle pick-doodle-hook">🪡</span>
+        <span className="pick-doodle pick-doodle-star">✦</span>
+        <div className="pick-word">PICK</div>
+        <span className="pick-doodle pick-doodle-bow">❀</span>
+      </div>
+      <p className="pick-footer-tagline">Little things, lovingly handmade.</p>
+      <div className="pick-footer-actions">
+        <a className="pick-footer-button pick-footer-button-outline" href="#collections"><span aria-hidden="true">🧶</span> Explore handmade</a>
+        <a className="pick-footer-button pick-footer-button-dark" href="mailto:hello@crochella.in"><span aria-hidden="true">♡</span> Baat karein</a>
+      </div>
+      <div className="pick-footer-bottom">
+        <a className="footer-brand" href="#home">Crochella<sup>®</sup></a>
+        <span>© {new Date().getFullYear()} Crochella · Woven with love, from our hands to yours.</span>
+        <nav className="site-legal-links"><a href="/privacy-policy">Privacy</a><a href="/shipping-policy">Shipping</a><a href="/returns-refunds">Returns</a><a href="/terms">Terms</a><a href="/contact">Contact</a><a href="https://www.instagram.com/crochellaart/" target="_blank" rel="noreferrer">Instagram ↗</a></nav>
+      </div>
     </footer>
   </main>;
 }
