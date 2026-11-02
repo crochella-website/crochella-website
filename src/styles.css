@@ -1608,7 +1608,7 @@
     radial-gradient(1.5px 1.5px at 38% 28%,#f6ead7 99%,transparent),
     radial-gradient(1px 1px at 57% 73%,#e9bd79 99%,transparent),
     radial-gradient(1.5px 1.5px at 79% 14%,#f6ead7 99%,transparent),
-    radialial-gradient(1px 1px at 92% 58%,#e9bd79 99%,transparent);
+    radial-gradient(1px 1px at 92% 58%,#e9bd79 99%,transparent);
   background-size:310px 230px;
   animation:pick-star-drift 2.8s linear infinite;
 }
