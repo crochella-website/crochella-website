@@ -1521,3 +1521,42 @@
 /* Use the uploaded full Crochella logo artwork in the navbar */
 .brand-lockup .crochella-mark{width:clamp(54px,6vw,82px);height:clamp(42px,4.8vw,64px);flex:0 0 auto;overflow:visible}
 .brand-lockup .crochella-mark img{display:block;width:100%;height:100%;object-fit:contain}
+
+
+/* Crochella PICK footer — sunny doodle-inspired closing section */
+.pick-footer{display:block!important;position:relative;overflow:hidden;background:#ffdc4e!important;color:#211c16!important;padding:clamp(28px,4vw,54px) clamp(22px,4vw,64px) 0!important}
+.pick-footer:before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 12% 15%,#fff5a055 0 2px,transparent 3px),radial-gradient(circle at 87% 22%,#fff5a055 0 3px,transparent 4px);background-size:120px 110px,170px 145px;opacity:.75}
+.pick-footer-art{height:clamp(210px,29vw,390px);max-width:1320px;margin:0 auto;position:relative;display:flex;align-items:center;justify-content:center}
+.pick-word{font:900 clamp(120px,26vw,390px)/.78 'DM Sans',sans-serif;letter-spacing:-.095em;color:#171611;text-align:center;position:relative;z-index:1;transform:rotate(-1deg);-webkit-text-stroke:1px #171611;text-shadow:2px 3px 0 #ffdc4e,4px 5px 0 #171611}
+.pick-doodle{position:absolute;z-index:2;color:#171611;font-family:Georgia,serif;line-height:1;filter:drop-shadow(1px 2px 0 #ffdc4e);animation:pick-doodle-float 4.5s ease-in-out infinite}
+.pick-doodle-flower{left:8%;top:27%;font-size:clamp(38px,6vw,82px);transform:rotate(-18deg)}
+.pick-doodle-heart{left:20%;bottom:9%;font-size:clamp(36px,5vw,68px);color:#f05b72;-webkit-text-stroke:2px #171611;animation-delay:-1s}
+.pick-doodle-yarn{right:15%;top:0;font-size:clamp(35px,5vw,68px);transform:rotate(15deg);animation-delay:-2s}
+.pick-doodle-hook{right:7%;bottom:15%;font-size:clamp(34px,5vw,64px);transform:rotate(-25deg);animation-delay:-.7s}
+.pick-doodle-star{left:48%;top:2%;font-size:clamp(25px,4vw,48px);animation-delay:-1.5s}
+.pick-doodle-bow{right:28%;bottom:2%;font-size:clamp(30px,4vw,54px);color:#e85b75;-webkit-text-stroke:1.5px #171611;animation-delay:-2.5s}
+@keyframes pick-doodle-float{0%,100%{translate:0 0;rotate:0deg}50%{translate:0 -9px;rotate:5deg}}
+.pick-footer-tagline{position:relative;margin:clamp(18px,3vw,36px) 0 24px!important;text-align:center;font:500 clamp(18px,2.3vw,28px)/1.3 'Playfair Display',serif!important;color:#211c16!important}
+.pick-footer-actions{position:relative;display:flex;justify-content:center;align-items:center;gap:16px;flex-wrap:wrap;padding:0 0 clamp(30px,4vw,54px)}
+.pick-footer-button{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:60px;padding:0 28px;border:2px solid #171611;border-radius:999px;color:#171611;text-decoration:none;font:700 clamp(14px,1.2vw,18px)/1 'DM Sans',sans-serif;box-shadow:0 5px 0 #171611;transition:transform .18s,box-shadow .18s,background .18s}
+.pick-footer-button:hover{transform:translateY(3px);box-shadow:0 2px 0 #171611}
+.pick-footer-button-outline{background:#ffdc4e}.pick-footer-button-dark{background:#171611;color:#ffdc4e}
+.pick-footer-bottom{position:relative;display:grid;grid-template-columns:auto 1fr;align-items:center;gap:14px 28px;padding:24px 0 28px;border-top:1px dashed #17161155}
+.pick-footer-bottom .footer-brand{color:#171611;font-size:clamp(22px,2.3vw,30px)}
+.pick-footer-bottom>span{justify-self:end;font-size:13px;color:#51452b}
+.pick-footer-bottom .site-legal-links{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:clamp(14px,2.5vw,32px)}
+.pick-footer-bottom .site-legal-links a{color:#171611;text-decoration:none;font-weight:650;font-size:13px;text-underline-offset:4px}
+.pick-footer-bottom .site-legal-links a:hover{text-decoration:underline}
+@media(max-width:700px){
+ .pick-footer{padding:26px 18px 0!important}
+ .pick-footer-art{height:clamp(170px,48vw,250px)}
+ .pick-word{font-size:clamp(118px,31vw,210px);letter-spacing:-.1em}
+ .pick-doodle-flower{left:1%;top:20%}.pick-doodle-heart{left:11%;bottom:4%}.pick-doodle-yarn{right:7%;top:0}.pick-doodle-hook{right:0;bottom:8%}.pick-doodle-star{left:48%;top:0}.pick-doodle-bow{right:23%;bottom:0}
+ .pick-footer-tagline{margin:18px 0 20px!important}
+ .pick-footer-actions{gap:12px;padding-bottom:32px}
+ .pick-footer-button{min-height:52px;padding:0 19px;font-size:13px}
+ .pick-footer-bottom{grid-template-columns:1fr;justify-items:center;text-align:center;padding:22px 0 26px;gap:13px}
+ .pick-footer-bottom>span{justify-self:center;font-size:11px}
+ .pick-footer-bottom .site-legal-links{justify-content:center;gap:12px 18px}
+}
+@media(prefers-reduced-motion:reduce){.pick-doodle{animation:none}.pick-footer-button{transition:none}}
