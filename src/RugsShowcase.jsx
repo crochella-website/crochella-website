@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import SushiConveyorMenu from './components/ui/sushi-conveyor-menu.tsx';
+import { SushiConveyorMenu } from './components/ui/sushi-conveyor-menu.tsx';
 export default function RugsShowcase(){
  const [items,setItems]=useState([]),[category,setCategory]=useState('All rugs'),[error,setError]=useState(false);
  const categories=['All rugs','Character & Home','Gaming','Team Rugs'];
