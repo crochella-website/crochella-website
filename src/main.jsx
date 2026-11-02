@@ -19,7 +19,7 @@ const INTRO = 'Arre, aa gaye? Welcome to Crochella. Yahan har dhaage mein ek kah
 function App() {
   const [typed, setTyped] = useState('');
   const [menuOpen, setMenuOpen] = useState(false);
-  const [copied, setCopied] = useState(false);
+  const [copied, setCopied] = useState(false);\n  const [footerMessage, setFooterMessage] = useState('');
 
 
   useEffect(() => {
@@ -113,14 +113,15 @@ function App() {
     <BlossomTree />
     <StringTieFooter meta={['Crochella', 'Handmade with love', 'Made to keep']} tapes={['A little note,', 'just for you.']} note={{ kicker: 'P.S.', text: 'Every little creation starts with a thread and a thought. Have an idea, a question, or a project in mind? We would love to hear from you.', cta: 'Write to us' }} height="100svh" />
     <footer className="site-footer pick-footer">
-      <div className="pick-footer-art" aria-hidden="true">
-        <span className="pick-doodle pick-doodle-flower">✿</span>
-        <span className="pick-doodle pick-doodle-heart">♡</span>
-        <span className="pick-doodle pick-doodle-yarn">🧶</span>
-        <span className="pick-doodle pick-doodle-hook">🪡</span>
-        <span className="pick-doodle pick-doodle-star">✦</span>
-        <div className="pick-word">PICK</div>
-        <span className="pick-doodle pick-doodle-bow">❀</span>
+      <div className="pick-footer-topline"><span>THE CROCHELLA PLAYGROUND</span><span>Handmade, with a little mischief.</span></div>
+      <div className="pick-footer-art">
+        <div className="pick-character pick-character-cat"><button type="button" aria-label="Meet Mili the cat" onClick={()=>setFooterMessage('Mili says: Every little thing deserves a little love!')}>🐱</button></div>
+        <div className="pick-character pick-character-bird"><button type="button" aria-label="Meet Chidi the bird" onClick={()=>setFooterMessage('Chidi says: Pick a tiny joy and carry it with you!')}>🐥</button></div>
+        <div className="pick-character pick-character-dadi"><button type="button" aria-label="Meet Dadi" onClick={()=>setFooterMessage('Dadi says: Har loop mein thoda sa pyaar. Always.')}>👵</button></div>
+        <div className="pick-character pick-character-bear"><button type="button" aria-label="Meet Golu the bear" onClick={()=>setFooterMessage('Golu says: Handmade hugs are the best hugs!')}>🐻</button></div>
+        <div className="pick-word" aria-label="PICK">{['P','I','C','K'].map((letter,i)=><span key={i} tabIndex="0" aria-label={letter} style={{'--letter-index':i}}>{letter}</span>)}</div>
+        <span className="pick-spark pick-spark-one" aria-hidden="true">✦</span><span className="pick-spark pick-spark-two" aria-hidden="true">♡</span><span className="pick-spark pick-spark-three" aria-hidden="true">✿</span>
+        {footerMessage&&<div className="pick-speech" role="status">{footerMessage}<button type="button" aria-label="Close message" onClick={()=>setFooterMessage('')}>×</button></div>}
       </div>
       <p className="pick-footer-tagline">Little things, lovingly handmade.</p>
       <div className="pick-footer-actions">
