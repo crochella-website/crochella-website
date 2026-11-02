@@ -1635,3 +1635,49 @@
 @media(prefers-reduced-motion:reduce){
  .pick-footer-art,.pick-word span,.pick-character,.pick-spark,.pick-footer:after{animation:none!important}
 }
+
+
+/* PICK footer: replace emoji badges with the supplied illustrated crochet crew. */
+.pick-doodle-crew{position:absolute;inset:0;z-index:3;pointer-events:none}
+.pick-doodle{
+  position:absolute;display:block;pointer-events:auto;
+  width:clamp(112px,17vw,235px);height:clamp(150px,25vw,330px);
+  padding:0;border:0;border-radius:0;background-color:transparent;
+  background-image:url('/uploads/cheerful-childrens-crochet-club.png');
+  background-repeat:no-repeat;background-size:400% 100%;
+  filter:drop-shadow(0 7px 0 #080f20);
+  cursor:pointer;transform:translateZ(0);
+  transition:transform .28s cubic-bezier(.2,.8,.2,1),filter .28s;
+}
+.pick-doodle-one{left:4%;top:50%;background-position:0% 50%;transform:translateY(-50%) rotate(-3deg)}
+.pick-doodle-two{left:27%;top:44%;background-position:33.333% 50%;transform:translateY(-50%) rotate(2deg)}
+.pick-doodle-three{right:27%;top:48%;background-position:66.666% 50%;transform:translateY(-50%) rotate(-2deg)}
+.pick-doodle-four{right:4%;top:50%;background-position:100% 50%;transform:translateY(-50%) rotate(3deg)}
+.pick-doodle:hover,.pick-doodle:focus-visible{
+  z-index:5;filter:drop-shadow(0 12px 0 #080f20) drop-shadow(0 16px 12px #050b19aa);
+}
+.pick-doodle-one:hover,.pick-doodle-one:focus-visible{transform:translateY(calc(-50% - 7px)) rotate(-5deg) scale(1.035)}
+.pick-doodle-two:hover,.pick-doodle-two:focus-visible{transform:translateY(calc(-50% - 7px)) rotate(4deg) scale(1.035)}
+.pick-doodle-three:hover,.pick-doodle-three:focus-visible{transform:translateY(calc(-50% - 7px)) rotate(-4deg) scale(1.035)}
+.pick-doodle-four:hover,.pick-doodle-four:focus-visible{transform:translateY(calc(-50% - 7px)) rotate(5deg) scale(1.035)}
+.pick-word{filter:drop-shadow(0 5px 0 #263b5c)!important}
+.pick-word span:hover,.pick-word span:focus-visible{
+  transform:translateY(-9px) rotate(-2deg);
+  filter:drop-shadow(0 7px 0 #263b5c) drop-shadow(0 13px 12px #050b19a8);
+  text-shadow:none!important;
+}
+.pick-word span:nth-child(even):hover,.pick-word span:nth-child(even):focus-visible{
+  transform:translateY(-9px) rotate(2deg);
+}
+.pick-footer-art{isolation:isolate}
+.pick-doodle-crew{z-index:2}
+.pick-word{z-index:1}
+@media(max-width:700px){
+  .pick-doodle{width:clamp(72px,21vw,125px);height:clamp(100px,30vw,180px)}
+  .pick-doodle-one{left:-2%;top:53%}
+  .pick-doodle-two{left:21%;top:40%}
+  .pick-doodle-three{right:21%;top:42%}
+  .pick-doodle-four{right:-2%;top:53%}
+  .pick-word{font-size:clamp(105px,30vw,195px)}
+}
+@media(prefers-reduced-motion:reduce){.pick-doodle{transition:none}}
