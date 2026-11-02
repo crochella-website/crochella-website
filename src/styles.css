@@ -1,3 +1,4 @@
+@import "tailwindcss" theme, utilities;
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&family=Yatra+One&display=swap');
 :root{--cream:#fff0d8;--ink:#3a1716;--gold:#e6bd79;font-family:'DM Sans',sans-serif;background:#790018;color:var(--cream)}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0}a{color:inherit}.crochella-site{overflow:clip}
@@ -1475,3 +1476,18 @@
 @keyframes rugs-belt-face{from{rotate:0deg}to{rotate:-360deg}}
 @media(max-width:760px){.rugs-showcase{padding:60px 0 26px}.rugs-showcase-top{padding:0 20px;margin-bottom:24px;align-items:flex-start}.rugs-showcase-top h2{font-size:clamp(43px,12vw,68px)}.rugs-showcase-top p{max-width:290px;line-height:1.5}.rugs-all-link{font-size:11px;padding:10px 12px;align-self:flex-end}.rugs-filter-row{padding:0 20px;margin-bottom:18px}.rugs-belt-heading{font-size:8px;letter-spacing:.1em;padding:0 18px}.rugs-belt-scene{height:clamp(330px,105vw,470px);perspective:900px}.rugs-belt-outer{left:1%;width:98%;top:17%;height:66%}.rugs-belt-inner{left:29%;width:42%;top:35%;height:30%}.rugs-belt-item{width:clamp(76px,21vw,118px)}.rugs-belt-plate{border-width:2px}.rugs-belt-product-label{font-size:9px;max-width:100px}.rugs-belt-controls{flex-wrap:wrap;padding-bottom:16px}.rugs-belt-controls span{flex-basis:100%;text-align:center;margin:5px 0 0;font-size:11px}.rugs-selected-product{gap:10px;padding:10px}.rugs-selected-product>img{width:54px;height:54px}.rugs-selected-product h3{font-size:15px}.rugs-selected-product>a{font-size:10px;padding:9px}.rugs-selected-product div span{font-size:8px}.rugs-belt-items,.rugs-belt-item{animation-duration:40s}}
 @media(prefers-reduced-motion:reduce){.rugs-belt-items,.rugs-belt-item{animation:none!important}.rugs-belt-item,.rugs-belt-plate{transition:none!important}}
+
+/* Original 3D conveyor component, adapted to Crochella's warm rug-edit palette. */
+.rug-conveyor-section{background:#f4e9dc!important;color:#351d1b!important}
+.rug-conveyor-section:before{background:radial-gradient(ellipse at 50% 55%,#fff9f1,#f4e9dc 64%,#ead9c8)!important}
+.rug-conveyor-shell{--color-background:#f4e9dc;--color-foreground:#351d1b;--color-card:#fffaf4;--color-card-foreground:#351d1b;--color-muted:#eadbcb;--color-muted-foreground:#806454;--color-border:#d9c4b0;--color-ring:#a6533d;position:relative;max-width:1480px;margin:0 auto;background:transparent;color:#351d1b}
+.rug-conveyor-component{width:100%;background:transparent!important;color:#351d1b!important}
+.rug-conveyor-component h1,.rug-conveyor-component h2,.rug-conveyor-component h3{font-family:'Playfair Display',serif;color:#351d1b}
+.rug-conveyor-component p,.rug-conveyor-component li{color:#806454}
+.rug-conveyor-component button{font-family:'DM Sans',sans-serif}
+.rug-conveyor-component a.rug-conveyor-shop-link{display:inline-flex;align-items:center;justify-content:center;border-radius:999px;border:1px solid #cdb49e;padding:12px 20px;color:#482b24;text-decoration:none;font-size:13px;transition:background .2s,color .2s}
+.rug-conveyor-component a.rug-conveyor-shop-link:hover{background:#4a2924;color:#fff5e9}
+.rug-conveyor-component [data-conveyor-belt],.rug-conveyor-component svg{max-width:100%}
+.rug-conveyor-component [role=dialog]{--color-background:#fffaf4;--color-foreground:#351d1b;--color-card:#fffaf4;--color-card-foreground:#351d1b;--color-muted-foreground:#806454;--color-border:#d9c4b0}
+.rug-conveyor-component img{user-select:none;-webkit-user-drag:none}
+@media(max-width:760px){.rug-conveyor-shell{margin:0 -8px}.rug-conveyor-component{padding-left:0!important;padding-right:0!important}.rug-conveyor-component a.rug-conveyor-shop-link{padding:10px 16px;font-size:12px}}
