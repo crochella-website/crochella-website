@@ -983,4 +983,71 @@ function DishDialog({ uid, item, index, total, labels, reduced, broken, source, 
       ], { duration: 680, easing: "cubic-bezier(.22,.85,.3,1)" });
     }
     const raf = requestAnimationFrame(() => setShown(true));
-    return () => 
+    return () => {
+      cancelAnimationFrame(raf);
+      window.clearTimeout(timer.current);
+      animation?.cancel();
+      document.body.style.overflow = overflow;
+      onLift(false);
+    };
+  }, [item.id]);
+
+  React.useEffect(() => {
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape" && !closing.current) {
+        event.preventDefault();
+        closing.current = true;
+        setShown(false);
+        window.setTimeout(onClose, reduced ? 0 : 220);
+      }
+    };
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, [onClose, reduced]);
+
+  const close = () => {
+    if (closing.current) return;
+    closing.current = true;
+    setShown(false);
+    window.setTimeout(onClose, reduced ? 0 : 220);
+  };
+
+  const add = () => {
+    setAdded(true);
+    onAdd();
+    window.setTimeout(close, reduced ? 0 : 520);
+  };
+
+  if (typeof document === "undefined") return null;
+  return createPortal(
+    <div
+      ref={dialogRef}
+      className={`fixed inset-0 z-[100] flex items-center justify-center bg-black/35 p-4 backdrop-blur-sm transition-opacity duration-300 ${shown ? "opacity-100" : "opacity-0"}`}
+      onMouseDown={(event) => { if (event.target === event.currentTarget) close(); }}
+    >
+      <section
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby={titleId}
+        className="relative grid w-full max-w-3xl overflow-hidden rounded-[2rem] border border-white/70 bg-[#fffaf3] text-[#3d211d] shadow-[0_30px_100px_rgba(48,24,18,.28)] md:grid-cols-2"
+      >
+        <button ref={closeRef} type="button" onClick={close} aria-label={labels.close} className="absolute right-4 top-4 z-10 grid size-10 place-items-center rounded-full bg-white/85 text-xl shadow-sm transition hover:scale-105">×</button>
+        <div ref={figureRef} className="flex min-h-64 items-center justify-center bg-[#f1e4d4] p-8">
+          <img src={item.image} alt={item.name} className={`max-h-80 w-full object-contain transition-transform duration-500 ${shown ? "scale-100" : "scale-90"}`} />
+        </div>
+        <div className="flex flex-col justify-center gap-5 p-7 md:p-10">
+          <p className="text-xs uppercase tracking-[.22em] text-[#96745f]">Handcrafted rug</p>
+          <h2 id={titleId} className="font-serif text-3xl leading-tight">{item.name}</h2>
+          <p className="text-lg font-medium">{item.price}</p>
+          {item.description && <p className="leading-relaxed text-[#765b4d]">{item.description}</p>}
+          {!!item.details?.length && <ul className="flex flex-wrap gap-2">{item.details.map(detail => <li key={detail} className="rounded-full border border-[#dec9b5] px-3 py-1 text-xs">{detail}</li>)}</ul>}
+          <div className="mt-2 flex items-center gap-3">
+            <button type="button" onClick={add} className="rounded-full bg-[#4a211f] px-5 py-3 text-sm font-medium text-white transition hover:bg-[#6a3029]">{added ? "Added" : labels.add}</button>
+            <button type="button" onClick={close} className="rounded-full border border-[#d8bda8] px-5 py-3 text-sm">{labels.close}</button>
+          </div>
+        </div>
+      </section>
+    </div>,
+    document.body
+  );
+}
