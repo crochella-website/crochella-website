@@ -116,11 +116,13 @@ function App() {
     <footer className="site-footer pick-footer">
       <div className="pick-footer-topline"><span>THE CROCHELLA PLAYGROUND</span><span>Handmade, with a little mischief.</span></div>
       <div className="pick-footer-art">
-        <div className="pick-character pick-character-cat"><button type="button" aria-label="Meet Mili the cat" onClick={()=>setFooterMessage('Mili says: Every little thing deserves a little love!')}>🐱</button></div>
-        <div className="pick-character pick-character-bird"><button type="button" aria-label="Meet Chidi the bird" onClick={()=>setFooterMessage('Chidi says: Pick a tiny joy and carry it with you!')}>🐥</button></div>
-        <div className="pick-character pick-character-dadi"><button type="button" aria-label="Meet Dadi" onClick={()=>setFooterMessage('Dadi says: Har loop mein thoda sa pyaar. Always.')}>👵</button></div>
-        <div className="pick-character pick-character-bear"><button type="button" aria-label="Meet Golu the bear" onClick={()=>setFooterMessage('Golu says: Handmade hugs are the best hugs!')}>🐻</button></div>
         <div className="pick-word" aria-label="PICK">{['P','I','C','K'].map((letter,i)=><span key={i} tabIndex="0" aria-label={letter} style={{'--letter-index':i}}>{letter}</span>)}</div>
+        <div className="pick-doodle-crew" aria-label="Crochella's handmade doodle characters">
+          <button className="pick-doodle pick-doodle-one" type="button" aria-label="Meet Mili, the crochet-loving girl" onClick={()=>setFooterMessage('Mili says: Every little thing deserves a little love!')}/>
+          <button className="pick-doodle pick-doodle-two" type="button" aria-label="Meet Raja, the little crochet king" onClick={()=>setFooterMessage('Raja says: Pick a tiny joy and carry it with you!')}/>
+          <button className="pick-doodle pick-doodle-three" type="button" aria-label="Meet Golu and his teddy" onClick={()=>setFooterMessage('Golu says: Handmade hugs are the best hugs!')}/>
+          <button className="pick-doodle pick-doodle-four" type="button" aria-label="Meet the sunny crochet girl" onClick={()=>setFooterMessage('She says: Keep a little handmade sunshine close!')}/>
+        </div>
         <span className="pick-spark pick-spark-one" aria-hidden="true">✦</span><span className="pick-spark pick-spark-two" aria-hidden="true">♡</span><span className="pick-spark pick-spark-three" aria-hidden="true">✿</span>
         {footerMessage&&<div className="pick-speech" role="status">{footerMessage}<button type="button" aria-label="Close message" onClick={()=>setFooterMessage('')}>×</button></div>}
       </div>
