@@ -895,7 +895,8 @@ export function SushiConveyorMenu({
       data-open={openIndex ?? ""}
       data-paused={paused || undefined}
       data-center={center}
-      className={`relative isolate w-full overflow-hidden bg-background text-foreground ${THEME} ${className ?? ""}`}
+      className={`relative isolate w-full overflow-hidden ${className ?? ""}`}
+      style={{ "--belt": "#e8d8c9", "--belt-side": "#c7aa91", "--rail": "#9f7a62", "--island": "#f3e5d7", "--island-low": "#dfc7b2", "--island-wall": "#b28b70", "--color-background": "#f4e9dc", "--color-foreground": "#351d1b", "--color-muted-foreground": "#806454", "--color-border": "#d9c4b0", "--color-card": "#fffaf4", "--color-card-foreground": "#351d1b" } as React.CSSProperties}
     >
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10" style={{ background: "radial-gradient(64% 52% at 50% 56%, color-mix(in oklab, var(--color-foreground) 5%, transparent), transparent 72%)" }} />
       {wide ? (
