@@ -19,7 +19,8 @@ const INTRO = 'Arre, aa gaye? Welcome to Crochella. Yahan har dhaage mein ek kah
 function App() {
   const [typed, setTyped] = useState('');
   const [menuOpen, setMenuOpen] = useState(false);
-  const [copied, setCopied] = useState(false);\n  const [footerMessage, setFooterMessage] = useState('');
+  const [copied, setCopied] = useState(false);
+  const [footerMessage, setFooterMessage] = useState('');
 
 
   useEffect(() => {
