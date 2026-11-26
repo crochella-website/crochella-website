@@ -1681,3 +1681,17 @@
   .pick-word{font-size:clamp(105px,30vw,195px)}
 }
 @media(prefers-reduced-motion:reduce){.pick-doodle{transition:none}}
+
+/* CROCHELLA footer: separate lettering and character layers */
+.pick-word{font-size:clamp(58px,15vw,210px)!important;letter-spacing:-.065em!important;z-index:1!important}
+.pick-word span{animation:crochella-letter-bob 5.2s ease-in-out infinite;animation-delay:calc(var(--letter-index)*-.24s)}
+.pick-doodle{background:none!important;background-image:none!important;width:clamp(90px,14vw,190px)!important;height:clamp(130px,22vw,285px)!important;display:flex!important;align-items:center!important;justify-content:center!important;overflow:visible!important;animation:crochella-character-shuttle 6s ease-in-out infinite!important;animation-delay:calc(var(--letter-index,0)*-.45s)!important}
+.pick-doodle img{display:block;width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 7px 0 #080f20);pointer-events:none}
+.pick-doodle-one{--letter-index:0}.pick-doodle-two{--letter-index:1}.pick-doodle-three{--letter-index:2}.pick-doodle-four{--letter-index:3}
+.pick-doodle-one{left:3%;top:50%}.pick-doodle-two{left:25%;top:46%}.pick-doodle-three{right:25%;top:47%}.pick-doodle-four{right:3%;top:50%}
+.pick-doodle:hover img,.pick-doodle:focus-visible img{transform:translateY(-8px) rotate(-3deg) scale(1.05)}
+.pick-doodle img{transition:transform .25s ease}
+@keyframes crochella-character-shuttle{0%,100%{translate:0 0;rotate:0}25%{translate:0 -6px;rotate:-1deg}50%{translate:0 2px;rotate:0}75%{translate:0 -3px;rotate:1deg}}
+@keyframes crochella-letter-bob{0%,100%{transform:translateY(0)}30%{transform:translateY(-4px)}60%{transform:translateY(2px)}}
+@media(max-width:700px){.pick-word{font-size:clamp(58px,17vw,128px)!important}.pick-doodle{width:clamp(58px,17vw,100px)!important;height:clamp(85px,24vw,140px)!important}.pick-doodle-one{left:-2%;top:53%}.pick-doodle-two{left:20%;top:42%}.pick-doodle-three{right:20%;top:43%}.pick-doodle-four{right:-2%;top:53%}}
+@media(prefers-reduced-motion:reduce){.pick-doodle,.pick-word span{animation:none!important}.pick-doodle img{transition:none}}
