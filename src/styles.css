@@ -1740,3 +1740,11 @@
 .pick-footer-art .pick-doodle-crew{pointer-events:none!important}
 .pick-footer-art .pick-doodle-crew .pick-doodle{pointer-events:auto!important;cursor:pointer!important}
 .pick-footer-art .pick-doodle-crew .pick-doodle img{background:none!important}
+
+/* Single composite footer artwork from the latest user-provided illustration */
+.pick-footer-art .pick-word,.pick-footer-art .pick-doodle-crew{display:none!important}
+.pick-footer-art .pick-footer-image-wrap{position:relative;z-index:2;width:min(96%,1500px);margin:clamp(18px,4vw,50px) auto;overflow:visible}
+.pick-footer-art .pick-footer-composite{display:block;width:100%;height:auto;max-height:60vh;object-fit:contain;animation:crochella-composite-shuttle 7s ease-in-out infinite;transform-origin:center}
+@keyframes crochella-composite-shuttle{0%,100%{transform:translateY(0)}30%{transform:translateY(-7px)}65%{transform:translateY(3px)}}
+@media(max-width:700px){.pick-footer-art .pick-footer-image-wrap{width:100%;margin:22px auto}.pick-footer-art .pick-footer-composite{max-height:none}}
+@media(prefers-reduced-motion:reduce){.pick-footer-art .pick-footer-composite{animation:none}}
