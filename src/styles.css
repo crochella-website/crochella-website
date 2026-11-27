@@ -1695,3 +1695,29 @@
 @keyframes crochella-letter-bob{0%,100%{transform:translateY(0)}30%{transform:translateY(-4px)}60%{transform:translateY(2px)}}
 @media(max-width:700px){.pick-word{font-size:clamp(58px,17vw,128px)!important}.pick-doodle{width:clamp(58px,17vw,100px)!important;height:clamp(85px,24vw,140px)!important}.pick-doodle-one{left:-2%;top:53%}.pick-doodle-two{left:20%;top:42%}.pick-doodle-three{right:20%;top:43%}.pick-doodle-four{right:-2%;top:53%}}
 @media(prefers-reduced-motion:reduce){.pick-doodle,.pick-word span{animation:none!important}.pick-doodle img{transition:none}}
+
+/* Footer repair: disable legacy striped letter texture that was bleeding through the artwork. */
+.pick-word{
+  background-image:none!important;
+  background-size:auto!important;
+  background-position:initial!important;
+  -webkit-background-clip:initial!important;
+  background-clip:initial!important;
+  color:#f6ead7!important;
+  -webkit-text-fill-color:#f6ead7!important;
+  text-shadow:none!important;
+  isolation:isolate;
+}
+.pick-word span{
+  background:none!important;
+  -webkit-background-clip:initial!important;
+  background-clip:initial!important;
+  color:#f6ead7!important;
+  -webkit-text-fill-color:#f6ead7!important;
+  animation:crochella-letter-bob 5.2s ease-in-out infinite!important;
+  animation-delay:calc(var(--letter-index)*-.24s)!important;
+}
+.pick-doodle-crew{z-index:3!important;pointer-events:none!important}
+.pick-doodle{background:none!important;background-image:none!important}
+.pick-doodle img{background:transparent!important;object-fit:contain!important}
+@media(prefers-reduced-motion:reduce){.pick-word span,.pick-doodle{animation:none!important}}
