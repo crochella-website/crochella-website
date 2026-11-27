@@ -116,12 +116,8 @@ function App() {
     <footer className="site-footer pick-footer">
       <div className="pick-footer-topline"><span>THE CROCHELLA PLAYGROUND</span><span>Handmade, with a little mischief.</span></div>
       <div className="pick-footer-art">
-        <div className="pick-word" aria-label="CROCHELLA">{Array.from('CROCHELLA').map((letter,i)=><span key={i} tabIndex="0" aria-label={letter} style={{'--letter-index':i}}>{letter}</span>)}</div>
-        <div className="pick-doodle-crew" aria-label="Crochella's handmade doodle characters">
-          <button className="pick-doodle pick-doodle-one" type="button" aria-label="Meet Mili, the crochet-loving girl" onClick={()=>setFooterMessage('Mili says: Every little thing deserves a little love!')}><img src="/uploads/crochella-child-1-girl-with-yarn.png" alt="" /></button>
-          <button className="pick-doodle pick-doodle-two" type="button" aria-label="Meet Raja, the little crochet king" onClick={()=>setFooterMessage('Raja says: Pick a tiny joy and carry it with you!')}><img src="/uploads/crochella-child-2-crown-boy.png" alt="" /></button>
-          <button className="pick-doodle pick-doodle-three" type="button" aria-label="Meet Golu and his teddy" onClick={()=>setFooterMessage('Golu says: Handmade hugs are the best hugs!')}><img src="/uploads/crochella-child-3-child-with-teddy.png" alt="" /></button>
-          <button className="pick-doodle pick-doodle-four" type="button" aria-label="Meet the sunny crochet girl" onClick={()=>setFooterMessage('She says: Keep a little handmade sunshine close!')}><img src="/uploads/crochella-child-4-girl-with-bag.png" alt="" /></button>
+        <div className="pick-footer-image-wrap">
+          <img className="pick-footer-composite" src="/uploads/Crochella Grandkids Yarn Adventure.png" alt="Crochella grandkids yarn adventure illustration" />
         </div>
         <span className="pick-spark pick-spark-one" aria-hidden="true">✦</span><span className="pick-spark pick-spark-two" aria-hidden="true">♡</span><span className="pick-spark pick-spark-three" aria-hidden="true">✿</span>
         {footerMessage&&<div className="pick-speech" role="status">{footerMessage}<button type="button" aria-label="Close message" onClick={()=>setFooterMessage('')}>×</button></div>}
