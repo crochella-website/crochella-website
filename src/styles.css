@@ -1721,3 +1721,22 @@
 .pick-doodle{background:none!important;background-image:none!important}
 .pick-doodle img{background:transparent!important;object-fit:contain!important}
 @media(prefers-reduced-motion:reduce){.pick-word span,.pick-doodle{animation:none!important}}
+
+/* FINAL footer override: remove the old clipped yarn texture from CROCHELLA lettering */
+.pick-footer-art .pick-word,
+.pick-footer-art .pick-word span{
+  background:transparent!important;
+  background-image:none!important;
+  background-size:auto!important;
+  background-position:initial!important;
+  -webkit-background-clip:border-box!important;
+  background-clip:border-box!important;
+  -webkit-text-fill-color:#f6ead7!important;
+  color:#f6ead7!important;
+  text-shadow:none!important;
+}
+.pick-footer-art .pick-word{filter:drop-shadow(0 5px 0 #263b5c)!important}
+.pick-footer-art .pick-word span{background:none!important}
+.pick-footer-art .pick-doodle-crew{pointer-events:none!important}
+.pick-footer-art .pick-doodle-crew .pick-doodle{pointer-events:auto!important;cursor:pointer!important}
+.pick-footer-art .pick-doodle-crew .pick-doodle img{background:none!important}
